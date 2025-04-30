@@ -1,13 +1,13 @@
-
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Hero = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   // Check if we're on the index page
-  const isIndexPage = location.pathname === "/" || location.pathname === "/index";
+  const isIndexPage =
+    location.pathname === "/" || location.pathname === "/index";
 
   // Handle scroll events
   useEffect(() => {
@@ -36,28 +36,41 @@ const Hero = () => {
 
   return (
     <section
-      className={`${isIndexPage ? 'absolute top-0 left-0' : 'relative'} w-full z-0 bg-cover bg-center flex flex-col items-center justify-center text-center text-white transition-all duration-300 ${
+      className={`${
+        "relative"
+      } w-full z-0 bg-cover bg-center flex flex-col items-center justify-center text-center text-white transition-all duration-300 ${
         isIndexPage
-          ? (isScrolled ? 'h-[72vh] pt-16' : 'h-[100vh] pt-16')
-          : 'h-[72vh]'
+          ? isScrolled
+            ? "h-[72vh] pt-20"
+            : "h-[100vh] pt-20"
+          : "h-[72vh]"
       }`}
       style={{
-        backgroundImage: "url('https://wtpregister.com/images/tpm/front-page-image.png')",
-        backgroundColor: '#084eb3',
-        backgroundBlendMode: 'overlay',
-      }}
-    >
-      <h1 className="text-3xl font-semibold mb-6 ">Publish Your Trademark Today</h1>
-      <p className="text-sm font-semibold mb-8 max-w-2xl">
-        Apply now to enhance your brand visibility and protect your trademark with our expert support.
-      </p>
-      <div className="flex space-x-4">
-        <Link to="/apply" className="bg-white text-blue-800 font-semibold px-4 py-2 hover:bg-gray-100">
-          Apply Now
-        </Link>
-        <Link to="/services" className="border border-white text-white font-semibold px-4 py-2 hover:bg-white hover:text-blue-800 transition">
-          Learn More
-        </Link>
+        backgroundImage:
+          "url('https://wtpregister.com/images/tpm/front-page-image.png')",
+        backgroundColor: "#2C5CA4",
+        backgroundBlendMode: "overlay",
+      }}>
+      <div className="max-w-3xl px-4">
+        <h1 className="text-4xl md:text-4xl font-semibold mb-6 leading-tight">
+          Publish Your Trademark Today
+        </h1>
+        <p className="text-base md:text-[16px] font-medium mb-10">
+          Apply now to enhance your brand visibility and protect your trademark
+          with our expert support.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            to="/apply"
+            className="bg-white text-blue-800 font-semibold px-4 py-3 w-32 text-center hover:bg-gray-100 transition shadow-xl">
+            Apply Now
+          </Link>
+          <Link
+            to="/services"
+            className="border border-white text-white font-semibold px-4 py-3 w-32 text-center shadow-xl">
+            Learn More
+          </Link>
+        </div>
       </div>
     </section>
   );

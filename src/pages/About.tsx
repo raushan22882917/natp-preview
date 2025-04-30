@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import { Footer } from "@/components/Footer";
+import  Hero  from "@/components/Hero";
+
 export default function About() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -276,22 +276,60 @@ export default function About() {
       </section>
 
       {/* Core Values Section */}
-      <div className="max-w-6xl mx-auto flex justify-between items-center h-[200px] mt-20 mb-20">
+     <div className="max-w-5xl mx-auto flex justify-between items-center h-[200px]">
+      <div>
+        <h3 className="text-4xl font-semibold mb-4">Connect with Our Expert Team</h3>
+        <p className="font-semibold text-lg">Discover how we can elevate your brand visibility.</p>
+      </div>
+     <div>
+     <button className="shadow bg-blue-500 py-3 px-6 text-white">Contact</button>
+     </div>
+     </div>
+     <footer className="bg-[#2557A7]  text-white pt-10">
+      <div className="w-[90vw] h-[40vh] mx-auto px-4 flex justify-between gap-8">
+        
+        {/* Left Section */}
         <div>
-          <h3 className="text-5xl font-semibold mb-9 text-[#333747]">
-            Connect with Our Expert Team
-          </h3>
-          <p className="font-semibold text-lg text-[#333747]">
-            Discover how we can elevate your brand visibility.
-          </p>
+          <div className="flex items-center mb-4">
+          <img src="https://wtpregister.com/images/tpm/LOGO-light.png" className="w-24 h-24" alt="" />
+          </div>
+         <div className="mt-40">
+         <div className="mb-2 font-semibold">Contact:</div>
+          <a href="mailto:info@wtpregister.com" className="text-white underline">
+            info@wtpregister.com
+          </a>
+         </div>
         </div>
-        <div>
-          <button className="shadow-xl bg-[#00a3d1] py-4 px-8 text-white font-bold text-lg">
-            Contact
-          </button>
+        <div className="flex  justify-between items-center gap-20">
+        {/* Center Section */}
+        <div className="flex flex-col space-y-4 md:col-span-">
+          <a href="#" className="hover:underline">Our Services</a>
+          <a href="#" className="hover:underline">Contact Us</a>
+          <a href="#" className="hover:underline">Trademark Info</a>
+          <a href="#" className="hover:underline">FAQs</a>
+          <a href="#" className="hover:underline">About Us</a>
+        </div>
+
+        {/* Right Section */}
+        <div className="flex flex-col space-y-4 md:col-span-1">
+          <a href="#" className="hover:underline">Trademark Publication</a>
+          <a href="#" className="hover:underline">Search</a>
+          <a href="#" className="hover:underline">Request Publication</a>
+          <a href="#" className="hover:underline">General Information</a>
+        </div>
+       </div>
+
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-blue-500 mt-10 pt-4 pb-6 flex flex-col md:flex-row justify-between items-center text-sm px-4 mx-10">
+        <p>© 2025 WTP. All rights reserved.</p>
+        <div className="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" className="hover:underline">Privacy Policy</a>
+          <a href="#" className="hover:underline">Terms and Conditions</a>
         </div>
       </div>
-      <Footer />
+    </footer>
     </div>
   );
 }

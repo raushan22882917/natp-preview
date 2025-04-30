@@ -174,7 +174,77 @@ export default function Terms() {
         </div>
       </div>
 
-      <Footer />
+      <footer className="bg-[#2557A7]  text-white pt-10">
+        <div className="w-[90vw] h-[40vh] mx-auto px-4 flex justify-between gap-8">
+          {/* Left Section */}
+          <div>
+            <div className="flex items-center mb-4">
+              <img
+                src="https://wtpregister.com/images/tpm/LOGO-light.png"
+                className="w-24 h-24"
+                alt=""
+              />
+            </div>
+            <div className="mt-40">
+              <div className="mb-2 font-semibold">Contact:</div>
+              <a
+                href="mailto:info@wtpregister.com"
+                className="text-white underline">
+                info@wtpregister.com
+              </a>
+            </div>
+          </div>
+          <div className="flex  justify-between items-center gap-20">
+            {/* Center Section */}
+            <div className="flex flex-col space-y-4 md:col-span-">
+              <a href="#" className="hover:underline">
+                Our Services
+              </a>
+              <a href="#" className="hover:underline">
+                Contact Us
+              </a>
+              <a href="#" className="hover:underline">
+                Trademark Info
+              </a>
+              <a href="#" className="hover:underline">
+                FAQs
+              </a>
+              <a href="#" className="hover:underline">
+                About Us
+              </a>
+            </div>
+
+            {/* Right Section */}
+            <div className="flex flex-col space-y-4 md:col-span-1">
+              <a href="#" className="hover:underline">
+                Trademark Publication
+              </a>
+              <a href="#" className="hover:underline">
+                Search
+              </a>
+              <a href="#" className="hover:underline">
+                Request Publication
+              </a>
+              <a href="#" className="hover:underline">
+                General Information
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-blue-500 mt-10 pt-4 pb-6 flex flex-col md:flex-row justify-between items-center text-sm px-4 mx-10">
+          <p>© 2025 WTP. All rights reserved.</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="hover:underline">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:underline">
+              Terms and Conditions
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
