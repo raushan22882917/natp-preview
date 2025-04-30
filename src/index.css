@@ -1,0 +1,68 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --primary-blue: 207 71% 32%;  /* #005ea2 */
+    --secondary-blue: 196 67% 38%; /* #207ea0 */
+    --gray: 0 0% 46%;             /* #757575 */
+    --text-white: 0 0% 94%;       /* #f0f0f0 */
+    --text-black: 0 0% 0%;        /* #000000 */
+  }
+
+  body {
+    @apply bg-white text-[#000000] antialiased;
+  }
+}
+
+@layer components {
+  .stats-label {
+    @apply text-sm text-gray-500;
+  }
+}
+
+.hero-waves {
+  background: linear-gradient(45deg, #005ea2 0%, #207ea0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-waves::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,500 C150,400 350,300 500,500 C650,700 850,600 1000,500 L1000,1000 L0,1000 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat;
+  animation: wave 15s linear infinite;
+  opacity: 0.1;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.learn-more-btn {
+  @apply px-6 py-2 text-[#f0f0f0] border border-[#f0f0f0]/20 rounded hover:bg-[#f0f0f0]/10 transition-all;
+}
+
+.apply-now-btn {
+  @apply px-6 py-2 bg-[#f0f0f0] text-[#005ea2] rounded hover:bg-[#f0f0f0]/90 transition-all;
+}
+
+.primary-btn {
+  @apply px-6 py-2 bg-[#005ea2] text-[#f0f0f0] rounded hover:bg-[#207ea0] transition-all;
+}
+
+.stats-value {
+  @apply text-5xl font-bold mb-2;
+}
+
+.faq-item {
+  @apply border-b border-gray-200 py-4;
+}

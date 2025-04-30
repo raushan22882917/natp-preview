@@ -1,0 +1,2 @@
+This folder contains placeholder images for the services page.
+The actual images will be loaded from external URLs or replaced with real images later.
