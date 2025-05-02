@@ -5,9 +5,9 @@ export const Footer = () => {
 
   return (
     <footer className="bg-[#2557A7] text-white py-10 px-4">
-      <div className="max-w-7xl mx-auto flex flex-col">
+      <div className="max-w-[85rem] mx-auto flex flex-col">
         {/* Main footer content */}
-        <div className="flex justify-between mb-16">
+        <div className="flex justify-between mb-20 mt-20">
           {/* Logo and contact section */}
           <div className="flex flex-col">
             <div className="mb-8">
@@ -15,8 +15,8 @@ export const Footer = () => {
             </div>
             <div className="mt-auto">
               <p className="font-medium mb-2">Contact:</p>
-              <a href="mailto:info@wtpregister.com" className="text-white hover:underline">
-                info@wtpregister.com
+              <a href="mailto:info@wtpregister.com" className="text-white">
+              info@natp-trademark.com
               </a>
             </div>
           </div>
@@ -26,18 +26,18 @@ export const Footer = () => {
             {/* Our Services column */}
             <div>
               <h4 className="font-medium mb-4">Our Services</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-5">
                 <li>
-                  <Link to="/contact" className="hover:underline">Contact Us</Link>
+                  <Link to="/contact" className="font-medium ">Contact Us</Link>
                 </li>
                 <li>
-                  <Link to="/trademark-info" className="hover:underline">Trademark Info</Link>
+                  <Link to="/trademark-info" className="font-medium">Trademark Info</Link>
                 </li>
                 <li>
-                  <Link to="/faqs" className="hover:underline">FAQs</Link>
+                  <Link to="/faqs" className="font-medium">FAQs</Link>
                 </li>
                 <li>
-                  <Link to="/about" className="hover:underline">About Us</Link>
+                  <Link to="/about" className="font-medium">About Us</Link>
                 </li>
               </ul>
             </div>
@@ -45,7 +45,7 @@ export const Footer = () => {
             {/* Trademark Publication column */}
             <div>
               <h4 className="font-medium mb-4">Trademark Publication</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-5">
                 <li>
                   <Link to="/search" className="hover:underline">Search</Link>
                 </li>
@@ -61,7 +61,7 @@ export const Footer = () => {
         </div>
 
         {/* Copyright section */}
-        <div className="border-t border-white/20 pt-4">
+        <div className="border-t border-white/20 pt-4 mb-10">
           <div className="flex justify-between items-center text-sm">
             <p>© {currentYear} WTP. All rights reserved.</p>
             <div className="flex gap-8">

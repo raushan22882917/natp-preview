@@ -1,10 +1,8 @@
-
 import { useState, useEffect, useCallback } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChevronUp, ChevronDown } from "lucide-react";
-import { Footer } from "@/components/Footer";
 import {
   Accordion,
   AccordionContent,
@@ -108,41 +106,41 @@ export default function Search() {
   };
   const features = [
     {
-      title: "Find Your Brand's Publication Status Instantly",
+      title: "Instant Access to Publication Status",
       description:
-        "Our Quick Search tool allows you to enter an application number or owner’s name to swiftly locate your published trademarks.",
+        "Use the Quick Search tool to locate published trademarks by application number or owner name with immediate results.",
     },
     {
-      title: "Get Accurate Results Every Time You Search",
+      title: "Reliable, Up-to-Date Search Results",
       description:
-        "Our database is updated daily, ensuring you receive the most accurate and up-to-date information on trademark registrations.",
+        "With daily database updates, you receive accurate and current trademark registration information every time you search.",
     },
     {
-      title: "Navigate Effortlessly to Your Brand's Articles",
+      title: "Direct Access to Trademark Articles",
       description:
-        "With easy navigation, you can quickly access detailed articles about each trademark, enhancing your understanding and awareness.",
+        "Efficient navigation allows quick access to detailed content, supporting greater insight and brand awareness.",
     },
   ];
   const faqs = [
     {
-      question: "How to search trademarks?",
+      question: "How to Search for Trademarks?",
       answer:
-        "To search for trademarks, enter the application number or company name in the search bar. Click the search button to view registered brands. Each brand icon will lead you to a detailed article.",
+        "Enter the application number or company name in the search field and select “Search” to view registered trademarks. Each result links to a detailed article for further information.",
     },
     {
-      question: "What information is available?",
+      question: "What Information Is Provided?",
       answer:
-        "You can find detailed articles about each trademark, including the trademark image, owner, and application date. We also provide general information about trademarks to enhance your understanding. This information is designed to support new brand owners.",
+        "Each trademark entry includes an article with image, owner details, and application date. General trademark guidance is also available to support new brand owners.",
     },
     {
-      question: "Can I update my search?",
+      question: "Can I Update My Search?",
       answer:
-        "Yes, you can modify your search at any time by entering a new application number or company name. Simply replace the existing input and click search again. This allows you to stay updated on your trademark status.",
+        "Yes. You may revise your search at any time by entering a new application number or company name and initiating a new query. This ensures access to the most current trademark status.",
     },
     {
-      question: "How to contact support?",
+      question: "How to Contact Support?",
       answer:
-        "If you have further questions, click the 'Contact' button for assistance. Our support team is available to help you with any inquiries. We are committed to providing the best support for your trademark needs.",
+        "For further assistance, use the 'Contact' button to reach our support team. We are available to address inquiries and ensure reliable guidance on trademark-related matters.",
     },
   ];
 
@@ -160,11 +158,10 @@ export default function Search() {
       <div className="min-h-[300px] flex items-center justify-center text-center px-4">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-semibold  text-[#333747] mb-6">
-            Explore Our Private Database
+          Access Our Private Trademark Database
           </h1>
           <p className="text-lg md:text-xl mb-8 text-[#333747]">
-            Discover the power of trademarks and boost your brand visibility
-            with our expert services.
+          Utilize expert services to strengthen brand visibility and explore trademark opportunities.
           </p>
           <form
             onSubmit={handleSearch}
@@ -241,7 +238,7 @@ export default function Search() {
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-2 text-center">
           <h2 className="text-[50px] font-semibold text-[#333747] mb-4 px-20">
-            Discover Your Trademark with Our Quick Search Feature
+          Find Your Trademark Using the Quick Search Tool
           </h2>
 
           <div className="mt-10 grid md:grid-cols-3 gap-15">
@@ -252,7 +249,7 @@ export default function Search() {
                 <div className="mb-4">
                   <div className="w-14 h-14 mb-4 flex items-center justify-center">
                     <img
-                      src="https://wtpregister.com/images/tpm/box-icon.png"
+                      src="/images/1.svg"
                       alt=""
                     />
                   </div>
@@ -298,8 +295,7 @@ export default function Search() {
           <div className="md:col-span-1">
             <h2 className="text-5xl font-semibold text-[#333747] mb-6">FAQs</h2>
             <p className="text-[#333747] text-lg font-semibold mb-6">
-              Find answers to common questions about our search functionality
-              and trademark information.
+            Get clear answers to key questions about our trademark search and data access tools.
             </p>
             <button className="bg-[#00A3D1] text-white px-6 py-3 shadow-md hover:bg-[#0088b0] transition-colors text-lg font-semibold">
               Contact
@@ -337,7 +333,73 @@ export default function Search() {
         </div>
       </section>
 
-      <Footer />
+      <footer className="bg-[#2557A7]  text-white pt-10">
+        <div className="w-[90vw] h-[40vh] mx-auto px-4 flex justify-between gap-8">
+          {/* Left Section */}
+          <div>
+            <div className="flex items-center mb-4">
+              <img src="/images/Logo.png" className="w-24 h-24" alt="Logo" />
+            </div>
+            <div className="mt-40">
+              <div className="mb-2 font-semibold">Contact:</div>
+              <a
+                href="mailto:info@natp-trademark.com"
+                className="text-white underline">
+                info@natp-trademark.com
+              </a>
+            </div>
+          </div>
+          <div className="flex  justify-between items-center gap-20">
+            {/* Center Section */}
+            <div className="flex flex-col space-y-4 md:col-span-">
+              <a href="#" className="hover:underline">
+                Our Services
+              </a>
+              <a href="#" className="hover:underline">
+                Contact Us
+              </a>
+              <a href="#" className="hover:underline">
+                Trademark Info
+              </a>
+              <a href="#" className="hover:underline">
+                FAQs
+              </a>
+              <a href="#" className="hover:underline">
+                About Us
+              </a>
+            </div>
+
+            {/* Right Section */}
+            <div className="flex flex-col space-y-4 md:col-span-1">
+              <a href="#" className="hover:underline">
+                Trademark Publication
+              </a>
+              <a href="#" className="hover:underline">
+                Search
+              </a>
+              <a href="#" className="hover:underline">
+                Request Publication
+              </a>
+              <a href="#" className="hover:underline">
+                General Information
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-blue-500 mt-10 pt-4 pb-6 flex flex-col md:flex-row justify-between items-center text-sm px-4 mx-10">
+          <p>© 2025 NATP. All rights reserved.</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="hover:underline">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:underline">
+              Terms and Conditions
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

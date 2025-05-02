@@ -47,17 +47,17 @@ export const Navbar = () => {
   }, [isIndexPage]);
 
   return (
-    <nav className={`sticky top-0 z-50 py-4 px-6 md:px-12 font-inter transition-all duration-300 ${isScrolled ? 'bg-[#2C5CA4] shadow-md' : 'bg-transparent'}`}>
+    <nav className={`${isScrolled ? 'sticky top-0 bg-[#2C5CA4] shadow-md' : 'absolute top-0 left-0 bg-transparent'} z-50 w-full py-4 px-6 md:py-[50px] md:px-12 font-inter transition-all duration-300`}>
       <div className="max-w-[90vw] mx-auto flex justify-between items-center">
         <Link to="/" className="text-white text-xl font-bold flex items-center">
           <img src="/images/Logo.png" className="w-40 h-55" alt="Logo" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-6 items-center">
+        <div className="hidden md:flex gap-16 items-center">
           <Link
             to="/about"
-            className="text-white hover:text-white/80 transition-colors duration-200 text-sm font-medium
+            className="text-white hover:text-white/80 transition-colors duration-200 text-lg font-medium
             "
           >
             About Us
@@ -68,22 +68,22 @@ export const Navbar = () => {
               <NavigationMenuItem>
                 {/* Custom trigger without the dropdown icon */}
                 <NavigationMenuPrimitive.Trigger
-                  className="text-white hover:text-white/80 transition-colors duration-200 text-sm font-medium"
+                  className="text-white hover:text-white/80 transition-colors duration-200 text-lg font-medium"
                 >
                   Services
                 </NavigationMenuPrimitive.Trigger>
                 <NavigationMenuContent className="mt-0 p-0">
-                  <div className="flex flex-col w-40 shadow-lg">
-                    <Link to="/services" className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium border-b border-[#1a4c96]">
+                  <div className="flex flex-col w-30 shadow-lg">
+                    <Link to="/services" className="block px-4 py-3 bg-[#2c5ca4] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Services
                     </Link>
-                    <Link to="/services/publication" className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium border-b border-[#1a4c96]">
+                    <Link to="/services/publication" className="block px-4 py-3 bg-[#2c5ca4] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Publication
                     </Link>
-                    <Link to="/services/article" className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium border-b border-[#1a4c96]">
+                    <Link to="/services/article" className="block px-4 py-3 bg-[#2c5ca4] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Article
                     </Link>
-                    <Link to="/services/seo" className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium">
+                    <Link to="/services/seo" className="block px-4 py-3 bg-[#1e5bb0] hover:bg-[#2365c8] text-center text-base text-white font-medium">
                       SEO
                     </Link>
                   </div>
@@ -94,21 +94,21 @@ export const Navbar = () => {
 
           <Link
             to="/search"
-            className="text-white text-xs hover:text-white/80 transition-colors duration-200 font-semibold"
+            className="text-white text-lg hover:text-white/80 transition-colors duration-200 font-semibold"
 
           >
             Search
           </Link>
           <Link
             to="/contact"
-            className="text-white text-xs hover:text-white/80 font-medium transition-colors duration-200"
+            className="text-white text-lg hover:text-white/80 font-medium transition-colors duration-200"
 
           >
             Contact
           </Link>
           <Link
             to="/terms"
-            className="text-white hover:text-white/80 transition-colors duration-200 text-sm font-medium"
+            className="text-white hover:text-white/80 transition-colors duration-200 text-lg font-medium"
 
           >
             Terms and Conditions

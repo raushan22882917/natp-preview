@@ -60,11 +60,10 @@ export default function Apply() {
       <div className=" min-h-[200px] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl md:text-6xl font-semibold  mb-6 text-[#333747]">
-            Trademark Publication Application
+          Application To Publish Your Trademark
           </h1>
           <p className="text-[20px] text-[#333747]">
-            Submit your trademark for publication in our exclusive private
-            database today
+          Submit your trademark to our exclusive database and enhance brand visibility today.
           </p>
         </div>
       </div>
@@ -73,45 +72,43 @@ export default function Apply() {
         <div className="mb-12">
           <p className="text-[#333747] mb-6">Visibility</p>
           <h2 className="text-5xl font-semibold mb-6 text-[#333747]">
-            Enhance Your Brand's Visibility with Trademark Publication
+          Strengthen Brand Visibility Through Trademark Publication
           </h2>
           <p className="text-[#333747] text-lg mb-10 font-semibold">
-            Trademark publication is essential for establishing brand
-            recognition and credibility. By showcasing your trademark, you
-            ensure that your brand stands out in a competitive market.
+          The publication of a trademark is a key measure for establishing brand recognition and building credibility. By making your trademark publicly accessible, you position your brand for increased distinction within a competitive market environment.
           </p>
           <ul className="space-y-2">
             <li className="flex items-center gap-2">
               <div className="w-7 h-7 flex items-center justify-center">
                 <img
-                  src="https://wtpregister.com/images/tpm/box-icon.png"
+                  src="/images/1.svg"
                   alt=""
                 />
               </div>
               <span className="font-semibold text-[#333747]">
-                Increase your brand's awareness and market presence
+                Enhance recognition and strengthen your brand’s position in the market.
               </span>
             </li>
             <li className="flex items-center gap-2">
               <div className="w-7 h-7 flex items-center justify-center">
                 <img
-                  src="https://wtpregister.com/images/tpm/box-icon.png"
+                  src="/images/1.svg"
                   alt=""
                 />
               </div>
               <span className="font-semibold text-[#333747]">
-                Get trust and legitimacy in your industry
+              Enhance recognition and strengthen your brand’s position in the market.
               </span>
             </li>
             <li className="flex items-center gap-2">
               <div className="w-7 h-7 flex items-center justify-center">
                 <img
-                  src="https://wtpregister.com/images/tpm/box-icon.png"
+                  src="/images/1.svg"
                   alt=""
                 />
               </div>
               <span className="font-semibold text-[#333747]">
-                Attract potential customers with a strong trademark
+              Appeal to prospective clients by presenting a clearly defined and protected trademark.
               </span>
             </li>
           </ul>
@@ -123,7 +120,7 @@ export default function Apply() {
             Trademark Inquiry
           </h3>
           <p className="text-[#333747] mb-8 text-center text-xl">
-            Complete the form to apply for trademark publication.
+          Please fill out the form to initiate your trademark publication request.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
@@ -408,7 +405,7 @@ export default function Apply() {
           <div className="max-w-7xl mx-auto px-4 text-center">
             {/* Title */}
             <h2 className="text-3xl md:text-5xl font-semibold text-[#333747] mb-14 leading-snug text-center">
-            Your Step-by-Step Guide to Trademark Publication Success
+            Step-by-Step Instructions for Effective Trademark Publication
             </h2>
 
             {/* Values */}
@@ -416,45 +413,45 @@ export default function Apply() {
               {/* Item 1 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="https://wtpregister.com/images/tpm/Submit.png"
+                  src="/public/images/step 1.svg"
                   alt="Professionalism Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />
                 <h4 className="text-3xl font-semibold text-[#333747] mb-6">
-                Step 1: Submit Your Trademark Application
+                Step-by-Step Instructions for Effective Trademark Publication
                 </h4>
                 <p className="text-[#333747] font-semibold text-[15px]">
-                Begin by filling out our easy online application form
+                Initiate the process by completing our online trademark application form.
                 </p>
               </div>
 
               {/* Item 2 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="https://wtpregister.com/images/tpm/Review.png"
+                  src="/images/step 2.svg"
                   alt="Client-Centric Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />
                 <h4 className="text-3xl font-semibold text-[#333747] mb-6">
-                Step 2: Review and Approval Process
+                Step 2: Application Review
                 </h4>
                 <p className="text-[#333747] font-semibold text-[15px]">
-                Our team will review your application for completeness
+                We examine your submission to ensure completeness and readiness for publication.
                 </p>
               </div>
 
               {/* Item 3 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="https://wtpregister.com/images/tpm/Handshake.png"
+                  src="/images/step 3.svg"
                   alt="Improvement Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />
                 <h4 className="text-3xl font-semibold text-[#333747] mb-6">
-                Step 3: Publication of Your Trademark
+                Step 3: Trademark Publication
                 </h4>
                 <p className="text-[#333747] font-semibold text-[15px]">
-                Once approved, your trademark will be published in our database
+                Upon approval, your trademark is officially published in our database.
                 </p>
               </div>
             </div>

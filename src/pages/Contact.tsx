@@ -80,7 +80,7 @@ export default function Contact() {
           {/* Left Side */}
           <div className="w-full md:w-1/2">
             <h3 className="text-5xl font-semibold text-[#333747]">
-              Reach Out Today
+            Get in Touch with Our Team
             </h3>
           </div>
 
@@ -89,26 +89,13 @@ export default function Contact() {
             <div className="pb-5">
               <h4 className="font-bold">Disclaimer</h4>
               <p className="font-semibold text-[18px]">
-                Our website may contain links to external third-party sites.
-                Because we have no control over the content of these external
-                sites, we cannot guarantee the accuracy or completeness of any
-                information they provide. Responsibility for the content of such
-                third-party sites rests solely with the respective site owners
-                or providers. At the time we created these links, we found no
-                indication of any legal violations. Should we become aware of
-                any unlawful content on these linked sites, we will promptly
-                remove the corresponding link.
+              This website may include links to third-party external websites. As we do not control the content of these sites, we assume no responsibility for the accuracy, completeness, or legality of the information provided therein. Responsibility for external content lies solely with the respective site operators. At the time of linking, no legal infringements were identified. If unlawful content becomes known to us, the respective link will be removed without delay.
               </p>
             </div>
             <div>
-              <h4 className="font-bold">Copyrights</h4>
+              <h4 className="font-bold">Copyright Notice</h4>
               <p className="font-semibold text-[18px]">
-                The text, images, and any other works made available on these
-                webpages are protected by Polish copyright laws. Any
-                duplication, processing, distribution, or other form of
-                commercialization of such material beyond what is permitted
-                under applicable copyright law requires prior written consent
-                from the respective author or creator.
+              All texts, images, and other content presented on this website are protected under United States copyright law. Any reproduction, modification, distribution, or commercial use beyond the scope permitted by applicable law requires prior written authorization from the respective rights holder.
               </p>
             </div>
           </div>
@@ -118,14 +105,14 @@ export default function Contact() {
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-start">
             <div className="!pr-[11rem]">
               <h2 className="text-4xl font-semibold mb-4 text-[#333747]">
-                Contact Us
+              Get in Touch
               </h2>
               <p className="text-gray-700 mb-6">
-                We’re here to assist you with any inquiries.
+              Assistance is available for all inquiries.
               </p>
               <div className="flex items-center space-x-3">
                 <Mail className="text-[#0098cb] w-6 h-6" />
-                <p className="text-[#333747]">info@wtpregister.com</p>
+                <p className="text-[#333747]">info@natp-trademark.com</p>
               </div>
             </div>
 
@@ -208,11 +195,10 @@ export default function Contact() {
       <div className="pt-4 pb-16  text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#212529] mb-6">
-            Stay Updated on Trademarks
+          Latest Information on Trademark Publications
           </h2>
           <p className="text-gray-700 mb-8 font-semibold text-lg">
-            Subscribe to our newsletter for the latest trademark publications
-            and valuable marketing insights.
+          Subscribe to receive updates on new trademark publications and relevant marketing insights.
           </p>
 
           <form className="flex flex-col sm:flex-row justify-center items-center gap-4">
@@ -229,11 +215,10 @@ export default function Contact() {
           </form>
 
           <p className="text-[10px] text-gray-500 mt-4">
-            By clicking Sign Up, you agree to our{" "}
+          By selecting "Sign Up", you confirm your agreement to our 
             <a href="#" className="underline">
-              Terms and Conditions
+            Terms and Conditions.
             </a>
-            .
           </p>
         </div>
       </div>

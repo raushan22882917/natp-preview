@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import { Footer } from "@/components/Footer";
+import  Hero  from "@/components/Hero";
+
 export default function About() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -10,14 +10,10 @@ export default function About() {
       <div className=" py-8">
         <div className="max-w-6xl mx-auto px-1 flex justify-between">
           <h1 className="text-7xl md:text-6xl max-w-[500px] font-semibold text-[#333747] mb-6">
-            Empowering New Brands
+          Supporting the Growth of Emerging Brands
           </h1>
           <p className="text-xl max-w-[550px] mb-10 font-semibold text-[#333747]">
-            At our core, we are dedicated to elevating new brands by enhancing
-            their visibility through expertly crafted trademark publications and
-            comprehensive marketing services. Our mission is to empower brand
-            owners to focus on their business while we handle the intricacies of
-            trademark awareness
+          We strengthen new brands by managing trademark visibility through expert publications and marketing, allowing owners to focus on business operations.
           </p>
         </div>
       </div>
@@ -28,13 +24,10 @@ export default function About() {
           {/* Left Content */}
           <div className="md:w-[60%]">
             <h2 className="text-4xl w-full md:text-4xl text-[#333747] font-semibold mb-6 ">
-              Our Journey: Building a Trademark Database for Emerging Brands
+            Establishing a Trademark Database for New Brands
             </h2>
             <p className="text-[#333747] mb-8 font-semibold text-[20px] w-[37rem]">
-              Founded to empower new brands, our company has established a
-              comprehensive trademark database. We are dedicated to enhancing
-              brand visibility through expertly crafted articles and marketing
-              strategies.
+            We built a trademark database to support emerging brands. Our aim is to increase visibility through targeted content and strategic marketing.
             </p>
 
             {/* Sub Sections */}
@@ -43,7 +36,7 @@ export default function About() {
               <div className="flex flex-col items-start ">
                 <div className="w-14 h-14 mb-4">
                   <img
-                    src="https://wtpregister.com/images/tpm/box-icon.png"
+                    src="/images/1.svg"
                     alt=""
                   />
                 </div>
@@ -52,8 +45,7 @@ export default function About() {
                     Our Origins
                   </h4>
                   <p className="text-[#212529] font-semibold w-[12rem]">
-                    We began with a vision to support new brands in navigating
-                    trademark challenges.
+                  Founded to guide new brands through trademark challenges.
                   </p>
                 </div>
               </div>
@@ -63,7 +55,7 @@ export default function About() {
                 <div className="w-14 h-14 mb-4">
                   {" "}
                   <img
-                    src="https://wtpregister.com/images/tpm/box-icon.png"
+                    src="/images/1.svg"
                     alt=""
                   />
                 </div>
@@ -72,8 +64,7 @@ export default function About() {
                     Our Mission
                   </h4>
                   <p className="text-[#212529] font-semibold">
-                    To provide exceptional support and resources for emerging
-                    brands to thrive in the market.
+                  Providing the tools and support for emerging brands to succeed.
                   </p>
                 </div>
               </div>
@@ -83,7 +74,7 @@ export default function About() {
           {/* Right Image */}
           <div className="md:w-[90%] pl-10">
             <img
-              src="https://wtpregister.com/images/tpm/about-us-1.jpg"
+              src="/images/Establishing a Trademark Database.svg"
               alt="Arrows Graphic"
               className="w-full rounded-lg shadow-lg scale-125"
             />
@@ -95,7 +86,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto px-4 text-center">
           {/* Title */}
           <h2 className="text-4xl md:text-4xl text-center w-[800px] mx-auto font-semibold text-[#333747] mb-20 leading-snug">
-            Our Core Values: The Foundation of Our Commitment to You
+          Our Principles at a Glance
           </h2>
 
           {/* Values */}
@@ -103,48 +94,45 @@ export default function About() {
             {/* Item 1 */}
             <div className="flex flex-col items-center text-center">
               <img
-                src="https://wtpregister.com/images/tpm/about-icon-1.png"
+                src="/images/Professionalism.svg"
                 alt="Professionalism Icon"
                 className="w-[77px] h-[77px] mb-6"
               />
               <h4 className="text-xl font-semibold text-[#333747] mb-3">
-                Professionalism and Dedication: <br /> Your Brand Deserves the
-                Best
+              Professionalism 
               </h4>
               <p className="text-[#333747] font-semibold">
-                We uphold the highest standards in trademark publication and
-                marketing.
+              We ensure high standards in all services.
               </p>
             </div>
 
             {/* Item 2 */}
             <div className="flex flex-col items-center text-center">
               <img
-                src="https://wtpregister.com/images/tpm/about-icon-2.png"
+                src="/images/Client Focus.svg"
                 alt="Client-Centric Icon"
                 className="w-[77px] h-[77px] mb-6"
               />
               <h4 className="text-xl font-semibold text-[#333747] mb-3">
-                Client-Centric Approach: <br /> Your Success is Our Priority
+              Client Focus 
               </h4>
               <p className="text-[#333747] font-semibold">
-                We tailor our services to meet the unique needs of each client.
+              Tailored support for each brands needs.
               </p>
             </div>
 
             {/* Item 3 */}
             <div className="flex flex-col items-center text-center">
               <img
-                src="https://wtpregister.com/images/tpm/about-icon-3.png"
+                src="/images/Progress.svg"
                 alt="Improvement Icon"
                 className="w-[77px] h-[77px] mb-6"
               />
               <h4 className="text-xl font-semibold text-[#333747] mb-3">
-                Continuous Improvement: <br /> Evolving to Serve You Better
+              Progress 
               </h4>
               <p className="text-[#333747] font-semibold">
-                Our team consistently seeks innovative solutions to enhance your
-                brand visibility.
+              We continuously improve to better serve you.
               </p>
             </div>
           </div>
@@ -160,14 +148,14 @@ export default function About() {
                 Name
               </h3>
               <h2 className="text-4xl text-[#333747] font-semibold mb-6 leading-snug">
-                Focus on Your Business, We Handle Awareness
+              You focus on your business we manage your brand visibility.
               </h2>
-              <p className="text-[#333747] font-semibold text-xl">
+              {/* <p className="text-[#333747] font-semibold text-xl">
                 Our services allow you to concentrate on growing your brand
                 while we manage your visibility. With our dedicated team, we
                 ensure that your trademark and brand story are professionally
                 crafted and effectively promoted.
-              </p>
+              </p> */}
             </div>
           </div>
 
@@ -178,20 +166,17 @@ export default function About() {
               <div className="flex flex-col items-start space-x-4">
                 <div className="w-[45px] h-[45px] shrink-0 ml-4">
                   <img
-                    src="https://wtpregister.com/images/tpm/box-icon.png"
+                    src="/images/2.svg"
                     alt="Service icon"
                     className="w-full h-full object-contain"
                   />
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-2 text-[#333747]">
-                    Dedicated Support
+                  Comprehensive Client Support Services
                   </h4>
                   <p className="text-[#333747]">
-                    Our team is always available to assist you with any
-                    inquiries or modifications you may need. We pride ourselves
-                    on our commitment to client satisfaction and personalized
-                    service.
+                  Our team is ready to assist with any request promptly and reliably.
                   </p>
                 </div>
               </div>
@@ -203,7 +188,7 @@ export default function About() {
                 <div>
                   <div className="w-[45px] h-[45px] shrink-0 ml-4">
                     <img
-                      src="https://wtpregister.com/images/tpm/box-icon.png"
+                      src="/images/2.svg"
                       alt="Service icon"
                       className="w-full h-full object-contain"
                     />
@@ -211,12 +196,10 @@ export default function About() {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-2 text-[#333747]">
-                    Innovative Solutions
+                  Strategic Innovation in Service Delivery
                   </h4>
                   <p className="text-[#333747]">
-                    We think outside the box to provide unique marketing
-                    strategies tailored to your brand. Our approach ensures that
-                    your trademark stands out in a crowded marketplace.
+                  We develop unique strategies to help your brand stand out.
                   </p>
                 </div>
               </div>
@@ -228,7 +211,7 @@ export default function About() {
                 <div>
                   <div className="w-[45px] h-[45px] shrink-0 ml-4">
                     <img
-                      src="https://wtpregister.com/images/tpm/box-icon.png"
+                      src="/images/2.svg"
                       alt="Service icon"
                       className="w-full h-full object-contain"
                     />
@@ -236,12 +219,10 @@ export default function About() {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-2 text-[#333747]">
-                    Comprehensive Care
+                  Integrated Brand Visibility Management
                   </h4>
                   <p className="text-[#333747]">
-                    From article creation to visibility enhancement, we handle
-                    every aspect of your brand's awareness. This allows you to
-                    focus on what you do best—running your business.
+                  From content to visibility we cover all aspects of brand awareness.
                   </p>
                 </div>
               </div>
@@ -253,7 +234,7 @@ export default function About() {
                 <div>
                   <div className="w-[45px] h-[45px] shrink-0 ml-4">
                     <img
-                      src="https://wtpregister.com/images/tpm/box-icon.png"
+                      src="/images/2.svg"
                       alt="Service icon"
                       className="w-full h-full object-contain"
                     />
@@ -261,12 +242,10 @@ export default function About() {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-2 text-[#333747]">
-                    Expert Insights
+                  Specialized Expertise and Strategic Guidance
                   </h4>
                   <p className="text-[#333747]">
-                    Our professional content creators and marketing experts work
-                    tirelessly to elevate your brand's presence. Trust us to
-                    provide valuable insights and strategies that drive results.
+                  Our experts deliver effective strategies for stronger brand presence.
                   </p>
                 </div>
               </div>
@@ -276,22 +255,60 @@ export default function About() {
       </section>
 
       {/* Core Values Section */}
-      <div className="max-w-6xl mx-auto flex justify-between items-center h-[200px] mt-20 mb-20">
+     <div className="max-w-5xl mx-auto flex justify-between items-center h-[200px]">
+      <div>
+        <h3 className="text-4xl font-semibold mb-4">Contact our team to enhance your brand visibility.</h3>
+        <p className="font-semibold text-lg">Discover how we can elevate your brand visibility.</p>
+      </div>
+     <div>
+     <button className="shadow bg-blue-500 py-3 px-6 text-white">Contact</button>
+     </div>
+     </div>
+     <footer className="bg-[#2557A7]  text-white pt-10">
+      <div className="w-[90vw] h-[40vh] mx-auto px-4 flex justify-between gap-8">
+        
+        {/* Left Section */}
         <div>
-          <h3 className="text-5xl font-semibold mb-9 text-[#333747]">
-            Connect with Our Expert Team
-          </h3>
-          <p className="font-semibold text-lg text-[#333747]">
-            Discover how we can elevate your brand visibility.
-          </p>
+          <div className="flex items-center mb-4">
+          <img src="/images/Logo.png" className="w-24 h-auto" alt="" />
+          </div>
+         <div className="mt-40">
+         <div className="mb-2 font-semibold">Contact:</div>
+          <a href="mailto:info@wtpregister.com" className="text-white underline">
+            info@wtpregister.com
+          </a>
+         </div>
         </div>
-        <div>
-          <button className="shadow-xl bg-[#00a3d1] py-4 px-8 text-white font-bold text-lg">
-            Contact
-          </button>
+        <div className="flex  justify-between items-center gap-20">
+        {/* Center Section */}
+        <div className="flex flex-col space-y-4 md:col-span-">
+          <a href="#" className="hover:underline">Our Services</a>
+          <a href="#" className="hover:underline">Contact Us</a>
+          <a href="#" className="hover:underline">Trademark Info</a>
+          <a href="#" className="hover:underline">FAQs</a>
+          <a href="#" className="hover:underline">About Us</a>
+        </div>
+
+        {/* Right Section */}
+        <div className="flex flex-col space-y-4 md:col-span-1">
+          <a href="#" className="hover:underline">Trademark Publication</a>
+          <a href="#" className="hover:underline">Search</a>
+          <a href="#" className="hover:underline">Request Publication</a>
+          <a href="#" className="hover:underline">General Information</a>
+        </div>
+       </div>
+
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-blue-500 mt-10 pt-4 pb-6 flex flex-col md:flex-row justify-between items-center text-sm px-4 mx-10">
+        <p>© 2025 WTP. All rights reserved.</p>
+        <div className="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" className="hover:underline">Privacy Policy</a>
+          <a href="#" className="hover:underline">Terms and Conditions</a>
         </div>
       </div>
-      <Footer />
+    </footer>
     </div>
   );
 }

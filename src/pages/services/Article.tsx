@@ -1,4 +1,3 @@
-
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -7,151 +6,181 @@ import { Footer } from "@/components/Footer";
 
 export default function Article() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Navbar />
-      
+
       <div className=" py-8 px-6">
-      <div className="max-w-4xl mx-auto flex flex-col gap-20">
-        {/* Top Section */}
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-          {/* Left - Heading */}
-          <div>
-            <h2 className="text-4xl font-semibold text-gray-800 leading-tight">
-              Professional Article<br />Creation
-            </h2>
+        <div className="max-w-5xl mx-auto flex flex-col gap-32">
+          {/* Top Section */}
+          <div className="grid md:grid-cols-2 gap-4 items-start">
+            {/* Left - Heading */}
+            <div>
+              <h2 className="text-5xl font-semibold text-[#333747] leading-tight">
+                Professional Article
+                <br />
+                Creation
+              </h2>
+            </div>
+
+            {/* Right - Paragraph */}
+            <div>
+              <p className="text-[#333747] text-lg  font-semibold leading-relaxed">
+              Well-crafted articles are key to strengthening brand visibility. Our service presents your trademark and brand narrative clearly and effectively to reach your intended audience.
+              </p>
+            </div>
           </div>
 
-          {/* Right - Paragraph */}
+          {/* Bottom Section */}
           <div>
-            <p className="text-gray-800 text-sm  leading-relaxed">
-              In today's competitive market, having professionally crafted articles is essential
-              for enhancing brand visibility and awareness. Our Article Creation service ensures
-              that your trademark and brand story are communicated effectively, capturing the
-              attention of your target audience.
+            {/* Subtitle */}
+            <p className="text-sm text-[#333747] mb-4 ">Crafting</p>
+
+            {/* Main Title */}
+            <h3 className="text-4xl font-semibold text-[#333747] mb-6">
+            Developing and Publishing Your Brand Narrative
+            </h3>
+
+            {/* Small Paragraph */}
+            <p className="text-[#333747] text-lg max-w-5xl font-semibold leading-relaxed mb-12">
+            Our article creation service conveys your brand’s message with clarity and precision, supporting audience engagement and a strong digital presence.
             </p>
-          </div>
-        </div>
 
-        {/* Bottom Section */}
-        <div className="">
-          {/* Subtitle */}
-          <p className="text-sm text-gray-500 mb-2 ">Crafting</p>
+            {/* 3 Steps */}
+            <div className="grid md:grid-cols-3 gap-8 mb-10">
+              {/* Step 1 */}
+              <div className="flex flex-col">
+                <img
+                  src="/images/1.svg"
+                  alt="Research"
+                  className="w-12 h-12 mb-4"
+                />
+                <h4 className="text-3xl font-semibold text-[#333747] mb-4">
+                Thorough Research Process
+                </h4>
+                <p className="text-[#333747] text-[15px] leading-relaxed font-semibold">
+                We collect precise and relevant information from verified sources to ensure content accuracy and alignment with your target audience.
+                </p>
+              </div>
 
-          {/* Main Title */}
-          <h3 className="text-3xl font-semibold text-gray-800 mb-4">
-            Your Brand's Story: From Concept to Publication
-          </h3>
+              {/* Step 2 */}
+              <div className="flex flex-col  ">
+                <img
+                  src="/images/1.svg"
+                  alt="Drafting"
+                  className="w-12 h-12 mb-4"
+                />
+                <h4 className="text-3xl font-semibold text-[#333747] mb-4">
+                Content Drafting and Editing
+                </h4>
+                <p className="text-[#333747] text-[15px] leading-relaxed font-semibold">
+                Collected insights are structured into a coherent draft, refined to match your brand’s tone. Each version is thoroughly reviewed for clarity and quality.
+                </p>
+              </div>
 
-          {/* Small Paragraph */}
-          <p className="text-gray-800 text-sm max-w-4xl mx-auto leading-relaxed mb-12">
-            Our Article Creation Services Are Designed to Share Your Brand's Story with Clarity,
-            Creativity, and Impact, Helping You Connect with Your Audience and Build a Strong
-            Online Presence.
-          </p>
-
-          {/* 3 Steps */}
-          <div className="grid md:grid-cols-3 gap-10">
-            {/* Step 1 */}
-            <div className="flex flex-col  ">
-              <img
-                src="https://wtpregister.com/images/tpm/box.png"
-                alt="Research"
-                className="w-12 h-12 mb-4"
-              />
-              <h4 className="text-lg font-semibold text-gray-700 mb-2">
-                Extensive Research
-              </h4>
-              <p className="text-gray-700 text-xs leading-relaxed font-semibold">
-                Our team conducts in-depth research across reliable online sources to gather
-                accurate, engaging, and relevant information tailored to your niche and audience.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="flex flex-col  ">
-              <img
-                src="https://wtpregister.com/images/tpm/box.png"
-                alt="Drafting"
-                className="w-12 h-12 mb-4"
-              />
-              <h4 className="text-lg font-semibold text-gray-700 mb-2">
-                Drafting & Refinement
-              </h4>
-              <p className="text-gray-700 text-xs leading-relaxed font-semibold">
-                We transform the gathered insights into a well-structured draft, ensuring it aligns
-                with your brand's tone and vision. Each draft undergoes meticulous editing for
-                clarity and quality.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex flex-col  ">
-              <img
-                src="https://wtpregister.com/images/tpm/box.png"
-                alt="Publishing"
-                className="w-12 h-12 mb-4"
-              />
-              <h4 className="text-lg font-semibold text-gray-700 mb-2 font-sme">
-                Publishing & Optimization
-              </h4>
-              <p className="text-gray-700 text-xs leading-relaxed font-semibold">
-                Once finalized, the article is published on your website, optimized for SEO to
-                enhance visibility and engagement, ensuring your content reaches the right audience.
-              </p>
+              {/* Step 3 */}
+              <div className="flex flex-col  ">
+                <img
+                  src="/images/1.svg"
+                  alt="Publishing"
+                  className="w-12 h-12 mb-4"
+                />
+                <h4 className="text-3xl font-semibold text-[#333747]">
+                Publication and SEO Optimization
+                </h4>
+                <p className="text-[#333747] text-[15px] leading-relaxed font-semibold">
+                After final review, the article is published and optimized for search engines to maximize visibility and audience reach.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
+      <div className=" py-12 px-10 ">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-10 ">
+            <h2 className="text-[#333747] font-semibold text-4xl mb-6">
+            Professional Article Creation for Effective Brand Communication
+            </h2>
+            <p className="text-[#333747] text-lg mb-6 font-semibold">
+            We deliver tailored content that strengthens brand visibility, builds trust, and engages your target audience — ensuring your message is clear, consistent, and impactful.
+            </p>
 
-    <div className=" py-12 px-10">
-  <div className="max-w-4xl mx-auto">
-    <div className="mb-10 ">
-      <h2 className="text-gray-700 font-semibold text-3xl mb-4">Professional Article Creation: Showcasing Your Brand with Clarity and Impact</h2>
-      <p className="text-gray-700 text-sm  mb-6">
-        Our article creation services are designed to help your brand stand out by enhancing visibility, establishing credibility, and connecting with your audience. With expertly crafted content tailored to your unique voice and needs, we ensure your message resonates and leaves a lasting impression.
-      </p>
+            <h2 className="text-xl text-[#333747] mb-10 font-semibold">
+            The Importance of Article Creation for Emerging Brands
+            </h2>
 
-      <h2 className="text-xl text-gray-700 mb-4">Why Article Creation is Essential for Newly Established Brands:</h2>
+            <ul className="space-y-4 text-[#333747]">
+              <li className="flex items-start">
+                <img
+                  src="/images/2.svg"
+                  alt=""
+                  className="w-5 h-5 mt-1 mr-2"
+                />
+                <p className="text-[16px] font-semibold">
+                  <span>Enhancing Online Visibility</span> Professionally written content increases brand exposure and broadens audience reach.
+                </p>
+              </li>
+              <li className="flex items-start">
+                <img
+                  src="/images/2.svg"
+                  alt=""
+                  className="w-5 h-5 mt-1 mr-2"
+                />
+                <p className="text-[16px] font-semibold text-[#333747]">
+                  <span>Establishing Brand Credibility</span> High-quality articles support your position as a trusted authority within your sector.
+                </p>
+              </li>
+              <li className="flex items-start">
+                <img
+                  src="/images/2.svg"
+                  alt=""
+                  className="w-5 h-5 mt-1 mr-2"
+                />
+                <p className="text-[16px] font-semibold text-[#333747]">
+                  <span>Differentiation in the Marketplace</span> Well-crafted texts communicate your unique value and strengthen competitive positioning.
+                </p>
+              </li>
+              <li className="flex items-start">
+                <img
+                  src="/images/2.svg"
+                  alt=""
+                  className="w-5 h-5 mt-1 mr-2"
+                />
+                <p className="text-[16px] font-semibold text-[#333747]">
+                  <span>Utilizing SEO Effectively</span> Search engine-optimized content improves ranking and ensures discoverability.
+                </p>
+              </li>
+            </ul>
+          </div>
 
-      <ul className="space-y-4 text-gray-700">
-        <li className="flex items-start">
-          <img src="https://wtpregister.com/images/tpm/box.png" alt="" className="w-5 h-5 mt-1 mr-2"/>
-          <p><span>Boost Your Online Presence:</span> Professionally written articles enhance your brand’s visibility and attract a larger audience.</p>
-        </li>
-        <li className="flex items-start">
-        <img src="https://wtpregister.com/images/tpm/box.png" alt="" className="w-5 h-5 mt-1 mr-2"/>
-          <p className="text-sm"><span>Establish Credibility:</span> High-quality content positions your brand as an authority in your industry, fostering trust with potential customers.</p>
-        </li>
-        <li className="flex items-start">
-        <img src="https://wtpregister.com/images/tpm/box.png" alt="" className="w-5 h-5 mt-1 mr-2"/>
-          <p className="text-sm"><span>Stand Out in the Market:</span> Compelling articles highlight your unique value, helping your brand shine in a competitive landscape.</p>
-        </li>
-        <li className="flex items-start">
-        <img src="https://wtpregister.com/images/tpm/box.png" alt="" className="w-5 h-5 mt-1 mr-2"/>
-          <p className="text-sm"><span>Leverage SEO Strategies:</span> Optimized content ensures your brand appears prominently in search engine results.</p>
-        </li>
-      </ul>
-    </div>
-
-    <div className="grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h2 className="text-3xl  text-gray-700 font-semibold mb-4">Start Your Journey Today</h2>
-        <p className="text-gray-800 mb-6 text-sm">
-          Unlock your brand's potential with a complimentary consultation. Let's elevate your trademark visibility together!
-        </p>
-        <Button asChild className="bg-[#00A3E0] mt-5 text-white hover:bg-[#0091c7]">
-              <Link to="/services/publication" className="inline-block">Learn More</Link>
-            </Button>
+          <div className="grid gap-8 items-center mt-20">
+            <div>
+              <h2 className="text-4xl text-[#333747] font-semibold mb-4">
+              Start Your Brand Success Journey
+              </h2>
+              <p className="text-[#333747] mb-6 text-xl font-semibold">
+              Discover effective methods to build recognition and market presence.
+              </p>
+              <Button
+                asChild
+                className="bg-[#00A3E0] mt-5 text-white shadow-md py-6 px-8">
+                <Link to="/services/publication" className="inline-block">
+                  Apply Now
+                </Link>
+              </Button>
+            </div>
+            {/* <div>
+              <img
+                src="https://wtpregister.com/images/clarity.png"
+                alt="Paper Boats"
+                className="rounded-lg shadow-lg m-4 h-[280px]"
+              />
+            </div> */}
+          </div>
+        </div>
       </div>
-      <div>
-        <img src="https://wtpregister.com/images/clarity.png" alt="Paper Boats" className="rounded-lg shadow-lg m-4"/>
-      </div>
-    </div>
-  </div>
-</div>
-<Footer />
+      <Footer />
     </div>
   );
 }
