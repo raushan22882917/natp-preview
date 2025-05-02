@@ -125,7 +125,7 @@ export default function Contact() {
               </p>
               <div className="flex items-center space-x-3">
                 <Mail className="text-[#0098cb] w-6 h-6" />
-                <p className="text-[#333747]">info@natp-trademark.com</p>
+                <p className="text-[#333747]">info@wtpregister.com</p>
               </div>
             </div>
 
