@@ -8,9 +8,8 @@ import About from "./pages/About";
 import Search from "./pages/Search";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
-
+import 
 import Apply from "./pages/Apply";
 import Publication from "./pages/services/Publication";
 import Article from "./pages/services/Article";
@@ -36,7 +35,6 @@ const App = () => (
           <Route path="/search" element={<Search />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/services/publication" element={<Publication />} />
           <Route path="/services/article" element={<Article />} />
