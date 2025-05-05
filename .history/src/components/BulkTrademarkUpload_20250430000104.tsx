@@ -305,13 +305,12 @@ const BulkTrademarkUpload = () => {
       <div className="mt-6">
         <h3 className="font-medium mb-2">CSV Format Example:</h3>
         <pre className="bg-gray-100 p-3 rounded text-xs overflow-auto">
-{`owner_name,application_number,national_classes,application_date,description,logo_url
-Company ABC,TMK123456,"35, 42",2023-05-15,Technology services,https://example.com/logo1.png
-Business XYZ,TMK789012,"25, 28",2023-06-20,Clothing brand,https://example.com/logo2.png`}
+{`owner_name,application_number,national_classes,application_date,description
+Company ABC,TMK123456,"35, 42",2023-05-15,Technology services
+Business XYZ,TMK789012,"25, 28",2023-06-20,Clothing brand`}
         </pre>
         <p className="text-xs text-gray-500 mt-2">
           Note: The first row must contain column headers. The 'owner_name' and 'application_number' columns are required.
-          You can include a 'logo_url' column to specify image URLs for each trademark.
         </p>
       </div>
     </div>

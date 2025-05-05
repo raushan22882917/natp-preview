@@ -81,7 +81,7 @@ export default function Admin() {
   const handleCreate = () => {
     navigate(`/admin/create?type=${activeTab}`);
   };
-
+  
   const handleBulkUpload = () => {
     setSearchParams({ tab: activeTab, bulkUpload: "true" });
   };
@@ -96,7 +96,6 @@ export default function Admin() {
     { name: 'national_classes', label: 'Classes', type: 'text' as const },
     { name: 'application_date', label: 'Application Date', type: 'date' as const },
     { name: 'description', label: 'Description', type: 'text' as const },
-    { name: 'logo_url', label: 'Logo URL', type: 'text' as const },
   ];
 
   const applicationFields = [
@@ -179,8 +178,8 @@ export default function Admin() {
 
           {showBulkUpload ? (
             <div className="mb-4">
-              <Button
-                variant="outline"
+              <Button 
+                variant="outline" 
                 onClick={closeBulkUpload}
                 className="mb-4"
               >

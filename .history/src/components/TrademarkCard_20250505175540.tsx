@@ -52,7 +52,8 @@ export function TrademarkCard({ trademark }: TrademarkCardProps) {
 
         {/* Description paragraph */}
         <p className="text-gray-700 mb-6">
-        Our portfolio showcases the innovative brands we've helped elevate. Each entry highlights their unique trademark journey.
+          {trademark.description ||
+           "Our portfolio showcases the innovative brands we've helped elevate. Each entry highlights their unique trademark journey."}
         </p>
 
         {/* View Article button */}

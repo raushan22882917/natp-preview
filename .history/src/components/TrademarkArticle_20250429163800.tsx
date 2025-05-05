@@ -34,30 +34,10 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
         <h1 className="text-3xl font-bold text-gray-800 mb-6">{trademark.owner_name}</h1>
 
         {/* Trademark Logo Box */}
-        <div className="w-full h-[240px] border border-blue-200 rounded-lg flex items-center justify-center mb-6 overflow-hidden">
-          {trademark.logo_url ? (
-            <img
-              src={trademark.logo_url} // This will work with both URLs and base64 data
-              alt={`${trademark.owner_name} logo`}
-              className="max-w-full max-h-full object-contain"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                // If image fails to load, show the first letter as fallback
-                target.style.display = 'none';
-                const parent = target.parentElement;
-                if (parent) {
-                  const fallback = document.createElement('div');
-                  fallback.className = 'text-[150px] text-gray-700 font-bold';
-                  fallback.textContent = getFirstLetter(trademark.owner_name);
-                  parent.appendChild(fallback);
-                }
-              }}
-            />
-          ) : (
-            <div className="text-[150px] text-gray-700 font-bold">
-              {getFirstLetter(trademark.owner_name)}
-            </div>
-          )}
+        <div className="w-full h-[240px] border border-blue-200 rounded-lg flex items-center justify-center mb-6">
+          <div className="text-[150px] text-gray-700 font-bold">
+            {getFirstLetter(trademark.owner_name)}
+          </div>
         </div>
 
         {/* Trademark Details */}

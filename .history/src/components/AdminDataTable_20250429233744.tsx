@@ -128,35 +128,13 @@ export const AdminDataTable = ({
     return data.map((item) => (
       <TableRow key={item.id} className="hover:bg-gray-50 transition h-16">
         {fields.map(field => (
-          <TableCell
-            key={`${item.id}-${field.name}`}
+          <TableCell 
+            key={`${item.id}-${field.name}`} 
             className="text-gray-800 truncate max-w-[200px]"
           >
-            {field.name === 'logo_url' && item[field.name] ? (
-              <div className="flex items-center">
-                <div className="w-10 h-10 mr-2 border border-gray-200 rounded overflow-hidden flex items-center justify-center">
-                  <img
-                    src={item[field.name]}
-                    alt="Logo"
-                    className="max-w-full max-h-full object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E";
-                    }}
-                  />
-                </div>
-                {/* Only show "View Image" link for URLs, not for base64 data */}
-                {item[field.name].startsWith('http') && (
-                  <span className="text-xs text-blue-600 hover:underline cursor-pointer" onClick={() => window.open(item[field.name], '_blank')}>
-                    View Image
-                  </span>
-                )}
-              </div>
-            ) : field.type === 'date' && item[field.name] ? (
-              new Date(item[field.name]).toLocaleDateString()
-            ) : (
-              String(item[field.name] || '-')
-            )}
+            {field.type === 'date' && item[field.name]
+              ? new Date(item[field.name]).toLocaleDateString()
+              : String(item[field.name] || '-')}
           </TableCell>
         ))}
         <TableCell className="text-right">
@@ -233,40 +211,9 @@ export const AdminDataTable = ({
                   {field.label}
                 </Label>
                 <div className="p-2 bg-gray-50 rounded-md min-h-[40px] whitespace-pre-wrap break-words">
-                  {field.name === 'logo_url' && currentItem[field.name] ? (
-                    <div className="flex flex-col items-start gap-2">
-                      <div className="w-full max-w-[200px] h-[200px] border border-gray-200 rounded overflow-hidden flex items-center justify-center">
-                        <img
-                          src={currentItem[field.name]}
-                          alt="Logo"
-                          className="max-w-full max-h-full object-contain"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E";
-                          }}
-                        />
-                      </div>
-                      {/* Only show link for URLs, not for base64 data */}
-                      {currentItem[field.name].startsWith('http') ? (
-                        <a
-                          href={currentItem[field.name]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline text-sm"
-                        >
-                          {currentItem[field.name]}
-                        </a>
-                      ) : (
-                        <span className="text-gray-500 text-sm">
-                          Base64 image data (too long to display)
-                        </span>
-                      )}
-                    </div>
-                  ) : field.type === 'date' && currentItem[field.name] ? (
-                    new Date(currentItem[field.name]).toLocaleDateString()
-                  ) : (
-                    String(currentItem[field.name] || '-')
-                  )}
+                  {field.type === 'date' && currentItem[field.name]
+                    ? new Date(currentItem[field.name]).toLocaleDateString()
+                    : String(currentItem[field.name] || '-')}
                 </div>
               </div>
             ))}
@@ -291,52 +238,7 @@ export const AdminDataTable = ({
                 <Label htmlFor={field.name} className="text-right text-gray-700">
                   {field.label}
                 </Label>
-                {field.name === 'logo_url' ? (
-                  <div className="col-span-3 space-y-2">
-                    {/* For base64 data, don't show the input field, just the image */}
-                    {formData[field.name] && !formData[field.name].startsWith('http') ? (
-                      <div className="space-y-2">
-                        <div className="text-sm text-gray-500">Base64 image data (cannot be edited directly)</div>
-                        <div className="w-full max-w-[150px] h-[150px] border border-gray-200 rounded overflow-hidden flex items-center justify-center mt-2">
-                          <img
-                            src={formData[field.name]}
-                            alt="Logo Preview"
-                            className="max-w-full max-h-full object-contain"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E";
-                            }}
-                          />
-                        </div>
-                      </div>
-                    ) : (
-                      <>
-                        <Input
-                          id={field.name}
-                          name={field.name}
-                          type="text"
-                          value={formData[field.name] || ''}
-                          onChange={handleInputChange}
-                          className="w-full"
-                          required={field.required}
-                        />
-                        {formData[field.name] && (
-                          <div className="w-full max-w-[150px] h-[150px] border border-gray-200 rounded overflow-hidden flex items-center justify-center mt-2">
-                            <img
-                              src={formData[field.name]}
-                              alt="Logo Preview"
-                              className="max-w-full max-h-full object-contain"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E";
-                              }}
-                            />
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
-                ) : field.type === 'textarea' ? (
+                {field.type === 'textarea' ? (
                   <textarea
                     id={field.name}
                     name={field.name}
@@ -383,8 +285,8 @@ export const AdminDataTable = ({
             <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
               Cancel
             </Button>
-            <Button
-              variant="destructive"
+            <Button 
+              variant="destructive" 
               onClick={handleConfirmDelete}
             >
               Delete

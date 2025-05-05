@@ -37,7 +37,7 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
         <div className="w-full h-[240px] border border-blue-200 rounded-lg flex items-center justify-center mb-6 overflow-hidden">
           {trademark.logo_url ? (
             <img
-              src={trademark.logo_url} // This will work with both URLs and base64 data
+              src={trademark.logo_url}
               alt={`${trademark.owner_name} logo`}
               className="max-w-full max-h-full object-contain"
               onError={(e) => {

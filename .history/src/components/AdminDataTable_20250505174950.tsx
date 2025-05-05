@@ -246,21 +246,14 @@ export const AdminDataTable = ({
                           }}
                         />
                       </div>
-                      {/* Only show link for URLs, not for base64 data */}
-                      {currentItem[field.name].startsWith('http') ? (
-                        <a
-                          href={currentItem[field.name]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline text-sm"
-                        >
-                          {currentItem[field.name]}
-                        </a>
-                      ) : (
-                        <span className="text-gray-500 text-sm">
-                          Base64 image data (too long to display)
-                        </span>
-                      )}
+                      <a
+                        href={currentItem[field.name]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:underline text-sm"
+                      >
+                        {currentItem[field.name]}
+                      </a>
                     </div>
                   ) : field.type === 'date' && currentItem[field.name] ? (
                     new Date(currentItem[field.name]).toLocaleDateString()
@@ -293,47 +286,27 @@ export const AdminDataTable = ({
                 </Label>
                 {field.name === 'logo_url' ? (
                   <div className="col-span-3 space-y-2">
-                    {/* For base64 data, don't show the input field, just the image */}
-                    {formData[field.name] && !formData[field.name].startsWith('http') ? (
-                      <div className="space-y-2">
-                        <div className="text-sm text-gray-500">Base64 image data (cannot be edited directly)</div>
-                        <div className="w-full max-w-[150px] h-[150px] border border-gray-200 rounded overflow-hidden flex items-center justify-center mt-2">
-                          <img
-                            src={formData[field.name]}
-                            alt="Logo Preview"
-                            className="max-w-full max-h-full object-contain"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E";
-                            }}
-                          />
-                        </div>
-                      </div>
-                    ) : (
-                      <>
-                        <Input
-                          id={field.name}
-                          name={field.name}
-                          type="text"
-                          value={formData[field.name] || ''}
-                          onChange={handleInputChange}
-                          className="w-full"
-                          required={field.required}
+                    <Input
+                      id={field.name}
+                      name={field.name}
+                      type="text"
+                      value={formData[field.name] || ''}
+                      onChange={handleInputChange}
+                      className="w-full"
+                      required={field.required}
+                    />
+                    {formData[field.name] && (
+                      <div className="w-full max-w-[150px] h-[150px] border border-gray-200 rounded overflow-hidden flex items-center justify-center mt-2">
+                        <img
+                          src={formData[field.name]}
+                          alt="Logo Preview"
+                          className="max-w-full max-h-full object-contain"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E";
+                          }}
                         />
-                        {formData[field.name] && (
-                          <div className="w-full max-w-[150px] h-[150px] border border-gray-200 rounded overflow-hidden flex items-center justify-center mt-2">
-                            <img
-                              src={formData[field.name]}
-                              alt="Logo Preview"
-                              className="max-w-full max-h-full object-contain"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'%3E%3C/circle%3E%3Cpolyline points='21 15 16 10 5 21'%3E%3C/polyline%3E%3C/svg%3E";
-                              }}
-                            />
-                          </div>
-                        )}
-                      </>
+                      </div>
                     )}
                   </div>
                 ) : field.type === 'textarea' ? (

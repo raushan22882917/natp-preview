@@ -40,16 +40,6 @@ export const TrademarkForm = () => {
     }
   };
 
-  // Function to convert image file to base64
-  const convertToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = error => reject(error);
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -57,18 +47,28 @@ export const TrademarkForm = () => {
     try {
       let logoUrl = "";
 
-      // Convert image to base64 if one is selected
+      // Upload image if one is selected
       if (imageFile) {
-        try {
-          // Convert the image to base64
-          logoUrl = await convertToBase64(imageFile);
-        } catch (error) {
-          console.error('Error converting image to base64:', error);
-          throw new Error('Failed to process the image');
-        }
+        const fileExt = imageFile.name.split('.').pop();
+        const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+        const filePath = `trademark-logos/${fileName}`;
+
+        // Upload the image to Supabase Storage
+        const { error: uploadError, data } = await supabase.storage
+          .from('trademarks')
+          .upload(filePath, imageFile);
+
+        if (uploadError) throw uploadError;
+
+        // Get the public URL for the uploaded image
+        const { data: { publicUrl } } = supabase.storage
+          .from('trademarks')
+          .getPublicUrl(filePath);
+
+        logoUrl = publicUrl;
       }
 
-      // Update the form data with the logo URL (base64 string)
+      // Update the form data with the logo URL
       const trademarkData = {
         ...formData,
         logo_url: logoUrl || null
@@ -153,29 +153,6 @@ export const TrademarkForm = () => {
               rows={4}
               className="bg-white border border-gray-300"
             />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="logo">Trademark Logo</Label>
-            <div className="flex flex-col gap-4">
-              <Input
-                id="logo"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="bg-white border border-gray-300"
-              />
-
-              {imagePreview && (
-                <div className="w-full max-w-[240px] h-[240px] border border-gray-300 rounded-lg overflow-hidden">
-                  <img
-                    src={imagePreview}
-                    alt="Logo Preview"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              )}
-            </div>
           </div>
 
           <Button

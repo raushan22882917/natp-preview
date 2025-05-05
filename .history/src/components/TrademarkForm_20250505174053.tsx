@@ -13,15 +13,12 @@ import { Upload } from "lucide-react";
 export const TrademarkForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     owner_name: "",
     application_number: "",
     national_classes: "",
     description: "",
     application_date: "",
-    logo_url: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,53 +26,12 @@ export const TrademarkForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setImageFile(file);
-
-      // Create a preview URL for the image
-      const previewUrl = URL.createObjectURL(file);
-      setImagePreview(previewUrl);
-    }
-  };
-
-  // Function to convert image file to base64
-  const convertToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = error => reject(error);
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      let logoUrl = "";
-
-      // Convert image to base64 if one is selected
-      if (imageFile) {
-        try {
-          // Convert the image to base64
-          logoUrl = await convertToBase64(imageFile);
-        } catch (error) {
-          console.error('Error converting image to base64:', error);
-          throw new Error('Failed to process the image');
-        }
-      }
-
-      // Update the form data with the logo URL (base64 string)
-      const trademarkData = {
-        ...formData,
-        logo_url: logoUrl || null
-      };
-
-      // Insert the trademark data into the database
-      const { error } = await supabase.from('trademarks').insert([trademarkData]);
+      const { error } = await supabase.from('trademarks').insert([formData]);
 
       if (error) throw error;
 
@@ -153,29 +109,6 @@ export const TrademarkForm = () => {
               rows={4}
               className="bg-white border border-gray-300"
             />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="logo">Trademark Logo</Label>
-            <div className="flex flex-col gap-4">
-              <Input
-                id="logo"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="bg-white border border-gray-300"
-              />
-
-              {imagePreview && (
-                <div className="w-full max-w-[240px] h-[240px] border border-gray-300 rounded-lg overflow-hidden">
-                  <img
-                    src={imagePreview}
-                    alt="Logo Preview"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              )}
-            </div>
           </div>
 
           <Button
