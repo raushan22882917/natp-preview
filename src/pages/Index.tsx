@@ -52,9 +52,9 @@ export default function Index() {
       <Hero />
 
       {/* Main content starts immediately after Hero */}
-      <div className="max-w-5xl mx-auto flex justify-between gap-10 items-center my-16">
+      <div className="max-w-5xl mx-auto flex justify-between gap-10 items-start my-16">
         <div className="w-1/2">
-          <h2 className="text-[#333747] text-[45px] font-semibold my-4 leading-snug">
+          <h2 className="text-[#333747] text-[50px] font-semibold my-4 leading-snug">
             You focus on your business, we manage your brand visibility.
           </h2>
           <p className="text-lg font-semibold text-[#333747] mb-5">
@@ -68,85 +68,98 @@ export default function Index() {
         </div>
         <img
           src="/images/Icon_You_focus_on_your_business,_we_manage_your_brand_visibility.svg"
-          className="rounded-md shadow w-[45%]"
+          className="rounded-md shadow w-[55%] self-center"
           alt=""
         />
       </div>
 
       {/* Stats Section */}
       <section className="py-16 px-6">
-        <div className="max-w-5xl font-inter mx-auto p-2">
-          <h2 className="text-[38px] w-[70%] leading-tight font-semibold text-[#333747] mb-12">
-            Integrated Services for Brand Visibility and Trademark Recognition
-          </h2>
+  <div className="max-w-5xl font-inter mx-auto p-2">
+    <h2 className="text-[38px] w-[70%] leading-tight font-semibold text-[#333747] mb-12">
+      Integrated Services for Brand Visibility and Trademark Recognition
+    </h2>
 
-          {/* Cards */}
-          <div className="grid md:grid-cols-3 gap-10">
-            {/* Card 1 */}
-            <div className=" flex flex-col shadow-sm">
-              <img
-                src="/images/Content Service.svg"
-                alt="Article Creation"
-                className="w-[220px] mx-auto mb-8"
-              />
-              <h3 className="text-2xl font-semibold  text-[#333747] -mt-5 leading-tight mb-6">
-                Professional Content Services for Trademark Promotion
-              </h3>
-              <p className="text-[#333747] text-[16px] font-semibold mb-6">
-                We provide trademark publication, expert article development,
-                and SEO-focused visibility enhancement.
-              </p>
-              <button className="bg-[#00a3d1] text-white  py-3 px-6  shadow-xl mr-auto">
-                Learn More
-              </button>
-            </div>
-
-            {/* Card 2 */}
-            <div className=" flex flex-col   shadow-sm">
-              <img
-                src="/images/Targeted SEO.svg"
-                alt="SEO Strategies"
-                className="w-[220px] mx-auto mb-8"
-              />
-              <h3 className="text-2xl font-semibold  text-[#333747] -mt-5 leading-tight mb-6">
-                Targeted SEO Measures for Improved Online Visibility
-              </h3>
-              <p className="text-[#333747] text-[16px] font-semibold mb-6">
-                We apply proven strategies to strengthen your brand’s presence
-                in search rankings.
-              </p>
-              <button className="bg-[#00a3d1]  text-white  py-3 px-6  shadow-xl mr-auto">
-                Learn More
-              </button>
-            </div>
-
-            {/* Card 3 */}
-            <div className=" flex flex-col  shadow-sm">
-              <img
-                src="/images/Brand Recognition and Protection.svg"
-                alt="Trademark Services"
-                className="w-[220px] mx-auto mb-8"
-              />
-              <h3 className="text-2xl font-semibold  text-[#333747] -mt-5 leading-tight mb-6">
-                Trademark Publication for Brand Recognition and Protection
-              </h3>
-              <p className="text-[#333747] text-[16px] font-semibold mb-6">
-                We publish your trademark to support brand visibility and legal
-                security.
-              </p>
-              <button className="bg-[#00a3d1] mt-4 text-white  py-3 px-6  shadow-xl mr-auto">
-                Learn More
-              </button>
-            </div>
+    {/* Cards */}
+    <div className="grid md:grid-cols-3 gap-10">
+      {/* Card 1 */}
+      <div className="flex flex-col shadow-sm h-full">
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <img
+              src="/images/Content Service.svg"
+              alt="Article Creation"
+              className="w-[220px] mx-auto mb-8"
+            />
+            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
+              Professional Content Services for Trademark Promotion
+            </h3>
+            <p className="text-[#333747] text-[16px] font-semibold mb-6">
+              We provide trademark publication, expert article development,
+              and SEO-focused visibility enhancement.
+            </p>
           </div>
+          <button className="bg-[#00a3d1] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+            Learn More
+          </button>
         </div>
-      </section>
+      </div>
+
+      {/* Card 2 */}
+      <div className="flex flex-col shadow-sm h-full">
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <img
+              src="/images/Targeted SEO.svg"
+              alt="SEO Strategies"
+              className="w-[220px] mx-auto mb-8"
+            />
+            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
+              Targeted SEO Measures for Improved Online Visibility
+            </h3>
+            <p className="text-[#333747] text-[16px] font-semibold mb-6">
+              We apply proven strategies to strengthen your brand’s presence
+              in search rankings.
+            </p>
+          </div>
+          <button className="bg-[#00a3d1] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+            Learn More
+          </button>
+        </div>
+      </div>
+
+      {/* Card 3 */}
+      <div className="flex flex-col shadow-sm h-full">
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <img
+              src="/images/Brand Recognition and Protection.svg"
+              alt="Trademark Services"
+              className="w-[220px] mx-auto mb-8"
+            />
+            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
+              Trademark Publication for Brand Recognition and Protection
+            </h3>
+            <p className="text-[#333747] text-[16px] font-semibold mb-6">
+              We publish your trademark to support brand visibility and legal
+              security.
+            </p>
+          </div>
+          <button className="bg-[#00a3d1] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <div className="flex flex-col md:flex-row items-start justify-between gap-8 py-20 bg-white max-w-5xl mx-auto">
         {/* Left Section */}
         <div className="md:w-1/2">
           <h2 className="text-3xl md:text-[35px] leading-10 font-bold text-[#333747]">
-            Proven Results in Trademark Publication for Emerging Brands Explore
+            Explore
             our track record in effective brand visibility and registration
             support.
           </h2>
@@ -155,7 +168,9 @@ export default function Index() {
         {/* Right Section */}
         <div className="md:w-1/2 space-y-6">
           <p className="text-[#333747] text-lg font-semibold mb-6 leading-relaxed">
-          Our services achieve consistently high success rates, securing the visibility your brand requires. Numerous clients have relied on our expertise to strengthen their market presence.
+            Our services achieve consistently high success rates, securing the
+            visibility your brand requires. Numerous clients have relied on our
+            expertise to strengthen their market presence.
           </p>
 
           <div className="grid grid-cols-2 gap-6">
@@ -164,7 +179,7 @@ export default function Index() {
                 95%
               </p>
               <p className="text-[16px] text-[#333747]">
-              Client satisfaction remains our core commitment.
+                Client satisfaction remains our core commitment.
               </p>
             </div>
             <div className="">
@@ -172,7 +187,7 @@ export default function Index() {
                 100%
               </p>
               <p className="text-[16px] text-[#333747]">
-              All trademark publications adhere to strict quality standards.
+                All trademark publications adhere to strict quality standards.
               </p>
             </div>
           </div>
@@ -183,9 +198,12 @@ export default function Index() {
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto text-center px-40">
           {/* Heading */}
-          <h2 className="text-5xl font-semibold  text-[#333747] mb-6">Frequently Asked Questions (FAQs)</h2>
+          <h2 className="text-5xl font-semibold  text-[#333747] mb-6">
+            Frequently Asked Questions (FAQs)
+          </h2>
           <p className="text-[#333747] mb-12 text-lg font-semibold">
-          Information on trademark publication, content services, and SEO support.
+            Information on trademark publication, content services, and SEO
+            support.
           </p>
 
           {/* FAQs */}
@@ -216,12 +234,12 @@ export default function Index() {
       {/* Hiring Section */}
       <div className="pt-12 pb-20 px-4  text-center">
         <h2 className="text-4xl font-semibol text-gary-600 mb-4 text-[#333747]">
-        Join Our Team
+          Join Our Team
         </h2>
         <p className="mb-6 text-lg font-semibold text-[#333747]">
-        We’re hiring qualified professionals now.
+          We’re hiring qualified professionals now.
         </p>
-        <button className="bg-[#00a3d1]  text-white  py-3 px-6  shadow-xl mr-auto">
+        <button className="bg-[#207ea0]  text-white  py-3 px-6  shadow-xl mr-auto">
           Contact HR
         </button>
       </div>

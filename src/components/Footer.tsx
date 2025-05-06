@@ -11,7 +11,7 @@ export const Footer = () => {
           {/* Logo and contact section */}
           <div className="flex flex-col">
             <div className="mb-8">
-              <img src="/images/Logo.png" alt="WTP Logo" className="w-24 h-auto" />
+              <img src="/images/Logo.png" alt="WTP Logo" className="w-56 h-auto" />
             </div>
             <div className="mt-auto">
               <p className="font-medium mb-2">Contact:</p>
@@ -22,7 +22,7 @@ export const Footer = () => {
           </div>
 
           {/* Services links */}
-          <div className="flex gap-20">
+          <div className="flex">
             {/* Our Services column */}
             <div>
               <h4 className="font-medium mb-4">Our Services</h4>
@@ -31,7 +31,7 @@ export const Footer = () => {
                   <Link to="/contact" className="font-medium ">Contact Us</Link>
                 </li>
                 <li>
-                  <Link to="/trademark-info" className="font-medium">Trademark Info</Link>
+                <Link to="/request-publication" className="font-medium">Request Publication</Link>
                 </li>
                 <li>
                   <Link to="/faqs" className="font-medium">FAQs</Link>
@@ -41,29 +41,13 @@ export const Footer = () => {
                 </li>
               </ul>
             </div>
-
-            {/* Trademark Publication column */}
-            <div>
-              <h4 className="font-medium mb-4">Trademark Publication</h4>
-              <ul className="space-y-5">
-                <li>
-                  <Link to="/search" className="hover:underline">Search</Link>
-                </li>
-                <li>
-                  <Link to="/request-publication" className="hover:underline">Request Publication</Link>
-                </li>
-                <li>
-                  <Link to="/general-information" className="hover:underline">General Information</Link>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
 
         {/* Copyright section */}
         <div className="border-t border-white/20 pt-4 mb-10">
           <div className="flex justify-between items-center text-sm">
-            <p>© {currentYear} WTP. All rights reserved.</p>
+            <p>© {currentYear} NATP. All rights reserved.</p>
             <div className="flex gap-8">
               <Link to="/privacy" className="hover:underline">Privacy Policy</Link>
               <Link to="/terms" className="hover:underline">Terms and Conditions</Link>

@@ -17,9 +17,14 @@ export type SearchResult = {
 interface SearchResultsProps {
   results: SearchResult[];
   loading: boolean;
+  searchSubmitted: boolean;
 }
 
-export function SearchResults({ results, loading }: SearchResultsProps) {
+export function SearchResults({ results, loading, searchSubmitted  }: SearchResultsProps) {
+  if (!searchSubmitted) {
+    return null; 
+  }
+
   if (loading) {
     return (
       <div className="text-center py-8">

@@ -418,7 +418,7 @@ export default function Apply() {
                   className="w-[120px] h-[120px] mb-6"
                 />
                 <h4 className="text-3xl font-semibold text-[#333747] mb-6">
-                Step-by-Step Instructions for Effective Trademark Publication
+                Step 1: Application Submission
                 </h4>
                 <p className="text-[#333747] font-semibold text-[15px]">
                 Initiate the process by completing our online trademark application form.
@@ -428,7 +428,7 @@ export default function Apply() {
               {/* Item 2 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="/images/step 2.svg"
+                  src="/public/images/step 2.svg"
                   alt="Client-Centric Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />
@@ -443,7 +443,7 @@ export default function Apply() {
               {/* Item 3 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="/images/step 3.svg"
+                  src="/public/images/step 3.svg"
                   alt="Improvement Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />

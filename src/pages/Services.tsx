@@ -5,7 +5,7 @@ import { Database, Users, BarChart } from "lucide-react";
 import { Footer } from "@/components/Footer";
 export default function Services() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -26,24 +26,29 @@ export default function Services() {
         <div className="flex flex-col md:flex-row gap-12 mb-28 items-center">
           <div className="md:w-1/2">
             <h2 className="text-[45px] font-semibold text-[#333747] mb-4">
-            Strategic Brand Visibility Services
+              Strategic Brand Visibility Services
             </h2>
           </div>
           <div className="md:w-1/2">
             <p className="text-[#333747] font-semibold text-lg">
-            We support emerging brands by improving their market presence through targeted visibility measures. Our team of marketing professionals and content specialists ensures effective positioning within the trademark landscape.
+              We support emerging brands by improving their market presence
+              through targeted visibility measures. Our team of marketing
+              professionals and content specialists ensures effective
+              positioning within the trademark landscape.
             </p>
           </div>
         </div>
 
         {/* Trademark Publication Section */}
-        <div className="flex flex-col md:flex-row gap-8 mb-16 items-center">
+        <div className="flex flex-col md:flex-row gap-8 mb-16 items-start">
           <div className="md:w-2/3 mb-16">
             <h3 className="text-3xl font-semibold text-[#333747] mb-8">
-            Trademark Publication for Brand Advancement
+              Trademark Publication for Brand Advancement
             </h3>
             <p className="text-[#333747] mb-8 text-lg font-semibold">
-            Our process enhances visibility and credibility by publicly presenting your trademark, supporting recognition and trust within your target market.
+              Our process enhances visibility and credibility by publicly
+              presenting your trademark, supporting recognition and trust within
+              your target market.
             </p>
             <Button
               asChild
@@ -57,24 +62,24 @@ export default function Services() {
             <img
               src="/images/trademark-publication.jpg"
               alt="Trademark Publication"
-              className="w-full h-auto rounded-md shadow-md bg-blue-500"
+              className="w-full h-auto rounded-md"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src =
-                  "/images/Trademark Publication.svg";
+                target.src = "/images/Trademark Publication.svg";
               }}
             />
           </div>
         </div>
 
         {/* Article Creation Section */}
-        <div className="flex flex-col md:flex-row-reverse gap-8 mb-32 items-center">
+        <div className="flex flex-col md:flex-row-reverse gap-8 mb-32 items-start">
           <div className="md:w-2/3">
             <h3 className="text-3xl font-semibold text-[#333747] mb-6">
-            Article Creation for Brand Visibility
+              Article Creation for Brand Visibility
             </h3>
             <p className="text-[#333747] mb-8 text-lg font-semibold">
-            We produce tailored, high-quality articles to present your brand and trademark, strengthening recognition and audience engagement.
+              We produce tailored, high-quality articles to present your brand
+              and trademark, strengthening recognition and audience engagement.
             </p>
             <Button
               asChild
@@ -88,24 +93,24 @@ export default function Services() {
             <img
               src="/images/article-creation.jpg"
               alt="Article Creation"
-              className="w-full h-auto rounded-md shadow-md flex items-center"
+              className="w-full h-auto rounded-md flex items-center"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src =
-                  "/images/Article Creation.svg";
+                target.src = "/images/Article Creation.svg";
               }}
             />
           </div>
         </div>
 
         {/* SEO Solutions Section */}
-        <div className="flex flex-col md:flex-row gap-8 mb-32 items-center">
+        <div className="flex flex-col md:flex-row gap-8 mb-32 items-start">
           <div className="md:w-2/3">
             <h3 className="text-3xl font-semibold text-[#333747] mb-6">
-            Customized SEO for Targeted Visibility
+              Customized SEO for Targeted Visibility
             </h3>
             <p className="text-[#333747] text-lg font-semibold mb-8">
-            Our expert-driven strategies improve search rankings and ensure focused exposure for your brand and trademark.
+              Our expert-driven strategies improve search rankings and ensure
+              focused exposure for your brand and trademark.
             </p>
             <Button
               asChild
@@ -119,11 +124,10 @@ export default function Services() {
             <img
               src="/images/seo-solutions.jpg"
               alt="SEO Solutions"
-              className="w-full h-auto rounded-md shadow-md"
+              className="w-full h-auto rounded-md"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src =
-                  "/images/Customized SEO.svg";
+                target.src = "/images/Customized SEO.svg";
               }}
             />
           </div>
@@ -134,16 +138,15 @@ export default function Services() {
           {/* Top section: heading + description side by side */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-12">
             <div className="md:w-1/2 mb-6">
-              <p className="text-xs font-semibold text-[#333747] tracking-wider mb-2">
-                Services
-              </p>
               <h3 className="text-4xl font-semibold text-[#333747] leading-snug">
-              Unlock Your Brand’s Full Market Potential
+                Unlock Your Brand’s Full Market Potential
               </h3>
             </div>
             <div className="md:w-1/2">
               <p className="text-[#333747] text-base font-semibold leading-relaxed">
-              We enhance brand visibility through ongoing database updates and strategic support, ensuring relevance and discoverability in a competitive environment.
+                We enhance brand visibility through ongoing database updates and
+                strategic support, ensuring relevance and discoverability in a
+                competitive environment.
               </p>
             </div>
           </div>
@@ -152,49 +155,39 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="mb-4">
-                <img
-                  src="/images/1.svg"
-                  alt=""
-                  className="w-10 h-10"
-                />
+                <img src="/images/1.svg" alt="" className="w-10 h-10" />
               </div>
               <h4 className="font-semibold text-[#333747] text-2xl mb-6">
-              Daily Updates for Current Brand Data
+                Daily Updates for Current Brand Data
               </h4>
               <p className="text-[#333747] text-sm font-semibold">
-              Our system ensures your trademark information remains accurate and up to date.
+                Our system ensures your trademark information remains accurate
+                and up to date.
               </p>
             </div>
 
             <div>
               <div className="mb-4">
-                <img
-                  src="/images/1.svg"
-                  alt=""
-                  className="w-10 h-10"
-                />
+                <img src="/images/1.svg" alt="" className="w-10 h-10" />
               </div>
               <h4 className="font-semibold text-[#333747] text-2xl mb-6">
-              Consistent Support Throughout the Process
+                Consistent Support Throughout the Process
               </h4>
               <p className="text-[#333747] text-sm font-semibold">
-              Our support team is available to assist you at all times.
+                Our support team is available to assist you at all times.
               </p>
             </div>
 
             <div>
               <div className="mb-4">
-                <img
-                  src="/images/1.svg"
-                  alt=""
-                  className="w-10 h-10"
-                />
+                <img src="/images/1.svg" alt="" className="w-10 h-10" />
               </div>
               <h4 className="font-semibold text-[#333747] text-2xl mb-6">
-              Ongoing Enhancement for Quality and Usability
+                Ongoing Enhancement for Quality and Usability
               </h4>
               <p className="text-[#333747] text-sm font-semibold">
-              We regularly improve content and platform functionality to ensure an optimal user experience.
+                We regularly improve content and platform functionality to
+                ensure an optimal user experience.
               </p>
             </div>
           </div>
@@ -203,16 +196,19 @@ export default function Services() {
         {/* CTA Section */}
         <div className="p-8 rounded-lg ">
           <h3 className="text-5xl font-semibold text-[#333747] mb-8">
-          Begin Building Your Brand Presence Today
+            Begin Building Your Brand Presence Today
           </h3>
-          <p className="text-[#333747] text-[18px] font-semibold mb-8 max-w-5xl ">
-          Leverage our trademark publication services to strengthen visibility and unlock brand potential.
+          <p className="text-[#333747] text-[18px] font-semibold mb-8 max-w-5xl text-center ">
+            Leverage our trademark publication services to strengthen visibility
+            and unlock brand potential.
           </p>
-          <Button
-            asChild
-            className="bg-[#00A3E0] text-white hover:bg-[#00A3E0] py-6 px-8 shadow-xl">
-            <Link to="/contact">Apply Now</Link>
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              asChild
+              className="bg-[#00A3E0] text-white hover:bg-[#00A3E0] py-6 px-8 shadow-xl ">
+              <Link to="/contact">Apply Now</Link>
+            </Button>
+          </div>
         </div>
       </div>
 

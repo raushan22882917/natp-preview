@@ -128,7 +128,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h2>
           <p className="font-semibold text-lg text-[#333747]">
-            NATP is committed to ensuring the protection of your personal data. This policy explains the methods by which personal information is collected, processed, and secured in connection with the use of our services.
+          NATP is committed to ensuring the protection of your personal data. This policy explains the methods by which personal information is collected, processed, and secured in connection with the use of our services.
           </p>
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-12 gap-8 px-6 mt-32">

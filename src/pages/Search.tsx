@@ -4,38 +4,68 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
   TrademarkCard,
   type TrademarkResult,
 } from "@/components/TrademarkCard";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { debounce } from "lodash";
+import { SearchResults } from "@/components/SearchResults";
+import { Footer } from "@/components/Footer";
 
 export default function Search() {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState<TrademarkResult[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // We're keeping this function for reference, but it's no longer used for automatic search
-  // It could be repurposed for other features if needed in the future
+  // Debounced search function that will execute after user stops typing
+  const [searchSubmitted, setSearchSubmitted] = useState(false);
+
+  // Debounced search function that will execute after user stops typing
   const debouncedSearch = useCallback((query: string) => {
     const searchFn = debounce(async (searchText: string) => {
-      // Function body kept for reference
-      console.log("This function is no longer used for automatic search");
+      if (!searchText.trim()) {
+        setResults([]);
+        return;
+      }
+      try {
+        const { data, error } = await supabase
+          .from("trademarks")
+          .select("*")
+          .or(
+            `owner_name.ilike.%${searchText}%,application_number.ilike.%${searchText}%,description.ilike.%${searchText}%,national_classes.ilike.%${searchText}%`
+          )
+          .order("created_at", { ascending: false })
+          .limit(10);
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          setResults(data);
+        } else {
+          setResults([]);
+        }
+      } catch (error) {
+        console.error("Search error:", error);
+        setResults([]);
+      } finally {
+        setLoading(false);
+      }
     }, 300);
 
     searchFn(query);
     return searchFn;
   }, []);
 
-  // We're no longer using the automatic search on query change
-  // Instead, search will only happen when the user clicks the search button or presses Enter
+  // Effect to trigger search when query changes
+  useEffect(() => {
+    const searchFn = debouncedSearch(searchQuery);
+
+    // Cleanup function to cancel debounced search on unmount
+    return () => {
+      searchFn.cancel();
+    };
+  }, [searchQuery, debouncedSearch]);
 
   // Handle form submission for explicit search
   const handleSearch = async (e: React.FormEvent) => {
@@ -45,6 +75,7 @@ export default function Search() {
       return;
     }
 
+    setSearchSubmitted(true);
     setLoading(true);
     try {
       const { data, error } = await supabase
@@ -137,26 +168,20 @@ export default function Search() {
               <Input
                 type="text"
                 placeholder="Enter owner name, application number, or keywords"
-                className="bg-white w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#00A3E0] !text-xl font-semibold"
+                className="bg-white w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoComplete="off"
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    e.preventDefault();
-                    handleSearch(e);
-                  }
-                }}
               />
-              {loading && (
+              {/* {loading && (
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 z-20">
                   <div className="animate-spin h-4 w-4 border-2 border-blue-500 rounded-full border-t-transparent"></div>
                 </div>
-              )}
+              )} */}
             </div>
             <Button
               type="submit"
-              className="bg-[#00A3E0] hover:bg-[#0091c7] min-w-[120px] h-[60px] text-white text-lg"
+              className="bg-[#207ea0] hover:bg-[#207ea0] min-w-[120px] h-[60px] text-white text-lg"
               disabled={loading}>
               {loading ? "Searching..." : <>Submit</>}
             </Button>
@@ -166,24 +191,32 @@ export default function Search() {
 
       {/* Search Results */}
       <div className="max-w-4xl mx-auto px-4 py-8">
+        <SearchResults 
+          results={results}
+          loading={loading}
+          searchSubmitted={searchSubmitted}
+        />
+      </div>
+      {/* <div className="max-w-4xl mx-auto px-4 py-8">
         {loading && (
           <div className="text-center py-8">
             <div className="animate-pulse space-y-6">
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="bg-gray-100 p-6 rounded-lg shadow-sm border border-gray-200 flex flex-row gap-6">
+                  className="bg-gray-100 p-8 rounded-lg shadow-sm border border-gray-200 flex flex-col md:flex-row gap-6">
                   <div className="flex-1">
                     <div className="h-8 bg-gray-200 rounded w-3/4 mb-4" />
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      <div className="h-16 bg-gray-200 rounded w-[150px]" />
-                      <div className="h-16 bg-gray-200 rounded w-[150px]" />
-                      <div className="h-16 bg-gray-200 rounded w-[150px]" />
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div className="h-4 bg-gray-200 rounded w-2/3" />
+                      <div className="h-4 bg-gray-200 rounded w-1/2" />
+                      <div className="h-4 bg-gray-200 rounded w-3/4" />
+                      <div className="h-4 bg-gray-200 rounded w-2/3" />
                     </div>
                     <div className="h-20 bg-gray-200 rounded w-full mb-4" />
                     <div className="h-10 bg-gray-200 rounded w-32" />
                   </div>
-                  <div className="flex-shrink-0 w-[300px] h-[200px] bg-gray-200 rounded" />
+                  <div className="flex-shrink-0 w-full md:w-[240px] h-[240px] bg-gray-200 rounded-lg" />
                 </div>
               ))}
             </div>
@@ -206,7 +239,7 @@ export default function Search() {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-2 text-center">
           <h2 className="text-[50px] font-semibold text-[#333747] mb-4 px-20">
@@ -305,73 +338,7 @@ export default function Search() {
         </div>
       </section>
 
-      <footer className="bg-[#2557A7]  text-white pt-10">
-        <div className="w-[90vw] h-[40vh] mx-auto px-4 flex justify-between gap-8">
-          {/* Left Section */}
-          <div>
-            <div className="flex items-center mb-4">
-              <img src="/images/Logo.png" className="w-24 h-24" alt="Logo" />
-            </div>
-            <div className="mt-40">
-              <div className="mb-2 font-semibold">Contact:</div>
-              <a
-                href="mailto:info@natp-trademark.com"
-                className="text-white underline">
-                info@natp-trademark.com
-              </a>
-            </div>
-          </div>
-          <div className="flex  justify-between items-center gap-20">
-            {/* Center Section */}
-            <div className="flex flex-col space-y-4 md:col-span-">
-              <a href="#" className="hover:underline">
-                Our Services
-              </a>
-              <a href="#" className="hover:underline">
-                Contact Us
-              </a>
-              <a href="#" className="hover:underline">
-                Trademark Info
-              </a>
-              <a href="#" className="hover:underline">
-                FAQs
-              </a>
-              <a href="#" className="hover:underline">
-                About Us
-              </a>
-            </div>
-
-            {/* Right Section */}
-            <div className="flex flex-col space-y-4 md:col-span-1">
-              <a href="#" className="hover:underline">
-                Trademark Publication
-              </a>
-              <a href="#" className="hover:underline">
-                Search
-              </a>
-              <a href="#" className="hover:underline">
-                Request Publication
-              </a>
-              <a href="#" className="hover:underline">
-                General Information
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-blue-500 mt-10 pt-4 pb-6 flex flex-col md:flex-row justify-between items-center text-sm px-4 mx-10">
-          <p>© 2025 NATP. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:underline">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:underline">
-              Terms and Conditions
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 }

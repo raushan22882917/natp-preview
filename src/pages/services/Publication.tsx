@@ -21,7 +21,7 @@ export default function Publication() {
       id: 3,
       title: "Step 3: Trademark Publication",
       description: "Upon approval, your trademark is officially published in our database.",
-      icon: "images/Step 3.svg",
+      icon: "/images/Step 3.svg",
     },
   ];
   return (
@@ -41,7 +41,6 @@ export default function Publication() {
 
       <div className=" flex items-center justify-center p-6">
       <div className="text-center max-w-6xl mx-auto">
-        <p className="text-[16px] text-[#0C0C0C]  mb-4 ">Simplified</p>
         <h1 className="text-3xl md:text-[40px] font-semibold mb-8 text-[#333747]">
         Trademark Publication Explained
         </h1>
@@ -53,7 +52,7 @@ export default function Publication() {
           {steps.map((step) => (
             <div key={step.id} className="flex flex-col items-center">
               <img src={step.icon} alt={step.title} className="h-[120px] mb-8" />
-              <h2 className="text-3xl font-semibold text-[#333747] mb-6 text-center">
+              <h2 className="text-4xl font-semibold text-[#333747] mb-6 text-center">
                 {step.title}
               </h2>
               <p className="text-[#0C0C0C] text-[16px] font-semibold text-center">{step.description}</p>
@@ -61,7 +60,7 @@ export default function Publication() {
           ))}
         </div>
 
-        <Button asChild className="bg-[#00A3D1] mt-5 text-white shadow-md py-6 px-8">
+        <Button asChild className="bg-[#00A3D1] hover:bg-[#00A3D1] mt-5 text-white shadow-md py-6 px-8">
               <Link to="/services/publication" className="inline-block">Apply Now</Link>
             </Button>
       </div>

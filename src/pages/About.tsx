@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import  Hero  from "@/components/Hero";
+import { Footer } from "@/components/Footer";
 
 export default function About() {
   return (
@@ -10,7 +11,7 @@ export default function About() {
       <div className=" py-8">
         <div className="max-w-6xl mx-auto px-1 flex justify-between">
           <h1 className="text-7xl md:text-6xl max-w-[500px] font-semibold text-[#333747] mb-6">
-          Supporting the Growth of Emerging Brands
+          Supporting Emerging Brands
           </h1>
           <p className="text-xl max-w-[550px] mb-10 font-semibold text-[#333747]">
           We strengthen new brands by managing trademark visibility through expert publications and marketing, allowing owners to focus on business operations.
@@ -72,20 +73,20 @@ export default function About() {
           </div>
 
           {/* Right Image */}
-          <div className="md:w-[90%] pl-10">
+          <div className="md:w-[100%] pl-10">
             <img
               src="/images/Establishing a Trademark Database.svg"
               alt="Arrows Graphic"
-              className="w-full rounded-lg shadow-lg scale-125"
+              className="w-full rounded-lg scale-125"
             />
           </div>
         </div>
       </section>
 
-      <section className=" py-20">
+      <section className=" py-10">
         <div className="max-w-6xl mx-auto px-4 text-center">
           {/* Title */}
-          <h2 className="text-4xl md:text-4xl text-center w-[800px] mx-auto font-semibold text-[#333747] mb-20 leading-snug">
+          <h2 className="text-4xl md:text-6xl text-center w-[800px] mx-auto font-semibold text-[#333747] mb-20 leading-snug">
           Our Principles at a Glance
           </h2>
 
@@ -264,51 +265,8 @@ export default function About() {
      <button className="shadow bg-blue-500 py-3 px-6 text-white">Contact</button>
      </div>
      </div>
-     <footer className="bg-[#2557A7]  text-white pt-10">
-      <div className="w-[90vw] h-[40vh] mx-auto px-4 flex justify-between gap-8">
-        
-        {/* Left Section */}
-        <div>
-          <div className="flex items-center mb-4">
-          <img src="/images/Logo.png" className="w-24 h-auto" alt="" />
-          </div>
-         <div className="mt-40">
-         <div className="mb-2 font-semibold">Contact:</div>
-          <a href="mailto:info@wtpregister.com" className="text-white underline">
-            info@wtpregister.com
-          </a>
-         </div>
-        </div>
-        <div className="flex  justify-between items-center gap-20">
-        {/* Center Section */}
-        <div className="flex flex-col space-y-4 md:col-span-">
-          <a href="#" className="hover:underline">Our Services</a>
-          <a href="#" className="hover:underline">Contact Us</a>
-          <a href="#" className="hover:underline">Trademark Info</a>
-          <a href="#" className="hover:underline">FAQs</a>
-          <a href="#" className="hover:underline">About Us</a>
-        </div>
 
-        {/* Right Section */}
-        <div className="flex flex-col space-y-4 md:col-span-1">
-          <a href="#" className="hover:underline">Trademark Publication</a>
-          <a href="#" className="hover:underline">Search</a>
-          <a href="#" className="hover:underline">Request Publication</a>
-          <a href="#" className="hover:underline">General Information</a>
-        </div>
-       </div>
-
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-blue-500 mt-10 pt-4 pb-6 flex flex-col md:flex-row justify-between items-center text-sm px-4 mx-10">
-        <p>© 2025 WTP. All rights reserved.</p>
-        <div className="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" className="hover:underline">Privacy Policy</a>
-          <a href="#" className="hover:underline">Terms and Conditions</a>
-        </div>
-      </div>
-    </footer>
+     <Footer/>
     </div>
   );
 }

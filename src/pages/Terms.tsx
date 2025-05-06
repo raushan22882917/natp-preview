@@ -16,8 +16,7 @@ export default function Terms() {
     },
     {
       title: "SERVICE DESCRIPTION",
-      content:
-        "2.1 Scope: </br>Grants the Customer access to premium content within the Database. </br>Service becomes available for three (3) years after full payment. </br>2.2 Exclusivity: </br>Only these T&C apply to the Agreement. </br>Any alternative terms submitted by the Customer or third parties are excluded. </br>2.3 Modifications: </br>The Provider may amend these T&C unilaterally, with prior written notification. </br>Amendments are effective only once communicated and acknowledged by the Customer. </br>",
+      content: `2.1 Scope: </br><p style="padding-left: 10px;">• Grants the Customer access to premium content within the Database. </p><p style="padding-left: 10px;">• Service becomes available for three (3) years after full payment. </p>2.2 Exclusivity: <p style="padding-left: 10px;">• Only these T&C apply to the Agreement. </p><p style="padding-left: 10px;">• Any alternative terms submitted by the Customer or third parties are excluded. </p>2.3 Modifications: <p style="padding-left: 10px;">• The Provider may amend these T&C unilaterally, with prior written notification. </p><p style="padding-left: 10px;">• Amendments are effective only once communicated and acknowledged by the Customer.</p> `,
     },
     {
       title: "PAYMENT CONDITIONS",
@@ -27,22 +26,22 @@ export default function Terms() {
     {
       title: "RIGHT OF WITHDRAWAL",
       content:
-        "4.1 Contract Formation: </br>The agreement becomes binding when the Customer submits the Service Fee in response to the applicable offer. </br>4.2 Withdrawal Period: </br>The Customer may cancel the agreement within seven (7) days of payment without explanation. </br>The agreement takes effect upon payment. </br>",
+        `4.1 Contract Formation: </br><p style="padding-left: 10px;">• The agreement becomes binding when the Customer submits the Service Fee in response to the applicable offer. </p>4.2 Withdrawal Period: <p style="padding-left: 10px;">• The Customer may cancel the agreement within seven (7) days of payment without explanation. </p><p style="padding-left: 10px;">• The agreement takes effect upon payment. </p>`,
     },
     {
       title: "LIABILITY AND DISCLAIMERS",
       content:
-        "5.1 Data Integrity: </br>The Database content is compiled from third-party registers and provided 'as is' without warranties regarding accuracy or completeness. </br>5.2 Limitation of Liability: </br>The Provider accepts no liability for direct or indirect damages, including lost revenue, opportunities, or service disruptions due to use or non-use of natp-trademark.com. </br>This limitation applies regardless of prior knowledge of potential issues. </br>",
+        `5.1 Data Integrity: </br><p style="padding-left: 10px;">• The Database content is compiled from third-party registers and provided 'as is' without warranties regarding accuracy or completeness. </p>5.2 Limitation of Liability: </br><p style="padding-left: 10px;">• The Provider accepts no liability for direct or indirect damages, including lost revenue, opportunities, or service disruptions due to use or non-use of natp-trademark.com. </p><p style="padding-left: 10px;">• This limitation applies regardless of prior knowledge of potential issues. </p>`,
     },
     {
       title: "ARTICLE PUBLICATION SERVICE",
       content:
-        "6.1 Overview: </br>After payment, the Provider may offer an article publication service highlighting the Customer’s brand achievements. </br>6.2 Purpose: </br>To present and reinforce the Customer’s brand presence and reputation. </br>6.3 Editorial Rights: </br>The Provider may revise submitted content for clarity and consistency without altering the factual basis. </br>6.4 Disclaimer: </br>No liability is assumed for damages related to this optional service. </br>",
+        `6.1 Overview: </br><p style="padding-left: 10px;">• After payment, the Provider may offer an article publication service highlighting the Customer’s brand achievements. </p>6.2 Purpose: </br><p style="padding-left: 10px;">• To present and reinforce the Customer’s brand presence and reputation. </p>6.3 Editorial Rights: </br><p style="padding-left: 10px;">• The Provider may revise submitted content for clarity and consistency without altering the factual basis. </p>6.4 Disclaimer: </br><p style="padding-left: 10px;">• No liability is assumed for damages related to this optional service. </p>`,
     },
     {
       title: "DURATION AND TERMINATION",
       content:
-        "7.1 Contract Period: </br>The Agreement automatically ends after one (1) year and cannotbe terminated ordinarily during that period. </br>7.2 Termination for Cause: </br>Either party may terminate immediately upon serious breach. </br>The breaching party must be allowed to resolve correctable issues within a reasonable timeframe. </br>Any circumstance that renders continued cooperation unreasonable may justify immediate termination. </br>",
+        `7.1 Contract Period: </br><p style="padding-left: 10px;">• The Agreement automatically ends after one (1) year and cannotbe terminated ordinarily during that period. </p>7.2 Termination for Cause: </br><p style="padding-left: 10px;">• Either party may terminate immediately upon serious breach. </p><p style="padding-left: 10px;">• The breaching party must be allowed to resolve correctable issues within a reasonable timeframe. </p><p style="padding-left: 10px;">• Any circumstance that renders continued cooperation unreasonable may justify immediate termination. </p>`,
     },
     {
       title: "REFUND POLICY",
@@ -52,12 +51,12 @@ export default function Terms() {
     {
       title: "GOVERNING LAW AND DISPUTE SETTLEMENT",
       content:
-        "9.1 Jurisdiction: </br>The Agreement and T&C are subject to the laws of the United States. </br>9.2 Dispute Resolution: </br>Parties shall attempt to resolve conflicts amicably. </br>If resolution fails, legal action may be pursued before a competent court. </br>",
+        `9.1 Jurisdiction: </br><p style="padding-left: 10px;">• The Agreement and T&C are subject to the laws of the United States. </p>9.2 Dispute Resolution: </br><p style="padding-left: 10px;">• Parties shall attempt to resolve conflicts amicably. </p><p style="padding-left: 10px;">• If resolution fails, legal action may be pursued before a competent court. </p>`,
     },
     {
       title: "DATA PRIVACY",
       content:
-        "10.1 Data Handling: </br>Details on the handling of personal data are available in the separate Privacy Policy. </br>10.2 Policy Access:A link to the Privacy Policy is available on natp-trademark.com. Customers are encouraged to review it for information on data use. </br>",
+        `10.1 Data Handling: </br><p style="padding-left: 10px;">• Details on the handling of personal data are available in the separate Privacy Policy. </p>10.2 Policy Access:</br><p style="padding-left: 10px;">• A link to the Privacy Policy is available on natp-trademark.com. Customers are encouraged to review it for information on data use. </p>`,
     },
   ];
 
@@ -176,77 +175,7 @@ export default function Terms() {
         </div>
       </div>
 
-      <footer className="bg-[#2557A7]  text-white pt-10">
-        <div className="w-[90vw] h-[40vh] mx-auto px-4 flex justify-between gap-8">
-          {/* Left Section */}
-          <div>
-            <div className="flex items-center mb-4">
-              <img
-                src="/images/Logo.png"
-                className="w-24 h-24"
-                alt=""
-              />
-            </div>
-            <div className="mt-40">
-              <div className="mb-2 font-semibold">Contact:</div>
-              <a
-                href="mailto:info@wtpregister.com"
-                className="text-white underline">
-                info@natp-trademark.com
-              </a>
-            </div>
-          </div>
-          <div className="flex  justify-between items-center gap-20">
-            {/* Center Section */}
-            <div className="flex flex-col space-y-4 md:col-span-">
-              <a href="#" className="hover:underline">
-                Our Services
-              </a>
-              <a href="#" className="hover:underline">
-                Contact Us
-              </a>
-              <a href="#" className="hover:underline">
-                Trademark Info
-              </a>
-              <a href="#" className="hover:underline">
-                FAQs
-              </a>
-              <a href="#" className="hover:underline">
-                About Us
-              </a>
-            </div>
-
-            {/* Right Section */}
-            <div className="flex flex-col space-y-4 md:col-span-1">
-              <a href="#" className="hover:underline">
-                Trademark Publication
-              </a>
-              <a href="#" className="hover:underline">
-                Search
-              </a>
-              <a href="#" className="hover:underline">
-                Request Publication
-              </a>
-              <a href="#" className="hover:underline">
-                General Information
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-blue-500 mt-10 pt-4 pb-6 flex flex-col md:flex-row justify-between items-center text-sm px-4 mx-10">
-          <p>© 2025 WTP. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:underline">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:underline">
-              Terms and Conditions
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 }
