@@ -106,9 +106,10 @@ export const TrademarkForm = () => {
       console.log("Saving trademark with data:", trademarkData);
 
       // Insert the trademark data into the database
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('trademarks')
-        .insert([trademarkData]);
+        .insert([trademarkData])
+        .select('id');
 
       if (error) throw error;
 

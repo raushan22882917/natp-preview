@@ -5,7 +5,6 @@ import { Share2, Printer, Copy, Facebook, Edit, Save, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil, updateTrademarkKeywords } from "@/utils/keywordUtils";
 
 export type TrademarkDetail = {
   id: string;
@@ -18,8 +17,6 @@ export type TrademarkDetail = {
   logo_url?: string;
   read_time?: string;
   keywords?: string[]; // Added keywords field
-  articleContent?: string | null; // Added article content field
-  articleTitle?: string | null; // Added article title field
 };
 
 interface TrademarkArticleProps {
@@ -31,48 +28,53 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
     return name ? name.charAt(0).toUpperCase() : "A";
   };
 
-  // Get available keywords from utility
-  const availableKeywords = getAvailableKeywords();
+  // Available keywords for selection
+  const availableKeywords = [
+    "Brand Success",
+    "Trademark Awareness",
+    "Marketing Excellence",
+    "Industry Leader",
+    "Innovation",
+    "Customer Satisfaction",
+    "Global Reach",
+    "Quality Products",
+    "Sustainability"
+  ];
 
   // State for managing keywords
   const [keywords, setKeywords] = useState<string[]>(trademark.keywords || []);
   const [isEditingKeywords, setIsEditingKeywords] = useState(false);
 
-  // Toggle keyword selection using utility function
+  // Toggle keyword selection
   const toggleKeyword = (keyword: string) => {
-    const result = toggleKeywordUtil(keywords, keyword);
-    setKeywords(result.keywords);
-
-    // Show message if provided (e.g., max keywords reached)
-    if (result.message) {
-      toast.error(result.message);
+    if (keywords.includes(keyword)) {
+      // Remove keyword if already selected
+      setKeywords(keywords.filter(k => k !== keyword));
+    } else {
+      // Add keyword if not already selected (max 5)
+      if (keywords.length < 5) {
+        setKeywords([...keywords, keyword]);
+      } else {
+        toast.error("You can select a maximum of 5 keywords");
+      }
     }
   };
 
-  // Save keywords to database using utility function
+  // Save keywords to database
   const saveKeywords = async () => {
     try {
-      // Show loading toast
-      const loadingToast = toast.loading("Updating keywords...");
+      const { error } = await supabase
+        .from('trademarks')
+        .update({ keywords })
+        .eq('id', trademark.id);
 
-      // Use the utility function to update keywords
-      const result = await updateTrademarkKeywords(trademark.id, keywords);
+      if (error) throw error;
 
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
-
-      if (result.success) {
-        // Update the trademark object with the new keywords
-        trademark.keywords = [...keywords];
-        toast.success("Keywords updated successfully");
-        setIsEditingKeywords(false);
-      } else {
-        // Show error message
-        toast.error(result.error || "Failed to update keywords");
-      }
+      toast.success("Keywords updated successfully");
+      setIsEditingKeywords(false);
     } catch (error) {
       console.error('Error updating keywords:', error);
-      toast.error("Failed to update keywords. Please try again.");
+      toast.error("Failed to update keywords");
     }
   };
 
@@ -163,94 +165,54 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
 
         {/* Article Content */}
         <div className="prose max-w-none">
-          <h2 className="text-2xl font-bold text-center mb-6">{trademark.articleTitle || "Introduction"}</h2>
-          {trademark.articleContent ? (
-            <div dangerouslySetInnerHTML={{ __html: trademark.articleContent }} />
-          ) : trademark.description ? (
+          <h2 className="text-2xl font-bold text-center mb-6">Introduction</h2>
+          {trademark.description ? (
             <div dangerouslySetInnerHTML={{ __html: trademark.description }} />
           ) : (
-            <p className="text-gray-500 italic">No content available for this trademark.</p>
+            <p className="text-gray-500 italic">No description available for this trademark.</p>
           )}
         </div>
 
         {/* Article Tags */}
         <div className="mt-12 pt-6 border-t border-gray-200">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-lg font-semibold">Keywords</h3>
-            {isEditingKeywords ? (
-              <div className="flex gap-2">
+          <h3 className="text-lg font-semibold mb-3">Keywords</h3>
+          <div className="flex flex-wrap gap-2">
+            {/* Default keywords if none are provided */}
+            {(!trademark.keywords || trademark.keywords.length === 0) ? (
+              <>
                 <Button
                   variant="outline"
-                  size="sm"
-                  onClick={saveKeywords}
-                  className="flex items-center gap-1"
-                >
-                  <Save className="h-4 w-4" /> Save
+                  className="rounded-full text-xs px-4 py-1 h-auto">
+                  Brand Success
                 </Button>
                 <Button
                   variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    setKeywords(trademark.keywords || []);
-                    setIsEditingKeywords(false);
-                  }}
-                  className="flex items-center gap-1"
-                >
-                  <X className="h-4 w-4" /> Cancel
+                  className="rounded-full text-xs px-4 py-1 h-auto">
+                  Trademark Awareness
                 </Button>
-              </div>
+                <Button
+                  variant="outline"
+                  className="rounded-full text-xs px-4 py-1 h-auto">
+                  Marketing Excellence
+                </Button>
+                <Button
+                  variant="outline"
+                  className="rounded-full text-xs px-4 py-1 h-auto">
+                  Industry Leader
+                </Button>
+              </>
             ) : (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setIsEditingKeywords(true)}
-                className="flex items-center gap-1"
-              >
-                <Edit className="h-4 w-4" /> Edit Keywords
-              </Button>
+              // Display user-selected keywords
+              trademark.keywords.map((keyword, index) => (
+                <Button
+                  key={index}
+                  variant="outline"
+                  className="rounded-full text-xs px-4 py-1 h-auto">
+                  {keyword}
+                </Button>
+              ))
             )}
           </div>
-
-          {isEditingKeywords ? (
-            // Editable keywords
-            <div className="mb-4">
-              <div className="flex flex-wrap gap-2 mb-2">
-                {availableKeywords.map((keyword) => (
-                  <Button
-                    key={keyword}
-                    type="button"
-                    variant={keywords.includes(keyword) ? "default" : "outline"}
-                    className={`rounded-full text-xs px-4 py-1 h-auto ${
-                      keywords.includes(keyword) ? "bg-blue-600" : ""
-                    }`}
-                    onClick={() => toggleKeyword(keyword)}
-                  >
-                    {keyword}
-                  </Button>
-                ))}
-              </div>
-              <p className="text-sm text-gray-500">
-                Selected: {keywords.length}/5
-              </p>
-            </div>
-          ) : (
-            // Display-only keywords
-            <div className="flex flex-wrap gap-2 mb-4">
-              {keywords.length > 0 ? (
-                keywords.map((keyword, index) => (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    className="rounded-full text-xs px-4 py-1 h-auto">
-                    {keyword}
-                  </Button>
-                ))
-              ) : (
-                <p className="text-sm text-gray-500 italic">No keywords selected</p>
-              )}
-            </div>
-          )}
-
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-500">Outcome</p>
           </div>

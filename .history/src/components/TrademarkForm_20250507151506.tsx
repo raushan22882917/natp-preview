@@ -91,24 +91,33 @@ export const TrademarkForm = () => {
         }
       }
 
-      // Create the trademark data object
-      const trademarkData = {
+      // Update the form data with the logo URL (base64 string)
+      // Create a clean version of the data without any array fields
+      const cleanData = {
         owner_name: formData.owner_name,
         mark: formData.mark || null,
         application_number: formData.application_number,
         national_classes: formData.national_classes || null,
         description: formData.description || null,
         application_date: formData.application_date || null,
-        logo_url: logoUrl || null,
-        keywords: formData.keywords.length > 0 ? formData.keywords : null // Store keywords as an array
+        logo_url: logoUrl || null
+      };
+
+      // Add keywords as a string field instead of an array
+      // We'll convert it to a proper array in the database using a function
+      const keywordsString = formData.keywords.length > 0
+        ? JSON.stringify(formData.keywords)
+        : null;
+
+      const trademarkData = {
+        ...cleanData,
+        keywords_json: keywordsString // Store as JSON string temporarily
       };
 
       console.log("Saving trademark with data:", trademarkData);
 
       // Insert the trademark data into the database
-      const { error } = await supabase
-        .from('trademarks')
-        .insert([trademarkData]);
+      const { error } = await supabase.from('trademarks').insert([trademarkData]);
 
       if (error) throw error;
 

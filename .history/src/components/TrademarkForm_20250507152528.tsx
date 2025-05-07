@@ -106,11 +106,36 @@ export const TrademarkForm = () => {
       console.log("Saving trademark with data:", trademarkData);
 
       // Insert the trademark data into the database
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('trademarks')
-        .insert([trademarkData]);
+        .insert([trademarkData])
+        .select('id');
 
       if (error) throw error;
+
+      // If we have keywords and the insert was successful, update the keywords
+      if (formData.keywords.length > 0 && data && data.length > 0) {
+        const trademarkId = data[0].id;
+
+        try {
+          // Update the keywords field with the proper array
+          const { error: keywordsError } = await supabase
+            .from('trademarks')
+            .update({
+              keywords: formData.keywords,
+              keywords_json: null // Clear the temporary field
+            })
+            .eq('id', trademarkId);
+
+          if (keywordsError) {
+            console.error('Error updating keywords:', keywordsError);
+            // Continue anyway since the trademark was created
+          }
+        } catch (keywordsErr) {
+          console.error('Error in keywords update:', keywordsErr);
+          // Continue anyway since the trademark was created
+        }
+      }
 
       toast.success("Trademark created successfully!");
       navigate('/admin?tab=trademarks');

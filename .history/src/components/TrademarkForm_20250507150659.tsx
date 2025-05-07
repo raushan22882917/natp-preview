@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "./ui/textarea";
 import { Upload } from "lucide-react";
-import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil } from "@/utils/keywordUtils";
 
 export const TrademarkForm = () => {
   const navigate = useNavigate();
@@ -27,28 +26,46 @@ export const TrademarkForm = () => {
     keywords: [] as string[],
   });
 
-  // Get available keywords from utility
-  const availableKeywords = getAvailableKeywords();
+  // Available keywords for selection
+  const availableKeywords = [
+    "Brand Success",
+    "Trademark Awareness",
+    "Marketing Excellence",
+    "Industry Leader",
+    "Innovation",
+    "Customer Satisfaction",
+    "Global Reach",
+    "Quality Products",
+    "Sustainability"
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle keyword selection using utility function
+  // Handle keyword selection
   const toggleKeyword = (keyword: string) => {
     setFormData(prev => {
-      const result = toggleKeywordUtil(prev.keywords, keyword);
-
-      // Show message if provided (e.g., max keywords reached)
-      if (result.message) {
-        toast.error(result.message);
+      const currentKeywords = [...prev.keywords];
+      if (currentKeywords.includes(keyword)) {
+        // Remove keyword if already selected
+        return {
+          ...prev,
+          keywords: currentKeywords.filter(k => k !== keyword)
+        };
+      } else {
+        // Add keyword if not already selected (max 5)
+        if (currentKeywords.length < 5) {
+          return {
+            ...prev,
+            keywords: [...currentKeywords, keyword]
+          };
+        }
+        // If already 5 keywords, show a toast and don't add
+        toast.error("You can select a maximum of 5 keywords");
+        return prev;
       }
-
-      return {
-        ...prev,
-        keywords: result.keywords
-      };
     });
   };
 
@@ -91,24 +108,18 @@ export const TrademarkForm = () => {
         }
       }
 
-      // Create the trademark data object
+      // Update the form data with the logo URL (base64 string)
       const trademarkData = {
-        owner_name: formData.owner_name,
-        mark: formData.mark || null,
-        application_number: formData.application_number,
-        national_classes: formData.national_classes || null,
-        description: formData.description || null,
-        application_date: formData.application_date || null,
+        ...formData,
         logo_url: logoUrl || null,
-        keywords: formData.keywords.length > 0 ? formData.keywords : null // Store keywords as an array
+        // Ensure keywords is properly formatted as an array
+        keywords: formData.keywords.length > 0 ? formData.keywords : null
       };
 
       console.log("Saving trademark with data:", trademarkData);
 
       // Insert the trademark data into the database
-      const { error } = await supabase
-        .from('trademarks')
-        .insert([trademarkData]);
+      const { error } = await supabase.from('trademarks').insert([trademarkData]);
 
       if (error) throw error;
 

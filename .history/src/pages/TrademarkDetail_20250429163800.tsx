@@ -49,12 +49,7 @@ export default function TrademarkDetail() {
         // Combine trademark and article data
         const combinedData: TrademarkDetail = {
           ...trademarkData,
-          read_time: articleData?.read_time || '5 min read',
-          // If mark is not provided, use owner_name as fallback
-          mark: trademarkData.mark || trademarkData.owner_name,
-          // Include article content and title if available
-          articleContent: articleData?.content || null,
-          articleTitle: articleData?.title || null
+          read_time: articleData?.read_time || '5 min read'
         };
 
         setTrademark(combinedData);

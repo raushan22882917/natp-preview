@@ -18,8 +18,6 @@ export type TrademarkDetail = {
   logo_url?: string;
   read_time?: string;
   keywords?: string[]; // Added keywords field
-  articleContent?: string | null; // Added article content field
-  articleTitle?: string | null; // Added article title field
 };
 
 interface TrademarkArticleProps {
@@ -31,45 +29,64 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
     return name ? name.charAt(0).toUpperCase() : "A";
   };
 
-  // Get available keywords from utility
-  const availableKeywords = getAvailableKeywords();
+  // Available keywords for selection
+  const availableKeywords = [
+    "Brand Success",
+    "Trademark Awareness",
+    "Marketing Excellence",
+    "Industry Leader",
+    "Innovation",
+    "Customer Satisfaction",
+    "Global Reach",
+    "Quality Products",
+    "Sustainability"
+  ];
 
   // State for managing keywords
   const [keywords, setKeywords] = useState<string[]>(trademark.keywords || []);
   const [isEditingKeywords, setIsEditingKeywords] = useState(false);
 
-  // Toggle keyword selection using utility function
+  // Toggle keyword selection
   const toggleKeyword = (keyword: string) => {
-    const result = toggleKeywordUtil(keywords, keyword);
-    setKeywords(result.keywords);
-
-    // Show message if provided (e.g., max keywords reached)
-    if (result.message) {
-      toast.error(result.message);
+    if (keywords.includes(keyword)) {
+      // Remove keyword if already selected
+      setKeywords(keywords.filter(k => k !== keyword));
+    } else {
+      // Add keyword if not already selected (max 5)
+      if (keywords.length < 5) {
+        setKeywords([...keywords, keyword]);
+      } else {
+        toast.error("You can select a maximum of 5 keywords");
+      }
     }
   };
 
-  // Save keywords to database using utility function
+  // Save keywords to database
   const saveKeywords = async () => {
     try {
       // Show loading toast
       const loadingToast = toast.loading("Updating keywords...");
 
-      // Use the utility function to update keywords
-      const result = await updateTrademarkKeywords(trademark.id, keywords);
+      // Update the keywords in the database
+      const { error } = await supabase
+        .from('trademarks')
+        .update({
+          keywords: keywords
+        })
+        .eq('id', trademark.id);
 
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
-
-      if (result.success) {
-        // Update the trademark object with the new keywords
-        trademark.keywords = [...keywords];
-        toast.success("Keywords updated successfully");
-        setIsEditingKeywords(false);
-      } else {
-        // Show error message
-        toast.error(result.error || "Failed to update keywords");
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
       }
+
+      // Update the trademark object with the new keywords
+      trademark.keywords = [...keywords];
+
+      // Dismiss loading toast and show success
+      toast.dismiss(loadingToast);
+      toast.success("Keywords updated successfully");
+      setIsEditingKeywords(false);
     } catch (error) {
       console.error('Error updating keywords:', error);
       toast.error("Failed to update keywords. Please try again.");
@@ -163,13 +180,11 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
 
         {/* Article Content */}
         <div className="prose max-w-none">
-          <h2 className="text-2xl font-bold text-center mb-6">{trademark.articleTitle || "Introduction"}</h2>
-          {trademark.articleContent ? (
-            <div dangerouslySetInnerHTML={{ __html: trademark.articleContent }} />
-          ) : trademark.description ? (
+          <h2 className="text-2xl font-bold text-center mb-6">Introduction</h2>
+          {trademark.description ? (
             <div dangerouslySetInnerHTML={{ __html: trademark.description }} />
           ) : (
-            <p className="text-gray-500 italic">No content available for this trademark.</p>
+            <p className="text-gray-500 italic">No description available for this trademark.</p>
           )}
         </div>
 

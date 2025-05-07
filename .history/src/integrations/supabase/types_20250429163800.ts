@@ -165,8 +165,6 @@ export type Database = {
           logo_url: string | null
           national_classes: string | null
           owner_name: string
-          mark: string | null
-          keywords: string[] | null
         }
         Insert: {
           application_date?: string | null
@@ -177,8 +175,6 @@ export type Database = {
           logo_url?: string | null
           national_classes?: string | null
           owner_name: string
-          mark?: string | null
-          keywords?: string[] | null
         }
         Update: {
           application_date?: string | null
@@ -189,8 +185,6 @@ export type Database = {
           logo_url?: string | null
           national_classes?: string | null
           owner_name?: string
-          mark?: string | null
-          keywords?: string[] | null
         }
         Relationships: []
       }

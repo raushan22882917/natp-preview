@@ -18,8 +18,6 @@ export type TrademarkDetail = {
   logo_url?: string;
   read_time?: string;
   keywords?: string[]; // Added keywords field
-  articleContent?: string | null; // Added article content field
-  articleTitle?: string | null; // Added article title field
 };
 
 interface TrademarkArticleProps {
@@ -163,13 +161,11 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
 
         {/* Article Content */}
         <div className="prose max-w-none">
-          <h2 className="text-2xl font-bold text-center mb-6">{trademark.articleTitle || "Introduction"}</h2>
-          {trademark.articleContent ? (
-            <div dangerouslySetInnerHTML={{ __html: trademark.articleContent }} />
-          ) : trademark.description ? (
+          <h2 className="text-2xl font-bold text-center mb-6">Introduction</h2>
+          {trademark.description ? (
             <div dangerouslySetInnerHTML={{ __html: trademark.description }} />
           ) : (
-            <p className="text-gray-500 italic">No content available for this trademark.</p>
+            <p className="text-gray-500 italic">No description available for this trademark.</p>
           )}
         </div>
 
