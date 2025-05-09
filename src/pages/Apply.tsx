@@ -131,7 +131,7 @@ export default function Apply() {
                 <Input
                   id="firstName"
                   value={formData.first_name}
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   onChange={(e) =>
                     setFormData((prev) => ({
                       ...prev,
@@ -147,7 +147,7 @@ export default function Apply() {
                 </Label>
                 <Input
                   id="lastName"
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   value={formData.last_name}
                   onChange={(e) =>
                     setFormData((prev) => ({
@@ -167,7 +167,7 @@ export default function Apply() {
                 </Label>
                 <Input
                   id="email"
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   type="email"
                   value={formData.email}
                   onChange={(e) =>
@@ -182,7 +182,7 @@ export default function Apply() {
                 </Label>
                 <Input
                   id="phone"
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   type="tel"
                   value={formData.phone}
                   onChange={(e) =>
@@ -199,7 +199,7 @@ export default function Apply() {
               </Label>
               <Input
                 id="company"
-                className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                className="h-[48px] text-[#333747] border border-[#207ea0]"
                 value={formData.company}
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, company: e.target.value }))
@@ -214,7 +214,7 @@ export default function Apply() {
               </Label>
               <Input
                 id="trademark"
-                className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                className="h-[48px] text-[#333747] border border-[#207ea0]"
                 value={formData.trademark}
                 onChange={(e) =>
                   setFormData((prev) => ({
@@ -233,7 +233,7 @@ export default function Apply() {
                 </Label>
                 <Input
                   id="application-number"
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   value={formData.application_number}
                   onChange={(e) =>
                     setFormData((prev) => ({
@@ -249,7 +249,7 @@ export default function Apply() {
                 </Label>
                 <Input
                   id="application-date"
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   type="date"
                   value={formData.application_date}
                   onChange={(e) =>
@@ -268,7 +268,7 @@ export default function Apply() {
               </Label>
               <Input
                 id="class"
-                className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                className="h-[48px] text-[#333747] border border-[#207ea0]"
                 value={formData.class}
                 placeholder="25, 39, 2"
                 onChange={(e) =>
@@ -283,7 +283,7 @@ export default function Apply() {
               </Label>
               <Input
                 id="us_class"
-                className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                className="h-[48px] text-[#333747] border border-[#207ea0]"
                 placeholder="1, 20"
                 value={formData.us_class}
                 onChange={(e) =>
@@ -299,7 +299,7 @@ export default function Apply() {
                 </Label>
                 <Input
                   id="zip"
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   value={formData.zip}
                   onChange={(e) =>
                     setFormData({ ...formData, zip: e.target.value })
@@ -313,7 +313,7 @@ export default function Apply() {
                 <Input
                   id="city"
                   value={formData.city}
-                  className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                  className="h-[48px] text-[#333747] border border-[#207ea0]"
                   placeholder="United States"
                   onChange={(e) =>
                     setFormData({ ...formData, city: e.target.value })
@@ -329,7 +329,7 @@ export default function Apply() {
               <Input
                 id="country"
                 value={formData.country}
-                className="h-[48px] text-[#333747] border border-[#2C5CA4]"
+                className="h-[48px] text-[#333747] border border-[#207ea0]"
                 onChange={(e) =>
                   setFormData({ ...formData, country: e.target.value })
                 }
@@ -372,7 +372,7 @@ export default function Apply() {
               </Label>
               <Textarea
                 id="message"
-                className="h-[180px] text-[#333747] border border-[#2C5CA4]"
+                className="h-[180px] text-[#333747] border border-[#207ea0]"
                 placeholder="Enter your message..."
                 value={formData.message}
                 onChange={(e) =>

@@ -145,7 +145,7 @@ export default function About() {
           <div className="md:w-1/2 relative">
             <div className="sticky top-24">
               <h2 className="text-4xl text-[#333747] font-semibold mb-6 leading-snug">
-                You focus on your business we manage your brand visibility.
+                You focus on your business, we manage your brand visibility.
               </h2>
               {/* <p className="text-[#333747] font-semibold text-xl">
                 Our services allow you to concentrate on growing your brand

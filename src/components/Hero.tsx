@@ -48,7 +48,7 @@ const Hero = () => {
       style={{
         backgroundImage:
           "url('https://wtpregister.com/images/tpm/front-page-image.png')",
-        backgroundColor: "#2C5CA4",
+        backgroundColor: "#005ea2",
         backgroundBlendMode: "overlay",
       }}>
       <div className="max-w-3xl px-4">
