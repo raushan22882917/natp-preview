@@ -4,14 +4,14 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#2557A7] text-white py-10 px-4">
+    <footer className="bg-[#005ea2] text-white py-10 px-4">
       <div className="max-w-[85rem] mx-auto flex flex-col">
         {/* Main footer content */}
         <div className="flex justify-between mb-20 mt-20">
           {/* Logo and contact section */}
           <div className="flex flex-col">
             <div className="mb-8">
-              <img src="/images/Logo.png" alt="WTP Logo" className="w-56 h-auto" />
+              <img src="/images/mainLogo.svg" alt="WTP Logo" className="w-44 h-auto" />
             </div>
             <div className="mt-auto">
               <p className="font-medium mb-2">Contact:</p>

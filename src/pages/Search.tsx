@@ -138,7 +138,7 @@ export default function Search() {
     {
       question: "How to Contact Support?",
       answer:
-        "For further assistance, use the 'Contact' button to reach our support team. We are available to address inquiries and ensure reliable guidance on trademark-related matters.",
+        "For further assistance, use the 'Contact Us' button to reach our support team. We are available to address inquiries and ensure reliable guidance on trademark-related matters.",
     },
   ];
 
@@ -302,8 +302,8 @@ export default function Search() {
             <p className="text-[#333747] text-lg font-semibold mb-6">
             Get clear answers to key questions about our trademark search and data access tools.
             </p>
-            <button className="bg-[#00A3D1] text-white px-6 py-3 shadow-md hover:bg-[#0088b0] transition-colors text-lg font-semibold">
-              Contact
+            <button className="bg-[#207ea0] text-white px-6 py-3 shadow-md hover:bg-[#207ea0] transition-colors text-lg font-semibold">
+              Contact Us
             </button>
           </div>
 
@@ -312,14 +312,14 @@ export default function Search() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="border-t border-[#2c5ca4] py-6 last:border-b">
+                className="border-t border-[#207ea0] py-6 last:border-b">
                 <button
                   className="w-full text-left flex justify-between items-center"
                   onClick={() => toggleFAQ(index)}>
                   <span className="text-xl font-medium text-[#333747]">
                     {faq.question}
                   </span>
-                  <span className="text-[#2c5ca4]">
+                  <span className="text-[#207ea0]">
                     {openIndex === index ? (
                       <ChevronUp size={24} />
                     ) : (

@@ -117,7 +117,7 @@ export default function Contact() {
                 Assistance is available for all inquiries.
               </p>
               <div className="flex items-center space-x-3">
-                <Mail className="text-[#0098cb] w-6 h-6" />
+                <Mail className="text-[#207ea0] w-6 h-6" />
                 <p className="text-[#333747]">info@natp-trademark.com</p>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full border border-[#2C5CA4] p-2 focus:outline-none"
+                    className="w-full border border-[#207ea0] p-2 focus:outline-none"
                   />
                 </div>
 
@@ -150,7 +150,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full border border-[#2C5CA4] p-2 focus:outline-none"
+                    className="w-full border border-[#207ea0] p-2 focus:outline-none"
                   />
                 </div>
 
@@ -168,7 +168,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full border border-[#2C5CA4] p-2 focus:outline-none resize-none"
+                    className="w-full border border-[#207ea0] p-2 focus:outline-none resize-none"
                   />
                 </div>
 
@@ -189,7 +189,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#0098cb] text-white px-6 py-2 shadow-sm">
+                  className="bg-[#207ea0] text-white px-6 py-2 shadow-sm">
                   {isSubmitting ? "Sending..." : "Send"}
                 </button>
               </form>
@@ -212,18 +212,18 @@ export default function Contact() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="border border-cyan-600 px-4 py-3 w-full sm:w-[300px] h-[40px] focus:outline-none text-[#212529]"
+              className="border border-[#207ea0] px-4 py-3 w-full sm:w-[300px] h-[40px] focus:outline-none text-[#212529]"
             />
             <button
               type="submit"
-              className="bg-[#0098cb] text-white px-6 py-2 shadow-sm">
+              className="bg-[#207ea0] text-white px-6 py-2 shadow-sm">
               Sign Up
             </button>
           </form>
 
           <p className="text-[10px] text-gray-500 mt-4">
             By selecting "Sign Up", you confirm your agreement to our
-            <a href="#" className="underline">
+            <a href="#" className="underline ml-1">
               Terms and Conditions.
             </a>
           </p>

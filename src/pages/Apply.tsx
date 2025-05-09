@@ -70,7 +70,7 @@ export default function Apply() {
 
       <div className="max-w-6xl mx-auto py-12 px-4">
         <div className="mb-12">
-          <p className="text-[#333747] mb-6">Visibility</p>
+
           <h2 className="text-5xl font-semibold mb-6 text-[#333747]">
           Strengthen Brand Visibility Through Trademark Publication
           </h2>
@@ -115,7 +115,6 @@ export default function Apply() {
         </div>
 
         <div className=" p-8 rounded-lg shadow-sm">
-          <p className="text-center mb-4 text-[#333747]">Seamless</p>
           <h3 className="text-4xl font-semibold mb-6 text-center text-[#333747]">
             Trademark Inquiry
           </h3>
@@ -394,7 +393,7 @@ export default function Apply() {
               <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label>
             </div>
             <div className="flex justify-center items-center">
-              <Button type="submit" className=" bg-[#00A3E0] text-white hover:bg-[#00A3E0] px-7 py-6 shadow-xl">
+              <Button type="submit" className=" bg-[#207ea0] text-white hover:bg-[#207ea0] px-7 py-6 shadow-xl">
                 Submit
               </Button>
             </div>

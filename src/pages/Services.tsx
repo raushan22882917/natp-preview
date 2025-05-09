@@ -52,9 +52,9 @@ export default function Services() {
             </p>
             <Button
               asChild
-              className="bg-[#00A3E0] hover:bg-[#00A3E0] text-white py-6 px-8 shadow-xl">
+              className="bg-[#207ea0] hover:bg-[#207ea0] text-white py-6 px-8 shadow-xl">
               <Link to="/services/publication" className="inline-block">
-                Learn More
+               More Info
               </Link>
             </Button>
           </div>
@@ -83,9 +83,9 @@ export default function Services() {
             </p>
             <Button
               asChild
-              className="bg-[#00A3E0] hover:bg-[#00A3E0] text-white float-end py-6 px-8 shadow-xl">
+              className="bg-[#207ea0] hover:bg-[#207ea0] text-white float-end py-6 px-8 shadow-xl">
               <Link to="/services/article" className="inline-block">
-                Learn More
+                More Info
               </Link>
             </Button>
           </div>
@@ -114,9 +114,9 @@ export default function Services() {
             </p>
             <Button
               asChild
-              className="bg-[#00A3E0] text-white py-6 px-8 shadow-xl hover:bg-[#00A3E0]">
+              className="bg-[#207ea0] text-white py-6 px-8 shadow-xl hover:bg-[#207ea0]">
               <Link to="/services/seo" className="inline-block">
-                Learn More
+                More Info
               </Link>
             </Button>
           </div>
@@ -205,7 +205,7 @@ export default function Services() {
           <div className="flex justify-center">
             <Button
               asChild
-              className="bg-[#00A3E0] text-white hover:bg-[#00A3E0] py-6 px-8 shadow-xl ">
+              className="bg-[#207ea0] text-white hover:bg-[#207ea0] py-6 px-8 shadow-xl ">
               <Link to="/contact">Apply Now</Link>
             </Button>
           </div>

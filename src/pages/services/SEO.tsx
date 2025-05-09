@@ -99,8 +99,8 @@ export default function SEO() {
             </div>
 
             <div>
-              <button className="mx-auto bg-[#00A3E0] mt-5 text-white shadow-md py-3 px-8 block">
-                Contact
+              <button className="mx-auto bg-[#207ea0] mt-5 text-white shadow-md py-3 px-8 block">
+                Contact Us
               </button>
             </div>
 

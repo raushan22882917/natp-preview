@@ -54,7 +54,7 @@ export default function Index() {
       {/* Main content starts immediately after Hero */}
       <div className="max-w-5xl mx-auto flex justify-between gap-10 items-start my-16">
         <div className="w-1/2">
-          <h2 className="text-[#333747] text-[50px] font-semibold my-4 leading-snug">
+          <h2 className="text-[#333747] text-[35px] font-semibold my-4 leading-snug">
             You focus on your business, we manage your brand visibility.
           </h2>
           <p className="text-lg font-semibold text-[#333747] mb-5">
@@ -62,8 +62,8 @@ export default function Index() {
             Through professional trademark publication and marketing, we
             position your brand effectively in a competitive environment.
           </p>
-          <button className="bg-[#00a3d1] shadow-xl text-white px-6 py-3 my-4">
-            Learn More
+          <button className="bg-[#207ea0] shadow-xl text-white px-6 py-3 my-4">
+            More Info
           </button>
         </div>
         <img
@@ -99,8 +99,8 @@ export default function Index() {
               and SEO-focused visibility enhancement.
             </p>
           </div>
-          <button className="bg-[#00a3d1] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
-            Learn More
+          <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+            More Info
           </button>
         </div>
       </div>
@@ -114,7 +114,7 @@ export default function Index() {
               alt="SEO Strategies"
               className="w-[220px] mx-auto mb-8"
             />
-            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
+            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-[3.4rem]">
               Targeted SEO Measures for Improved Online Visibility
             </h3>
             <p className="text-[#333747] text-[16px] font-semibold mb-6">
@@ -122,8 +122,8 @@ export default function Index() {
               in search rankings.
             </p>
           </div>
-          <button className="bg-[#00a3d1] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
-            Learn More
+          <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+            More Info
           </button>
         </div>
       </div>
@@ -145,8 +145,8 @@ export default function Index() {
               security.
             </p>
           </div>
-          <button className="bg-[#00a3d1] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
-            Learn More
+          <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+            More Info
           </button>
         </div>
       </div>
@@ -209,14 +209,14 @@ export default function Index() {
           {/* FAQs */}
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="border-t border-[#2c5ca4] py-4">
+              <div key={index} className="border-t border-[#207ea0] py-4">
                 <div
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggleFAQ(index)}>
                   <h3 className="  text-[#333747] text-xl font-semibold">
                     {faq.question}
                   </h3>
-                  <span className="text-[#2c5ca4] text-xl">
+                  <span className="text-[#207ea0] text-xl">
                     {openIndex === index ? <ChevronUp /> : <ChevronDown />}
                   </span>
                 </div>
@@ -240,7 +240,7 @@ export default function Index() {
           We’re hiring qualified professionals now.
         </p>
         <button className="bg-[#207ea0]  text-white  py-3 px-6  shadow-xl mr-auto">
-          Contact HR
+          Contact Us
         </button>
       </div>
 

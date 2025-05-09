@@ -184,7 +184,7 @@ export default function Article() {
               </p>
               <Button
                 asChild
-                className="bg-[#00A3E0] hover:bg-[#00A3E0]  mt-5 text-white shadow-md py-6 px-8">
+                className="bg-[#207ea0] hover:bg-[#207ea0]  mt-5 text-white shadow-md py-6 px-8">
                 <Link to="/services/publication" className="inline-block">
                   Apply Now
                 </Link>

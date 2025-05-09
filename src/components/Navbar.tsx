@@ -47,10 +47,10 @@ export const Navbar = () => {
   }, [isIndexPage]);
 
   return (
-    <nav className={`${isScrolled ? 'sticky top-0 bg-[#2C5CA4] shadow-md' : 'absolute top-0 left-0 bg-transparent'} z-50 w-full py-4 px-6 md:py-[50px] md:px-12 font-inter transition-all duration-300`}>
+    <nav className={`${isScrolled ? 'sticky top-0 bg-[#005ea2] shadow-md' : 'absolute top-0 left-0 bg-transparent'} z-50 w-full py-4 px-6 md:py-[50px] md:px-12 font-inter transition-all duration-300`}>
       <div className="max-w-[90vw] mx-auto flex justify-between items-center">
         <Link to="/" className="text-white text-xl font-bold flex items-center">
-          <img src="/images/Logo.png" className="w-40 h-55" alt="Logo" />
+          <img src="/images/mainLogo.svg" className="w-44 h-55" alt="Logo" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -74,16 +74,16 @@ export const Navbar = () => {
                 </NavigationMenuPrimitive.Trigger>
                 <NavigationMenuContent className="mt-0 p-0">
                   <div className="flex flex-col w-30 shadow-lg">
-                    <Link to="/services" className="block px-4 py-3 bg-[#2c5ca4] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
+                    <Link to="/services" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Services
                     </Link>
-                    <Link to="/services/publication" className="block px-4 py-3 bg-[#2c5ca4] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
+                    <Link to="/services/publication" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Publication
                     </Link>
-                    <Link to="/services/article" className="block px-4 py-3 bg-[#2c5ca4] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
+                    <Link to="/services/article" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Article
                     </Link>
-                    <Link to="/services/seo" className="block px-4 py-3 bg-[#1e5bb0] hover:bg-[#2365c8] text-center text-base text-white font-medium">
+                    <Link to="/services/seo" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium">
                       SEO
                     </Link>
                   </div>
@@ -160,28 +160,28 @@ export const Navbar = () => {
                   <div className="flex flex-col w-full max-w-[200px]">
                     <Link
                       to="/services"
-                      className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium border-b border-[#1a4c96]"
+                      className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium border-b border-[#1a4c96]"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Services
                     </Link>
                     <Link
                       to="/services/publication"
-                      className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium border-b border-[#1a4c96]"
+                      className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium border-b border-[#1a4c96]"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Publication
                     </Link>
                     <Link
                       to="/services/article"
-                      className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium border-b border-[#1a4c96]"
+                      className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium border-b border-[#1a4c96]"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Article
                     </Link>
                     <Link
                       to="/services/seo"
-                      className="block px-4 py-3 bg-[#1e5bb0] text-center text-base text-white font-medium"
+                      className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       SEO
