@@ -155,11 +155,12 @@ export default function Search() {
       {/* Search Hero Section */}
       <div className="min-h-[300px] flex items-center justify-center text-center px-4">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-semibold  text-[#333747] mb-6">
-          Access Our Private Trademark Database
+          <h1 className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-6">
+            Access Our Private Trademark Database
           </h1>
-          <p className="text-lg md:text-xl mb-8 text-[#333747]">
-          Utilize expert services to strengthen brand visibility and explore trademark opportunities.
+          <p className="text-lg sm:text-xl mb-8 text-[#333747]">
+            Utilize expert services to strengthen brand visibility and explore
+            trademark opportunities.
           </p>
           <form
             onSubmit={handleSearch}
@@ -168,16 +169,11 @@ export default function Search() {
               <Input
                 type="text"
                 placeholder="Enter owner name, application number, or keywords"
-                className="bg-white w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
+                className="bg-white w-full sm:w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoComplete="off"
               />
-              {/* {loading && (
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 z-20">
-                  <div className="animate-spin h-4 w-4 border-2 border-blue-500 rounded-full border-t-transparent"></div>
-                </div>
-              )} */}
             </div>
             <Button
               type="submit"
@@ -191,7 +187,7 @@ export default function Search() {
 
       {/* Search Results */}
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <SearchResults 
+        <SearchResults
           results={results}
           loading={loading}
           searchSubmitted={searchSubmitted}
@@ -242,27 +238,24 @@ export default function Search() {
       </div> */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-2 text-center">
-          <h2 className="text-[50px] font-semibold text-[#333747] mb-4 px-20">
-          Find Your Trademark Using the Quick Search Tool
+          <h2 className="text-4xl sm:text-5xl md:text-[50px] font-semibold text-[#333747] mb-4 px-2 sm:px-10 md:px-20">
+            Find Your Trademark Using the Quick Search Tool
           </h2>
 
-          <div className="mt-10 grid md:grid-cols-3 gap-15">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-15">
             {features.map((feature, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center text-center">
                 <div className="mb-4">
                   <div className="w-14 h-14 mb-4 flex items-center justify-center">
-                    <img
-                      src="/images/1.svg"
-                      alt=""
-                    />
+                    <img src="/images/1.svg" alt="" />
                   </div>
                 </div>
-                <h3 className="text-[24px] font-semibold text-[#333747] mb-2">
+                <h3 className="text-xl sm:text-2xl md:text-[24px] font-semibold text-[#333747] mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-[#333747] text-lg font-semibold">
+                <p className="text-[#333747] text-base sm:text-lg font-semibold">
                   {feature.description}
                 </p>
               </div>
@@ -295,12 +288,15 @@ export default function Search() {
       </div> */}
 
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Section */}
-          <div className="md:col-span-1">
-            <h2 className="text-5xl font-semibold text-[#333747] mb-6">FAQs</h2>
-            <p className="text-[#333747] text-lg font-semibold mb-6">
-            Get clear answers to key questions about our trademark search and data access tools.
+          <div className="md:col-span-1 mb-8 md:mb-0">
+            <h2 className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-6">
+              FAQs
+            </h2>
+            <p className="text-[#333747] text-lg sm:text-xl font-semibold mb-6">
+              Get clear answers to key questions about our trademark search and
+              data access tools.
             </p>
             <button className="bg-[#207ea0] text-white px-6 py-3 shadow-md hover:bg-[#207ea0] transition-colors text-lg font-semibold">
               Contact Us
@@ -308,7 +304,7 @@ export default function Search() {
           </div>
 
           {/* Right Section */}
-          <div className="md:col-span-2 space-y-0 ml-16">
+          <div className="md:col-span-2 space-y-6">
             {faqs.map((faq, index) => (
               <div
                 key={index}
@@ -316,7 +312,7 @@ export default function Search() {
                 <button
                   className="w-full text-left flex justify-between items-center"
                   onClick={() => toggleFAQ(index)}>
-                  <span className="text-xl font-medium text-[#333747]">
+                  <span className="text-xl sm:text-2xl font-medium text-[#333747]">
                     {faq.question}
                   </span>
                   <span className="text-[#207ea0]">
@@ -328,7 +324,7 @@ export default function Search() {
                   </span>
                 </button>
                 {openIndex === index && (
-                  <div className="mt-4 text-[#333747] text-lg">
+                  <div className="mt-4 text-[#333747] text-lg sm:text-xl">
                     {faq.answer}
                   </div>
                 )}
@@ -338,7 +334,7 @@ export default function Search() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -52,12 +52,12 @@ export default function Index() {
       <Hero />
 
       {/* Main content starts immediately after Hero */}
-      <div className="max-w-5xl mx-auto flex justify-between gap-10 items-start my-16">
-        <div className="w-1/2">
-          <h2 className="text-[#333747] text-[35px] font-semibold my-4 leading-snug">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-10 items-center my-16 px-4">
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <h2 className="text-[#333747] text-[28px] md:text-[35px] font-semibold my-4 leading-snug">
             You focus on your business, we manage your brand visibility.
           </h2>
-          <p className="text-lg font-semibold text-[#333747] mb-5">
+          <p className="text-base md:text-lg font-semibold text-[#333747] mb-5">
             Our team handles brand visibility, enabling you to focus on growth.
             Through professional trademark publication and marketing, we
             position your brand effectively in a competitive environment.
@@ -68,168 +68,162 @@ export default function Index() {
         </div>
         <img
           src="/images/Icon_You_focus_on_your_business,_we_manage_your_brand_visibility.svg"
-          className="rounded-md shadow w-[55%] self-center"
-          alt=""
+          className="rounded-md shadow w-full md:w-[55%]"
+          alt="Business Illustration"
         />
       </div>
 
       {/* Stats Section */}
       <section className="py-16 px-6">
-  <div className="max-w-5xl font-inter mx-auto p-2">
-    <h2 className="text-[38px] w-[70%] leading-tight font-semibold text-[#333747] mb-12">
-      Integrated Services for Brand Visibility and Trademark Recognition
+        <div className="max-w-5xl font-inter mx-auto p-2">
+          <h2 className="text-[38px] w-[70%] leading-tight font-semibold text-[#333747] mb-12">
+            Integrated Services for Brand Visibility and Trademark Recognition
+          </h2>
+
+          {/* Cards */}
+          <div className="grid md:grid-cols-3 gap-10">
+            {/* Card 1 */}
+            <div className="flex flex-col shadow-sm h-full">
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <img
+                    src="/images/Content Service.svg"
+                    alt="Article Creation"
+                    className="w-[220px] mx-auto mb-8"
+                  />
+                  <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
+                    Professional Content Services for Trademark Promotion
+                  </h3>
+                  <p className="text-[#333747] text-[16px] font-semibold mb-6">
+                    We provide trademark publication, expert article
+                    development, and SEO-focused visibility enhancement.
+                  </p>
+                </div>
+                <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+                  More Info
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="flex flex-col shadow-sm h-full">
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <img
+                    src="/images/Targeted SEO.svg"
+                    alt="SEO Strategies"
+                    className="w-[220px] mx-auto mb-8"
+                  />
+                  <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-[3.4rem]">
+                    Targeted SEO Measures for Improved Online Visibility
+                  </h3>
+                  <p className="text-[#333747] text-[16px] font-semibold mb-6">
+                    We apply proven strategies to strengthen your brand’s
+                    presence in search rankings.
+                  </p>
+                </div>
+                <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+                  More Info
+                </button>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="flex flex-col shadow-sm h-full">
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <img
+                    src="/images/Brand Recognition and Protection.svg"
+                    alt="Trademark Services"
+                    className="w-[220px] mx-auto mb-8"
+                  />
+                  <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
+                    Trademark Publication for Brand Recognition and Protection
+                  </h3>
+                  <p className="text-[#333747] text-[16px] font-semibold mb-6">
+                    We publish your trademark to support brand visibility and
+                    legal security.
+                  </p>
+                </div>
+                <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+                  More Info
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-20 px-4 bg-white max-w-5xl mx-auto">
+  {/* Left Section */}
+  <div className="w-full md:w-1/2 mb-8 md:mb-0">
+    <h2 className="text-2xl sm:text-3xl md:text-[35px] leading-snug font-bold text-[#333747] text-center md:text-left">
+      Explore our track record in effective brand visibility and registration support.
     </h2>
+  </div>
 
-    {/* Cards */}
-    <div className="grid md:grid-cols-3 gap-10">
-      {/* Card 1 */}
-      <div className="flex flex-col shadow-sm h-full">
-        <div className="flex flex-col justify-between h-full">
-          <div>
-            <img
-              src="/images/Content Service.svg"
-              alt="Article Creation"
-              className="w-[220px] mx-auto mb-8"
-            />
-            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
-              Professional Content Services for Trademark Promotion
-            </h3>
-            <p className="text-[#333747] text-[16px] font-semibold mb-6">
-              We provide trademark publication, expert article development,
-              and SEO-focused visibility enhancement.
-            </p>
-          </div>
-          <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
-            More Info
-          </button>
-        </div>
-      </div>
+  {/* Right Section */}
+  <div className="w-full md:w-1/2 space-y-6">
+    <p className="text-[#333747] text-base sm:text-lg font-semibold leading-relaxed text-center md:text-left">
+      Our services achieve consistently high success rates, securing the visibility your brand requires. 
+      Numerous clients have relied on our expertise to strengthen their market presence.
+    </p>
 
-      {/* Card 2 */}
-      <div className="flex flex-col shadow-sm h-full">
-        <div className="flex flex-col justify-between h-full">
-          <div>
-            <img
-              src="/images/Targeted SEO.svg"
-              alt="SEO Strategies"
-              className="w-[220px] mx-auto mb-8"
-            />
-            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-[3.4rem]">
-              Targeted SEO Measures for Improved Online Visibility
-            </h3>
-            <p className="text-[#333747] text-[16px] font-semibold mb-6">
-              We apply proven strategies to strengthen your brand’s presence
-              in search rankings.
-            </p>
-          </div>
-          <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
-            More Info
-          </button>
-        </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="text-center sm:text-left">
+        <p className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-3">95%</p>
+        <p className="text-sm sm:text-base text-[#333747]">
+          Client satisfaction remains our core commitment.
+        </p>
       </div>
+      <div className="text-center sm:text-left">
+        <p className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-3">100%</p>
+        <p className="text-sm sm:text-base text-[#333747]">
+          All trademark publications adhere to strict quality standards.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-      {/* Card 3 */}
-      <div className="flex flex-col shadow-sm h-full">
-        <div className="flex flex-col justify-between h-full">
-          <div>
-            <img
-              src="/images/Brand Recognition and Protection.svg"
-              alt="Trademark Services"
-              className="w-[220px] mx-auto mb-8"
-            />
-            <h3 className="text-2xl font-semibold text-[#333747] -mt-5 leading-tight mb-6">
-              Trademark Publication for Brand Recognition and Protection
+
+      {/* FAQs Section */}
+      <section className="py-16 px-4 sm:px-6">
+  <div className="max-w-5xl mx-auto text-center sm:px-10 lg:px-20">
+    {/* Heading */}
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#333747] mb-6">
+      Frequently Asked Questions (FAQs)
+    </h2>
+    <p className="text-[#333747] mb-12 text-base sm:text-lg font-semibold">
+      Information on trademark publication, content services, and SEO support.
+    </p>
+
+    {/* FAQs */}
+    <div className="space-y-4 text-left">
+      {faqs.map((faq, index) => (
+        <div key={index} className="border-t border-[#207ea0] py-4">
+          <div
+            className="flex justify-between items-center cursor-pointer"
+            onClick={() => toggleFAQ(index)}
+          >
+            <h3 className="text-[#333747] text-lg sm:text-xl font-semibold">
+              {faq.question}
             </h3>
-            <p className="text-[#333747] text-[16px] font-semibold mb-6">
-              We publish your trademark to support brand visibility and legal
-              security.
-            </p>
+            <span className="text-[#207ea0] text-xl">
+              {openIndex === index ? <ChevronUp /> : <ChevronDown />}
+            </span>
           </div>
-          <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
-            More Info
-          </button>
+          {openIndex === index && (
+            <p className="text-[#333747] text-sm sm:text-base mt-4 font-medium">
+              {faq.answer}
+            </p>
+          )}
         </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
 
-
-      <div className="flex flex-col md:flex-row items-start justify-between gap-8 py-20 bg-white max-w-5xl mx-auto">
-        {/* Left Section */}
-        <div className="md:w-1/2">
-          <h2 className="text-3xl md:text-[35px] leading-10 font-bold text-[#333747]">
-            Explore
-            our track record in effective brand visibility and registration
-            support.
-          </h2>
-        </div>
-
-        {/* Right Section */}
-        <div className="md:w-1/2 space-y-6">
-          <p className="text-[#333747] text-lg font-semibold mb-6 leading-relaxed">
-            Our services achieve consistently high success rates, securing the
-            visibility your brand requires. Numerous clients have relied on our
-            expertise to strengthen their market presence.
-          </p>
-
-          <div className="grid grid-cols-2 gap-6">
-            <div className="">
-              <p className="text-5xl font-semibold mr-36 mb-5 text-[#333747]">
-                95%
-              </p>
-              <p className="text-[16px] text-[#333747]">
-                Client satisfaction remains our core commitment.
-              </p>
-            </div>
-            <div className="">
-              <p className="text-5xl font-semibold mr-36 mb-5 text-[#333747]">
-                100%
-              </p>
-              <p className="text-[16px] text-[#333747]">
-                All trademark publications adhere to strict quality standards.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* FAQs Section */}
-      <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto text-center px-40">
-          {/* Heading */}
-          <h2 className="text-5xl font-semibold  text-[#333747] mb-6">
-            Frequently Asked Questions (FAQs)
-          </h2>
-          <p className="text-[#333747] mb-12 text-lg font-semibold">
-            Information on trademark publication, content services, and SEO
-            support.
-          </p>
-
-          {/* FAQs */}
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border-t border-[#207ea0] py-4">
-                <div
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={() => toggleFAQ(index)}>
-                  <h3 className="  text-[#333747] text-xl font-semibold">
-                    {faq.question}
-                  </h3>
-                  <span className="text-[#207ea0] text-xl">
-                    {openIndex === index ? <ChevronUp /> : <ChevronDown />}
-                  </span>
-                </div>
-                {openIndex === index && (
-                  <p className="text-[#333747] text-left text-[16px] mr-5 mt-4 font-semibold">
-                    {faq.answer}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Hiring Section */}
       <div className="pt-12 pb-20 px-4  text-center">

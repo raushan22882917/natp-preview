@@ -107,10 +107,11 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="pt-20 px-8">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-start">
-            <div className="!pr-[11rem] self-center">
-              <h2 className="text-4xl font-semibold mb-4 text-[#333747]">
+        <div className="pt-20 px-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+            {/* Left Section */}
+            <div className="md:pr-16">
+              <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-[#333747]">
                 Get in Touch
               </h2>
               <p className="text-gray-700 mb-6">
@@ -122,6 +123,7 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Right Section - Contact Form */}
             <div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -135,7 +137,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full border border-[#207ea0] p-2 focus:outline-none"
+                    className="w-full border border-[#207ea0] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#207ea0]"
                   />
                 </div>
 
@@ -150,7 +152,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full border border-[#207ea0] p-2 focus:outline-none"
+                    className="w-full border border-[#207ea0] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#207ea0]"
                   />
                 </div>
 
@@ -168,7 +170,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full border border-[#207ea0] p-2 focus:outline-none resize-none"
+                    className="w-full border border-[#207ea0] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#207ea0] resize-none"
                   />
                 </div>
 
@@ -189,7 +191,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#207ea0] text-white px-6 py-2 shadow-sm">
+                  className="bg-[#207ea0] text-white px-6 py-3 rounded shadow-sm hover:bg-[#1a6b89] transition-colors duration-200">
                   {isSubmitting ? "Sending..." : "Send"}
                 </button>
               </form>
@@ -198,7 +200,8 @@ export default function Contact() {
         </div>
       </main>
 
-      <div className="pt-4 pb-16  text-center">
+      {/* Newsletter Section */}
+      <div className="pt-10 pb-16 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#212529] mb-6">
             Latest Information on Trademark Publications
@@ -212,11 +215,11 @@ export default function Contact() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="border border-[#207ea0] px-4 py-3 w-full sm:w-[300px] h-[40px] focus:outline-none text-[#212529]"
+              className="border border-[#207ea0] px-4 py-3 w-full sm:w-[300px] rounded h-[48px] focus:outline-none text-[#212529]"
             />
             <button
               type="submit"
-              className="bg-[#207ea0] text-white px-6 py-2 shadow-sm">
+              className="bg-[#207ea0] text-white px-6 py-3 rounded shadow-sm hover:bg-[#1a6b89] transition-colors duration-200">
               Sign Up
             </button>
           </form>

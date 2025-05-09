@@ -57,7 +57,7 @@ export const Navbar = () => {
         <div className="hidden md:flex gap-16 items-center">
           <Link
             to="/about"
-            className="text-white hover:text-white/80 transition-colors duration-200 text-lg font-medium
+            className="text-white hover:text-white/80 transition-colors duration-200 text-xl font-medium
             "
           >
             About Us
@@ -68,9 +68,9 @@ export const Navbar = () => {
               <NavigationMenuItem>
                 {/* Custom trigger without the dropdown icon */}
                 <NavigationMenuPrimitive.Trigger
-                  className="text-white hover:text-white/80 transition-colors duration-200 text-lg font-medium"
+                  className="text-white hover:text-white/80 transition-colors duration-200 text-xl font-medium"
                 >
-                  Services
+                  Overview
                 </NavigationMenuPrimitive.Trigger>
                 <NavigationMenuContent className="mt-0 p-0">
                   <div className="flex flex-col w-30 shadow-lg">
@@ -94,31 +94,31 @@ export const Navbar = () => {
 
           <Link
             to="/search"
-            className="text-white text-lg hover:text-white/80 transition-colors duration-200 font-semibold"
+            className="text-white text-xl hover:text-white/80 transition-colors duration-200 font-semibold"
 
           >
-            Search
+            Database
           </Link>
           <Link
             to="/contact"
-            className="text-white text-lg hover:text-white/80 font-medium transition-colors duration-200"
+            className="text-white text-xl hover:text-white/80 font-medium transition-colors duration-200"
 
           >
-            Contact
+            Contact Us
           </Link>
-          <Link
+          {/* <Link
             to="/terms"
-            className="text-white hover:text-white/80 transition-colors duration-200 text-lg font-medium"
+            className="text-white hover:text-white/80 transition-colors duration-200 text-xl font-medium"
 
           >
             Terms and Conditions
-          </Link>
+          </Link> */}
           <Link
             to="/apply"
-            className={`font-medium px-5 py-2 transition-all duration-200 hover:shadow-md ${
+            className={`font-medium px-5 py-2 text-xl transition-all duration-200 hover:shadow-md ${
               isIndexPage
-                ? (isScrolled ? 'bg-white text-blue-700' : 'bg-white text-blue-700')
-                : 'bg-white text-blue-700'
+                ? (isScrolled ? 'bg-white text-[#005ea2] ' : 'bg-white text-[#005ea2] ')
+                : 'bg-white text-[#005ea2] '
             }`}
           >
             Apply Now
@@ -136,7 +136,7 @@ export const Navbar = () => {
             <div className="flex flex-col h-full p-6">
               <div className="flex justify-between items-center mb-8">
                 <Link to="/" className="text-[#f0f0f0] text-xl font-bold" onClick={() => setIsMenuOpen(false)}>
-                  <img src="https://wtpregister.com/images/tpm/LOGO-light.png" className="w-20" alt="Logo" />
+                  <img src="/images/mainLogo.svg" className="w-20" alt="Logo" />
                 </Link>
                 <button
                   onClick={() => setIsMenuOpen(false)}
@@ -163,7 +163,7 @@ export const Navbar = () => {
                       className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium border-b border-[#1a4c96]"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Services
+                      Overview
                     </Link>
                     <Link
                       to="/services/publication"
@@ -194,26 +194,26 @@ export const Navbar = () => {
                   className="text-[#f0f0f0] hover:text-[#f0f0f0]/80 font-medium text-lg py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Search
+                  Database
                 </Link>
                 <Link
                   to="/contact"
                   className="text-[#f0f0f0] hover:text-[#f0f0f0]/80 font-medium text-lg py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Contact
+                  Contact Us
                 </Link>
-                <Link
+                {/* <Link
                   to="/terms"
                   className="text-[#f0f0f0] hover:text-[#f0f0f0]/80 font-medium text-lg py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Terms and Conditions
-                </Link>
+                </Link> */}
 
                 <Link
                   to="/apply"
-                  className="bg-white  text-center px-5 py-3 mt-4 font-medium"
+                  className="bg-white text-[#005ea2]  text-center px-5 py-3 mt-4 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Apply Now

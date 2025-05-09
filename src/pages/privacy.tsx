@@ -118,15 +118,15 @@ export default function Privacy() {
       <Navbar />
 
       <div className="max-w-5xl mx-auto min-h-screen py-8">
-        <div>
-          <h2 className="text-5xl font-semibold mb-4 text-[#333747]">
-            Terms & Conditions
-          </h2>
-          <p className="font-semibold text-lg text-[#333747]">
-            Read our terms and conditions and privacy policy to understand your
-            rights and responsibilities
-          </p>
-        </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4 text-[#333747]">
+              Terms & Conditions
+            </h2>
+            <p className="text-base sm:text-lg font-semibold text-[#333747]">
+              Read our terms and conditions and privacy policy to understand
+              your rights and responsibilities.
+            </p>
+          </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-12 gap-8 px-6 mt-32">
           {/* Sidebar */}
           <div className="col-span-12 md:col-span-4 lg:col-span-4">

@@ -25,23 +25,19 @@ export default function Terms() {
     },
     {
       title: "RIGHT OF WITHDRAWAL",
-      content:
-        `4.1 Contract Formation: </br><p style="padding-left: 10px;">• The agreement becomes binding when the Customer submits the Service Fee in response to the applicable offer. </p>4.2 Withdrawal Period: <p style="padding-left: 10px;">• The Customer may cancel the agreement within seven (7) days of payment without explanation. </p><p style="padding-left: 10px;">• The agreement takes effect upon payment. </p>`,
+      content: `4.1 Contract Formation: </br><p style="padding-left: 10px;">• The agreement becomes binding when the Customer submits the Service Fee in response to the applicable offer. </p>4.2 Withdrawal Period: <p style="padding-left: 10px;">• The Customer may cancel the agreement within seven (7) days of payment without explanation. </p><p style="padding-left: 10px;">• The agreement takes effect upon payment. </p>`,
     },
     {
       title: "LIABILITY AND DISCLAIMERS",
-      content:
-        `5.1 Data Integrity: </br><p style="padding-left: 10px;">• The Database content is compiled from third-party registers and provided 'as is' without warranties regarding accuracy or completeness. </p>5.2 Limitation of Liability: </br><p style="padding-left: 10px;">• The Provider accepts no liability for direct or indirect damages, including lost revenue, opportunities, or service disruptions due to use or non-use of natp-trademark.com. </p><p style="padding-left: 10px;">• This limitation applies regardless of prior knowledge of potential issues. </p>`,
+      content: `5.1 Data Integrity: </br><p style="padding-left: 10px;">• The Database content is compiled from third-party registers and provided 'as is' without warranties regarding accuracy or completeness. </p>5.2 Limitation of Liability: </br><p style="padding-left: 10px;">• The Provider accepts no liability for direct or indirect damages, including lost revenue, opportunities, or service disruptions due to use or non-use of natp-trademark.com. </p><p style="padding-left: 10px;">• This limitation applies regardless of prior knowledge of potential issues. </p>`,
     },
     {
       title: "ARTICLE PUBLICATION SERVICE",
-      content:
-        `6.1 Overview: </br><p style="padding-left: 10px;">• After payment, the Provider may offer an article publication service highlighting the Customer’s brand achievements. </p>6.2 Purpose: </br><p style="padding-left: 10px;">• To present and reinforce the Customer’s brand presence and reputation. </p>6.3 Editorial Rights: </br><p style="padding-left: 10px;">• The Provider may revise submitted content for clarity and consistency without altering the factual basis. </p>6.4 Disclaimer: </br><p style="padding-left: 10px;">• No liability is assumed for damages related to this optional service. </p>`,
+      content: `6.1 Overview: </br><p style="padding-left: 10px;">• After payment, the Provider may offer an article publication service highlighting the Customer’s brand achievements. </p>6.2 Purpose: </br><p style="padding-left: 10px;">• To present and reinforce the Customer’s brand presence and reputation. </p>6.3 Editorial Rights: </br><p style="padding-left: 10px;">• The Provider may revise submitted content for clarity and consistency without altering the factual basis. </p>6.4 Disclaimer: </br><p style="padding-left: 10px;">• No liability is assumed for damages related to this optional service. </p>`,
     },
     {
       title: "DURATION AND TERMINATION",
-      content:
-        `7.1 Contract Period: </br><p style="padding-left: 10px;">• The Agreement automatically ends after one (1) year and cannotbe terminated ordinarily during that period. </p>7.2 Termination for Cause: </br><p style="padding-left: 10px;">• Either party may terminate immediately upon serious breach. </p><p style="padding-left: 10px;">• The breaching party must be allowed to resolve correctable issues within a reasonable timeframe. </p><p style="padding-left: 10px;">• Any circumstance that renders continued cooperation unreasonable may justify immediate termination. </p>`,
+      content: `7.1 Contract Period: </br><p style="padding-left: 10px;">• The Agreement automatically ends after one (1) year and cannotbe terminated ordinarily during that period. </p>7.2 Termination for Cause: </br><p style="padding-left: 10px;">• Either party may terminate immediately upon serious breach. </p><p style="padding-left: 10px;">• The breaching party must be allowed to resolve correctable issues within a reasonable timeframe. </p><p style="padding-left: 10px;">• Any circumstance that renders continued cooperation unreasonable may justify immediate termination. </p>`,
     },
     {
       title: "REFUND POLICY",
@@ -50,13 +46,11 @@ export default function Terms() {
     },
     {
       title: "GOVERNING LAW AND DISPUTE SETTLEMENT",
-      content:
-        `9.1 Jurisdiction: </br><p style="padding-left: 10px;">• The Agreement and T&C are subject to the laws of the United States. </p>9.2 Dispute Resolution: </br><p style="padding-left: 10px;">• Parties shall attempt to resolve conflicts amicably. </p><p style="padding-left: 10px;">• If resolution fails, legal action may be pursued before a competent court. </p>`,
+      content: `9.1 Jurisdiction: </br><p style="padding-left: 10px;">• The Agreement and T&C are subject to the laws of the United States. </p>9.2 Dispute Resolution: </br><p style="padding-left: 10px;">• Parties shall attempt to resolve conflicts amicably. </p><p style="padding-left: 10px;">• If resolution fails, legal action may be pursued before a competent court. </p>`,
     },
     {
       title: "DATA PRIVACY",
-      content:
-        `10.1 Data Handling: </br><p style="padding-left: 10px;">• Details on the handling of personal data are available in the separate Privacy Policy. </p>10.2 Policy Access:</br><p style="padding-left: 10px;">• A link to the Privacy Policy is available on natp-trademark.com. Customers are encouraged to review it for information on data use. </p>`,
+      content: `10.1 Data Handling: </br><p style="padding-left: 10px;">• Details on the handling of personal data are available in the separate Privacy Policy. </p>10.2 Policy Access:</br><p style="padding-left: 10px;">• A link to the Privacy Policy is available on natp-trademark.com. Customers are encouraged to review it for information on data use. </p>`,
     },
   ];
 
@@ -117,13 +111,13 @@ export default function Terms() {
       <Navbar />
 
       <div className="max-w-5xl mx-auto min-h-screen py-8">
-        <div>
-          <h2 className="text-5xl font-semibold mb-4 text-[#333747]">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4 text-[#333747]">
             Terms & Conditions
           </h2>
-          <p className="font-semibold text-lg text-[#333747]">
+          <p className="text-base sm:text-lg font-semibold text-[#333747]">
             Read our terms and conditions and privacy policy to understand your
-            rights and responsibilities
+            rights and responsibilities.
           </p>
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-12 gap-8 px-6 mt-32">
@@ -175,7 +169,7 @@ export default function Terms() {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }
