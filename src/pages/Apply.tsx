@@ -210,7 +210,7 @@ export default function Apply() {
 
             <div className="space-y-2">
               <Label htmlFor="trademark" className="text-[#333747]">
-                Markname
+                Mark
               </Label>
               <Input
                 id="trademark"
@@ -270,7 +270,7 @@ export default function Apply() {
                 id="class"
                 className="h-[48px] text-[#333747] border border-[#207ea0]"
                 value={formData.class}
-                placeholder="25, 39, 2"
+                placeholder=""
                 onChange={(e) =>
                   setFormData({ ...formData, class: e.target.value })
                 }
@@ -284,7 +284,7 @@ export default function Apply() {
               <Input
                 id="us_class"
                 className="h-[48px] text-[#333747] border border-[#207ea0]"
-                placeholder="1, 20"
+                placeholder=""
                 value={formData.us_class}
                 onChange={(e) =>
                   setFormData({ ...formData, us_class: e.target.value })
@@ -314,7 +314,7 @@ export default function Apply() {
                   id="city"
                   value={formData.city}
                   className="h-[48px] text-[#333747] border border-[#207ea0]"
-                  placeholder="United States"
+                  placeholder=""
                   onChange={(e) =>
                     setFormData({ ...formData, city: e.target.value })
                   }
@@ -412,7 +412,7 @@ export default function Apply() {
               {/* Item 1 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="/public/images/step 1.svg"
+                  src="/images/Step 1.svg"
                   alt="Professionalism Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />
@@ -427,7 +427,7 @@ export default function Apply() {
               {/* Item 2 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="/public/images/step 2.svg"
+                  src="/images/Step 2.svg"
                   alt="Client-Centric Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />
@@ -442,7 +442,7 @@ export default function Apply() {
               {/* Item 3 */}
               <div className="flex flex-col items-center text-center">
                 <img
-                  src="/public/images/step 3.svg"
+                  src="/images/Step 3.svg"
                   alt="Improvement Icon"
                   className="w-[120px] h-[120px] mb-6"
                 />

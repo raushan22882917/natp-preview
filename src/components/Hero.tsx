@@ -61,7 +61,7 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             to="/apply"
-            className="bg-white text-blue-800 font-semibold px-4 py-3 w-32 text-center hover:bg-gray-100 transition shadow-xl">
+            className="bg-white text-[#005ea2] font-semibold px-4 py-3 w-32 text-center hover:bg-gray-100 transition shadow-xl">
             Apply Now
           </Link>
           <Link

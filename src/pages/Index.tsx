@@ -155,75 +155,79 @@ export default function Index() {
       </section>
 
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-20 px-4 bg-white max-w-5xl mx-auto">
-  {/* Left Section */}
-  <div className="w-full md:w-1/2 mb-8 md:mb-0">
-    <h2 className="text-2xl sm:text-3xl md:text-[35px] leading-snug font-bold text-[#333747] text-center md:text-left">
-      Explore our track record in effective brand visibility and registration support.
-    </h2>
-  </div>
+        {/* Left Section */}
+        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+          <h2 className="text-2xl sm:text-3xl md:text-[35px] leading-snug font-bold text-[#333747] text-center md:text-left">
+            Explore our track record in effective brand visibility and
+            registration support.
+          </h2>
+        </div>
 
-  {/* Right Section */}
-  <div className="w-full md:w-1/2 space-y-6">
-    <p className="text-[#333747] text-base sm:text-lg font-semibold leading-relaxed text-center md:text-left">
-      Our services achieve consistently high success rates, securing the visibility your brand requires. 
-      Numerous clients have relied on our expertise to strengthen their market presence.
-    </p>
+        {/* Right Section */}
+        <div className="w-full md:w-1/2 space-y-6">
+          <p className="text-[#333747] text-base sm:text-lg font-semibold leading-relaxed text-center md:text-left">
+            Our services achieve consistently high success rates, securing the
+            visibility your brand requires. Numerous clients have relied on our
+            expertise to strengthen their market presence.
+          </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div className="text-center sm:text-left">
-        <p className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-3">95%</p>
-        <p className="text-sm sm:text-base text-[#333747]">
-          Client satisfaction remains our core commitment.
-        </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="text-center sm:text-left">
+              <p className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-3">
+                95%
+              </p>
+              <p className="text-sm sm:text-base text-[#333747]">
+                Client satisfaction remains our core commitment.
+              </p>
+            </div>
+            <div className="text-center sm:text-left">
+              <p className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-3">
+                100%
+              </p>
+              <p className="text-sm sm:text-base text-[#333747]">
+                All trademark publications adhere to strict quality standards.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="text-center sm:text-left">
-        <p className="text-4xl sm:text-5xl font-semibold text-[#333747] mb-3">100%</p>
-        <p className="text-sm sm:text-base text-[#333747]">
-          All trademark publications adhere to strict quality standards.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
 
       {/* FAQs Section */}
-      <section className="py-16 px-4 sm:px-6">
-  <div className="max-w-5xl mx-auto text-center sm:px-10 lg:px-20">
-    {/* Heading */}
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#333747] mb-6">
-      Frequently Asked Questions (FAQs)
-    </h2>
-    <p className="text-[#333747] mb-12 text-base sm:text-lg font-semibold">
-      Information on trademark publication, content services, and SEO support.
-    </p>
+      <section className="py-16 px-4 sm:px-6" >
+        <div className="max-w-5xl mx-auto text-center sm:px-10 lg:px-20" >
+          {/* Heading */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#333747] mb-6">
+            Frequently Asked Questions (FAQs)
+          </h2>
+          <p className="text-[#333747] mb-12 text-base sm:text-lg font-semibold">
+            Information on trademark publication, content services, and SEO
+            support.
+          </p>
 
-    {/* FAQs */}
-    <div className="space-y-4 text-left">
-      {faqs.map((faq, index) => (
-        <div key={index} className="border-t border-[#207ea0] py-4">
-          <div
-            className="flex justify-between items-center cursor-pointer"
-            onClick={() => toggleFAQ(index)}
-          >
-            <h3 className="text-[#333747] text-lg sm:text-xl font-semibold">
-              {faq.question}
-            </h3>
-            <span className="text-[#207ea0] text-xl">
-              {openIndex === index ? <ChevronUp /> : <ChevronDown />}
-            </span>
+          {/* FAQs */}
+          <div className="space-y-4 text-left" id="faqs">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border-t border-[#207ea0] py-4">
+                <div
+                  className="flex justify-between items-center cursor-pointer"
+                  onClick={() => toggleFAQ(index)}>
+                  <h3 className="text-[#333747] text-lg sm:text-xl font-semibold">
+                    {faq.question}
+                  </h3>
+                  <span className="text-[#207ea0] text-xl">
+                    {openIndex === index ? <ChevronUp /> : <ChevronDown />}
+                  </span>
+                </div>
+                {openIndex === index && (
+                  <p className="text-[#333747] text-sm sm:text-base mt-4 font-medium">
+                    {faq.answer}
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
-          {openIndex === index && (
-            <p className="text-[#333747] text-sm sm:text-base mt-4 font-medium">
-              {faq.answer}
-            </p>
-          )}
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* Hiring Section */}
       <div className="pt-12 pb-20 px-4  text-center">

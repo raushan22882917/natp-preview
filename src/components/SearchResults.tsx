@@ -89,13 +89,13 @@ export function SearchResults({ results, loading, searchSubmitted  }: SearchResu
                     </div>
                   )}
                 </div>
-
+{/* 
                 {result.description && (
                   <p className="text-gray-700 mb-4">{result.description}</p>
-                )}
+                )} */}
 
-                <Button asChild className="bg-[#00A3E0] hover:bg-[#0091c7] mt-2">
-                  <Link to={`/trademark/${result.id}`}>View Article</Link>
+                <Button asChild className="bg-[#207ea0] text-white hover:bg-[#207ea0] mt-2">
+                  <Link to={`/trademark/${result.id}`}>More Details</Link>
                 </Button>
               </div>
 

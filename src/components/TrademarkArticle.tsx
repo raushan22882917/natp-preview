@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import { Share2, Printer, Copy, Facebook, Edit, Save, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
+import { ArrowLeft } from 'lucide-react';
 import { toast } from "sonner";
 import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil, updateTrademarkKeywords } from "@/utils/keywordUtils";
 
@@ -80,13 +80,12 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
       <article className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-sm">
         {/* Article Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-2 text-blue-600 mb-2">
-            <Link to="/" className="text-sm hover:underline">
-              Articles
+          <div className="flex items-center gap-2 text-blue-600">
+            <Link to="/search" className="text-sm hover:underline flex itmes-center justify-center">
+              <ArrowLeft> </ArrowLeft>Back to Articles
             </Link>
-            <span className="text-sm">{trademark.read_time || "5 min read"}</span>
           </div>
-          <h1 className="text-3xl font-bold text-gray-800 mb-6 bg-yellow-200 px-2 py-1 inline-block">
+          <h1 className="text-3xl font-bold text-gray-800 mb-6 px-2 py-1 inline-block">
             {trademark.mark || trademark.owner_name}
           </h1>
 
@@ -163,7 +162,7 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
 
         {/* Article Content */}
         <div className="prose max-w-none">
-          <h2 className="text-2xl font-bold text-center mb-6">{trademark.articleTitle || "Introduction"}</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">{trademark.articleTitle}</h2>
           {trademark.articleContent ? (
             <div dangerouslySetInnerHTML={{ __html: trademark.articleContent }} />
           ) : trademark.description ? (
@@ -177,8 +176,8 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
         <div className="mt-12 pt-6 border-t border-gray-200">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-lg font-semibold">Keywords</h3>
-            {isEditingKeywords ? (
-              <div className="flex gap-2">
+  
+              {/* <div className="flex gap-2">
                 <Button
                   variant="outline"
                   size="sm"
@@ -198,17 +197,8 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
                 >
                   <X className="h-4 w-4" /> Cancel
                 </Button>
-              </div>
-            ) : (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setIsEditingKeywords(true)}
-                className="flex items-center gap-1"
-              >
-                <Edit className="h-4 w-4" /> Edit Keywords
-              </Button>
-            )}
+              </div> */}
+          
           </div>
 
           {isEditingKeywords ? (
@@ -251,9 +241,7 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
             </div>
           )}
 
-          <div className="mt-4 text-center">
-            <p className="text-sm text-gray-500">Outcome</p>
-          </div>
+          
         </div>
       </article>
     );

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -18,7 +17,8 @@ export const Navbar = () => {
   const location = useLocation();
 
   // Check if we're on the index page
-  const isIndexPage = location.pathname === "/" || location.pathname === "/index";
+  const isIndexPage =
+    location.pathname === "/" || location.pathname === "/index";
 
   // Handle scroll events
   useEffect(() => {
@@ -47,7 +47,12 @@ export const Navbar = () => {
   }, [isIndexPage]);
 
   return (
-    <nav className={`${isScrolled ? 'sticky top-0 bg-[#005ea2] shadow-md' : 'absolute top-0 left-0 bg-transparent'} z-50 w-full py-4 px-6 md:py-[50px] md:px-12 font-inter transition-all duration-300`}>
+    <nav
+      className={`${
+        isScrolled
+          ? "sticky top-0 bg-[#005ea2] shadow-md"
+          : "absolute top-0 left-0 bg-transparent"
+      } z-50 w-full py-4 px-6 md:py-[50px] md:px-12 font-inter transition-all duration-300`}>
       <div className="max-w-[90vw] mx-auto flex justify-between items-center">
         <Link to="/" className="text-white text-xl font-bold flex items-center">
           <img src="/images/mainLogo.svg" className="w-44 h-55" alt="Logo" />
@@ -58,8 +63,7 @@ export const Navbar = () => {
           <Link
             to="/about"
             className="text-white hover:text-white/80 transition-colors duration-200 text-xl font-medium
-            "
-          >
+            ">
             About Us
           </Link>
 
@@ -67,23 +71,29 @@ export const Navbar = () => {
             <NavigationMenuList>
               <NavigationMenuItem>
                 {/* Custom trigger without the dropdown icon */}
-                <NavigationMenuPrimitive.Trigger
-                  className="text-white hover:text-white/80 transition-colors duration-200 text-xl font-medium"
-                >
-                  Overview
+                <NavigationMenuPrimitive.Trigger className="text-white hover:text-white/80 transition-colors duration-200 text-xl font-medium">
+                  Services
                 </NavigationMenuPrimitive.Trigger>
                 <NavigationMenuContent className="mt-0 p-0">
                   <div className="flex flex-col w-30 shadow-lg">
-                    <Link to="/services" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
-                      Services
+                    <Link
+                      to="/services"
+                      className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
+                      Overview
                     </Link>
-                    <Link to="/services/publication" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
+                    <Link
+                      to="/services/publication"
+                      className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Publication
                     </Link>
-                    <Link to="/services/article" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
+                    <Link
+                      to="/services/article"
+                      className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium border-b border-white">
                       Article
                     </Link>
-                    <Link to="/services/seo" className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium">
+                    <Link
+                      to="/services/seo"
+                      className="block px-4 py-3 bg-[#005ea2] hover:bg-[#2365c8] text-center text-base text-white font-medium">
                       SEO
                     </Link>
                   </div>
@@ -94,16 +104,12 @@ export const Navbar = () => {
 
           <Link
             to="/search"
-            className="text-white text-xl hover:text-white/80 transition-colors duration-200 font-semibold"
-
-          >
+            className="text-white text-xl hover:text-white/80 transition-colors duration-200 font-semibold">
             Database
           </Link>
           <Link
             to="/contact"
-            className="text-white text-xl hover:text-white/80 font-medium transition-colors duration-200"
-
-          >
+            className="text-white text-xl hover:text-white/80 font-medium transition-colors duration-200">
             Contact Us
           </Link>
           {/* <Link
@@ -116,11 +122,10 @@ export const Navbar = () => {
           <Link
             to="/apply"
             className={`font-medium px-5 py-2 text-xl transition-all duration-200 hover:shadow-md ${
-              isIndexPage
-                ? (isScrolled ? 'bg-white text-[#005ea2] ' : 'bg-white text-[#005ea2] ')
-                : 'bg-white text-[#005ea2] '
-            }`}
-          >
+              isScrolled
+                ? "bg-white text-[#005ea2]" // On scroll
+                : "bg-transparent text-white" // Before scroll
+            }`}>
             Apply Now
           </Link>
         </div>
@@ -132,16 +137,20 @@ export const Navbar = () => {
               <Menu size={24} />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[80%] bg-[#005ea2] text-[#f0f0f0] p-0 border-none">
+          <SheetContent
+            side="right"
+            className="w-[80%] bg-[#005ea2] text-[#f0f0f0] p-0 border-none">
             <div className="flex flex-col h-full p-6">
               <div className="flex justify-between items-center mb-8">
-                <Link to="/" className="text-[#f0f0f0] text-xl font-bold" onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  to="/"
+                  className="text-[#f0f0f0] text-xl font-bold"
+                  onClick={() => setIsMenuOpen(false)}>
                   <img src="/images/mainLogo.svg" className="w-20" alt="Logo" />
                 </Link>
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-[#f0f0f0] p-2 focus:outline-none"
-                >
+                  className="text-[#f0f0f0] p-2 focus:outline-none">
                   <X size={24} />
                 </button>
               </div>
@@ -150,40 +159,37 @@ export const Navbar = () => {
                 <Link
                   to="/about"
                   className="text-[#f0f0f0] hover:text-[#f0f0f0]/80 font-medium text-lg py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                  onClick={() => setIsMenuOpen(false)}>
                   About Us
                 </Link>
 
                 <div className="flex flex-col gap-3">
-                  <p className="text-[#f0f0f0] font-medium text-xl mb-2">Services</p>
+                  <p className="text-[#f0f0f0] font-medium text-xl mb-2">
+                    Services
+                  </p>
                   <div className="flex flex-col w-full max-w-[200px]">
                     <Link
                       to="/services"
                       className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium border-b border-[#1a4c96]"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                      onClick={() => setIsMenuOpen(false)}>
                       Overview
                     </Link>
                     <Link
                       to="/services/publication"
                       className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium border-b border-[#1a4c96]"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                      onClick={() => setIsMenuOpen(false)}>
                       Publication
                     </Link>
                     <Link
                       to="/services/article"
                       className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium border-b border-[#1a4c96]"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                      onClick={() => setIsMenuOpen(false)}>
                       Article
                     </Link>
                     <Link
                       to="/services/seo"
                       className="block px-4 py-3 bg-[#005ea2] text-center text-base text-white font-medium"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                      onClick={() => setIsMenuOpen(false)}>
                       SEO
                     </Link>
                   </div>
@@ -192,15 +198,13 @@ export const Navbar = () => {
                 <Link
                   to="/search"
                   className="text-[#f0f0f0] hover:text-[#f0f0f0]/80 font-medium text-lg py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                  onClick={() => setIsMenuOpen(false)}>
                   Database
                 </Link>
                 <Link
                   to="/contact"
                   className="text-[#f0f0f0] hover:text-[#f0f0f0]/80 font-medium text-lg py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                  onClick={() => setIsMenuOpen(false)}>
                   Contact Us
                 </Link>
                 {/* <Link
@@ -214,8 +218,7 @@ export const Navbar = () => {
                 <Link
                   to="/apply"
                   className="bg-white text-[#005ea2]  text-center px-5 py-3 mt-4 font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                  onClick={() => setIsMenuOpen(false)}>
                   Apply Now
                 </Link>
               </div>
