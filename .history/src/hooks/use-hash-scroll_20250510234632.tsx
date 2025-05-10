@@ -20,11 +20,7 @@ export function useHashScroll() {
       // If the element exists, scroll to it
       if (element) {
         // Immediately scroll to the element without delay
-        // Use 'start' to ensure the section appears at the top of the viewport
         element.scrollIntoView({ behavior: 'auto', block: 'start' });
-
-        // Add a small offset to show more of the section (optional)
-        window.scrollBy(0, -20);
       }
     }
   }, [location]); // Re-run when location changes

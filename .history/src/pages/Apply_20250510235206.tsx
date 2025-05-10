@@ -391,7 +391,7 @@ export default function Apply() {
                 }
               />
               <Label htmlFor="agree" className="font-normal text-lg text-blue-600 underline">
-  I agree <a href="/terms">Terms and Conditions</a>.
+  I agree Terms and Conditions. <a href="/terms"></a>.
 </Label>
 
               {/* <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label> */}

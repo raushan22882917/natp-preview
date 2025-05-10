@@ -167,7 +167,7 @@ export default function About() {
       ].map((item, idx) => (
         <div
           key={idx}
-          className="border  p-6 rounded-lg flex items-start gap-4"
+          className="border border-blue-400 p-6 rounded-lg flex items-start gap-4"
         >
           <img
             src="/images/2.svg"

@@ -391,10 +391,10 @@ export default function Apply() {
                 }
               />
               <Label htmlFor="agree" className="font-normal text-lg text-blue-600 underline">
-  I agree <a href="/terms">Terms and Conditions</a>.
+  I agree to the <a href="/terms">terms</a>.
 </Label>
 
-              {/* <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label> */}
+              <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label>
             </div>
             <div className="flex justify-center items-center">
               <Button type="submit" className=" bg-[#207ea0] text-white hover:bg-[#207ea0] px-7 py-6 shadow-xl">
