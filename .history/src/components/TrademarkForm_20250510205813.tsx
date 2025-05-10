@@ -180,11 +180,11 @@ export const TrademarkForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="us_classes">US Classes</Label>
+            <Label htmlFor="national_classes">US Classes</Label>
             <Input
-              id="us_classes"
-              name="us_classes"
-              value={formData.us_classes}
+              id="national_classes"
+              name="national_classes"
+              value={formData.national_classes}
               onChange={handleChange}
               className="bg-white border border-gray-300"
             />

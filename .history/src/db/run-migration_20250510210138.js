@@ -9,9 +9,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Create Supabase client
-const SUPABASE_URL = "https://koljfqumuugekkvmupcx.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtvbGpmcXVtdXVnZWtrdm11cGN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NDUxNTIsImV4cCI6MjA2MTIyMTE1Mn0.q_Ti5BMmR2LXbXDshiDIVzI6Ke7A7XIIEcrrj0AxdqI";
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function runMigration(filePath) {
   try {

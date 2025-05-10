@@ -123,12 +123,8 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
               <span>{trademark.owner_name}</span>
             </div>
             <div className="w-full md:w-1/2 flex">
-              <span className="font-semibold text-gray-700 mr-2">National Classes:</span>
+              <span className="font-semibold text-gray-700 mr-2">Classes:</span>
               <span>{trademark.national_classes || "N/A"}</span>
-            </div>
-            <div className="w-full md:w-1/2 flex">
-              <span className="font-semibold text-gray-700 mr-2">US Classes:</span>
-              <span>{trademark.us_classes || "N/A"}</span>
             </div>
             <div className="w-full md:w-1/2 flex">
               <span className="font-semibold text-gray-700 mr-2">
@@ -148,7 +144,21 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
             </div>
           </div>
 
-          
+          {/* Share Icons */}
+          <div className="flex gap-3 mt-4">
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Share2 className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Printer className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Copy className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Facebook className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
 
         {/* Article Content */}

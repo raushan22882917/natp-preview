@@ -49,13 +49,6 @@ export function TrademarkCard({ trademark }: TrademarkCardProps) {
               <div className="font-medium">{formattedDate}</div>
             </div>
           )}
-
-          {trademark.us_classes && (
-            <div className="border border-blue-300 rounded px-3 py-2">
-              <div className="text-gray-600 text-xs">US Classes</div>
-              <div className="font-medium">{trademark.us_classes}</div>
-            </div>
-          )}
         </div>
 
         {/* Description paragraph */}

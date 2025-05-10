@@ -7,15 +7,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Footer } from "@/components/Footer";
 import { ChevronUp, ChevronDown } from "lucide-react";
-import { useHashScroll } from "@/hooks/use-hash-scroll";
 
 export default function Index() {
-  // Use the hash scroll hook to handle scrolling to sections
-  useHashScroll();
-
   const faqs = [
     {
       question: "What is trademark publication?",
@@ -44,9 +40,9 @@ export default function Index() {
     },
   ];
 
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleFAQ = (index: number) => {
+  const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 

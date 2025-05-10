@@ -56,7 +56,7 @@ export const handleApplicationSubmit = async (formData: {
   agree?: boolean;
 }) => {
   try {
-    // Include all form fields
+    // Create a new object with only the fields that exist in the database
     const applicationData = {
       first_name: formData.first_name,
       last_name: formData.last_name,
@@ -66,14 +66,8 @@ export const handleApplicationSubmit = async (formData: {
       trademark: formData.trademark,
       application_number: formData.application_number || null,
       application_date: formData.application_date || null,
-      class: formData.class || null,
-      us_class: formData.us_class || null,
-      zip: formData.zip || null,
-      city: formData.city || null,
-      country: formData.country || null,
       role: formData.role || null,
-      message: formData.message || null,
-      agree: formData.agree || false
+      message: formData.message || null
     };
 
     const { error } = await supabase

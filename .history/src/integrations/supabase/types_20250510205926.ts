@@ -44,12 +44,6 @@ export type Database = {
           phone: string
           role: string | null
           trademark: string
-          class: string | null
-          us_class: string | null
-          zip: string | null
-          city: string | null
-          country: string | null
-          agree: boolean | null
         }
         Insert: {
           application_date?: string | null
@@ -64,12 +58,6 @@ export type Database = {
           phone: string
           role?: string | null
           trademark: string
-          class?: string | null
-          us_class?: string | null
-          zip?: string | null
-          city?: string | null
-          country?: string | null
-          agree?: boolean | null
         }
         Update: {
           application_date?: string | null
@@ -84,12 +72,6 @@ export type Database = {
           phone?: string
           role?: string | null
           trademark?: string
-          class?: string | null
-          us_class?: string | null
-          zip?: string | null
-          city?: string | null
-          country?: string | null
-          agree?: boolean | null
         }
         Relationships: []
       }

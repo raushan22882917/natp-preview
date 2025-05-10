@@ -159,7 +159,17 @@ export const ArticleForm = () => {
             />
           </div>
 
-          
+          <div className="space-y-2">
+            <Label htmlFor="read_time">Read Time (e.g., "5 min")</Label>
+            <Input
+              id="read_time"
+              name="read_time"
+              value={formData.read_time}
+              onChange={handleChange}
+              placeholder="5 min"
+              className="bg-white border border-gray-300"
+            />
+          </div>
 
           <Button 
             type="submit" 

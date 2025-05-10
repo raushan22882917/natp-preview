@@ -148,7 +148,21 @@ export function TrademarkArticle({ trademark }: TrademarkArticleProps) {
             </div>
           </div>
 
-          
+          {/* Share Icons */}
+          <div className="flex gap-3 mt-4">
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Share2 className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Printer className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Copy className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+              <Facebook className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
 
         {/* Article Content */}

@@ -387,7 +387,7 @@ export default function Apply() {
                 id="agree"
                 checked={formData.agree}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, agree: e.target.checked }))
+                  setFormData({ ...formData, agree: e.target.checked })
                 }
               />
               <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label>

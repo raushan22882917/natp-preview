@@ -125,6 +125,9 @@ export default function Admin() {
   const articleFields = [
     { name: 'title', label: 'Title', type: 'text' as const, required: true },
     { name: 'content', label: 'Content', type: 'textarea' as const, required: true },
+    { name: 'author', label: 'Author', type: 'text' as const },
+    { name: 'read_time', label: 'Read Time (min)', type: 'text' as const },
+    { name: 'published', label: 'Published', type: 'text' as const },
     { name: 'created_at', label: 'Date', type: 'date' as const },
   ];
 

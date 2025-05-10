@@ -272,14 +272,14 @@ export default function Apply() {
                 value={formData.class}
                 placeholder=""
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, class: e.target.value }))
+                  setFormData({ ...formData, class: e.target.value })
                 }
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="us_class" className="text-[#333747]">
-                US Class
+                US Class(es)
               </Label>
               <Input
                 id="us_class"
@@ -287,7 +287,7 @@ export default function Apply() {
                 placeholder=""
                 value={formData.us_class}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, us_class: e.target.value }))
+                  setFormData({ ...formData, us_class: e.target.value })
                 }
               />
             </div>
@@ -302,7 +302,7 @@ export default function Apply() {
                   className="h-[48px] text-[#333747] border border-[#207ea0]"
                   value={formData.zip}
                   onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, zip: e.target.value }))
+                    setFormData({ ...formData, zip: e.target.value })
                   }
                 />
               </div>
@@ -316,7 +316,7 @@ export default function Apply() {
                   className="h-[48px] text-[#333747] border border-[#207ea0]"
                   placeholder=""
                   onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, city: e.target.value }))
+                    setFormData({ ...formData, city: e.target.value })
                   }
                 />
               </div>
@@ -331,7 +331,7 @@ export default function Apply() {
                 value={formData.country}
                 className="h-[48px] text-[#333747] border border-[#207ea0]"
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, country: e.target.value }))
+                  setFormData({ ...formData, country: e.target.value })
                 }
               />
             </div>
@@ -357,7 +357,7 @@ export default function Apply() {
                       className="text-[#333747] "
                       checked={formData.role === role}
                       onChange={(e) =>
-                        setFormData((prev) => ({ ...prev, role: e.target.value }))
+                        setFormData({ ...formData, role: e.target.value })
                       }
                     />
                     <span>{role}</span>
@@ -387,7 +387,7 @@ export default function Apply() {
                 id="agree"
                 checked={formData.agree}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, agree: e.target.checked }))
+                  setFormData({ ...formData, agree: e.target.checked })
                 }
               />
               <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label>

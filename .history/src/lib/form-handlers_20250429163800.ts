@@ -12,7 +12,7 @@ export const handleContactSubmit = async (formData: {
     const { error } = await supabase
       .from('contacts')
       .insert([formData]);
-
+      
     if (error) throw error;
     toast.success("Message sent successfully!");
     return true;
@@ -27,7 +27,7 @@ export const handleNewsletterSubmit = async (email: string) => {
     const { error } = await supabase
       .from('newsletter_subscriptions')
       .insert([{ email }]);
-
+      
     if (error) throw error;
     toast.success("Successfully subscribed to newsletter!");
     return true;
@@ -46,48 +46,18 @@ export const handleApplicationSubmit = async (formData: {
   trademark: string;
   application_number?: string;
   application_date?: string;
-  class?: string;
-  us_class?: string;
-  zip?: string;
-  city?: string;
-  country?: string;
   role?: string;
   message?: string;
-  agree?: boolean;
 }) => {
   try {
-    // Include all form fields
-    const applicationData = {
-      first_name: formData.first_name,
-      last_name: formData.last_name,
-      email: formData.email,
-      phone: formData.phone,
-      company: formData.company,
-      trademark: formData.trademark,
-      application_number: formData.application_number || null,
-      application_date: formData.application_date || null,
-      class: formData.class || null,
-      us_class: formData.us_class || null,
-      zip: formData.zip || null,
-      city: formData.city || null,
-      country: formData.country || null,
-      role: formData.role || null,
-      message: formData.message || null,
-      agree: formData.agree || false
-    };
-
     const { error } = await supabase
       .from('applications')
-      .insert([applicationData]);
-
-    if (error) {
-      console.error('Supabase error:', error);
-      throw error;
-    }
+      .insert([formData]);
+      
+    if (error) throw error;
     toast.success("Application submitted successfully!");
     return true;
   } catch (error) {
-    console.error('Error submitting application:', error);
     toast.error("Failed to submit application. Please try again.");
     return false;
   }
