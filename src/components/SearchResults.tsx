@@ -94,7 +94,7 @@ export function SearchResults({
                     <div>{result.application_number}</div>
                   </div>
                   <div className="flex gap-2">
-                    <div className="w-40 font-medium">Owner</div>
+                    <div className="font-medium">Owner</div>
                     <div>{result.owner_name}</div>
                   </div>
                 </div>
