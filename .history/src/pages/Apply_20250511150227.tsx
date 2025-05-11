@@ -390,13 +390,9 @@ export default function Apply() {
                   setFormData((prev) => ({ ...prev, agree: e.target.checked }))
                 }
               />
-             <Label htmlFor="terms" className="text-sm text-[#212529]">
-  I agree to the{" "}
-  <a href="/terms" className="underline text-blue-600">
-    terms
-  </a>
+              <Label htmlFor="terms" className="text-sm text-blue-600 underline">
+  I agree to the <a href="/terms" className="underline">terms</a>
 </Label>
-
 
 
               {/* <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label> */}
