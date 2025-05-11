@@ -232,7 +232,7 @@ export default function Search() {
             <div className="relative w-full">
               <Input
                 type="text"
-                placeholder="Search using the application number or owners's name."
+                placeholder=""
                 className="bg-white w-full sm:w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}

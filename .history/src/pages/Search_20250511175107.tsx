@@ -170,7 +170,7 @@ export default function Search() {
     {
       title: "Instant Access to Publication Status",
       description:
-        "Use the Quick Search tool to locate published trademarks by application number or owner name - find the same trademark with either search method.",
+        "Use the Quick Search tool to locate published trademarks by application number or owner name with immediate results.",
     },
     {
       title: "Reliable, Up-to-Date Search Results",
@@ -232,7 +232,7 @@ export default function Search() {
             <div className="relative w-full">
               <Input
                 type="text"
-                placeholder="Search using the application number or owners's name."
+                placeholder="Search by exact application number or exact word from mark or owner name (case sensitive)"
                 className="bg-white w-full sm:w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}

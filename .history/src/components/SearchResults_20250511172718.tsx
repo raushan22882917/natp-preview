@@ -79,26 +79,31 @@ export function SearchResults({
             <div className="flex flex-col md:flex-row">
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                  {result.mark ? (result.mark.length > 30 ? `${result.mark.substring(0, 30)}...` : result.mark) : ''}
+                  {result.mark}
                 </h3>
 
                 <div className="grid grid-cols-1 gap-2 mb-4">
-                  <div className="flex gap-2">
-                    <div className="w-40 font-medium">
-                      International Class(es)
+                  {result.national_classes && (
+                    <div className="flex gap-2">
+                      <div className="w-40 font-medium">
+                        International Class(es)
+                      </div>
+                      <div>{result.national_classes}</div>
                     </div>
-                    <div>{result.national_classes || ''}</div>
-                  </div>
+                  )}
                   <div className="flex">
                     <div className="w-40 font-medium">Application Number</div>
                     <div>{result.application_number}</div>
                   </div>
-                  <div className="flex gap-2">
-                    <div className="w-40 font-medium">Owner</div>
-                    <div>{result.owner_name}</div>
-                  </div>
+
+                  {result.application_date && (
+                    <div className="flex gap-2">
+                      <div className=" font-medium">Owner</div>
+                      <div>{result.owner_name}</div>
+                    </div>
+                  )}
                 </div>
-                {/*
+                {/* 
                 {result.description && (
                   <p className="text-gray-700 mb-4">{result.description}</p>
                 )} */}
@@ -120,7 +125,7 @@ export function SearchResults({
                   {result.logo_url ? (
                     <img
                       src={result.logo_url}
-                      alt={`${result.mark || result.owner_name} logo`}
+                      alt={`${result.owner_name} logo`}
                       className="max-w-full max-h-full object-contain p-2"
                     />
                   ) : (

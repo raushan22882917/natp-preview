@@ -5,7 +5,6 @@ import { format } from "date-fns";
 export type TrademarkResult = {
   id: string;
   owner_name: string;
-  mark?: string;
   application_number: string;
   national_classes?: string;
   us_classes?: string;
@@ -75,7 +74,7 @@ export function TrademarkCard({ trademark }: TrademarkCardProps) {
         {trademark.logo_url ? (
           <img
             src={trademark.logo_url}
-            alt={`${trademark.mark || trademark.owner_name} logo`}
+            alt={`${trademark.owner_name} logo`}
             className="max-w-full max-h-full object-contain p-4"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
@@ -86,7 +85,7 @@ export function TrademarkCard({ trademark }: TrademarkCardProps) {
                 const fallback = document.createElement('div');
                 fallback.className = 'text-center p-4';
                 fallback.innerHTML = `
-                  <div class="text-2xl font-bold text-gray-800 mb-2">${trademark.mark || trademark.owner_name}</div>
+                  <div class="text-2xl font-bold text-gray-800 mb-2">${trademark.owner_name}</div>
                   <div class="text-lg text-gray-600">A MATCHMAKING AGENCY FOR SOCIAL CHANGE</div>
                 `;
                 parent.appendChild(fallback);
@@ -95,7 +94,7 @@ export function TrademarkCard({ trademark }: TrademarkCardProps) {
           />
         ) : (
           <div className="text-center p-4">
-            <div className="text-2xl font-bold text-gray-800 mb-2">{trademark.mark || trademark.owner_name}</div>
+            <div className="text-2xl font-bold text-gray-800 mb-2">{trademark.owner_name}</div>
             <div className="text-lg text-gray-600">A MATCHMAKING AGENCY FOR SOCIAL CHANGE</div>
           </div>
         )}

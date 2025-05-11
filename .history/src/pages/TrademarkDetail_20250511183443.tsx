@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { TrademarkArticle, type TrademarkDetail } from "@/components/TrademarkArticle";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import {Footer} from "@/components/Footer";
+import Footer from "@/components/Footer";
 
 interface Article {
   id: string;
@@ -103,7 +103,6 @@ export default function TrademarkDetail() {
           </div>
         )}
       </div>
-      <Footer />a
     </div>
   );
 }

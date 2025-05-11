@@ -120,7 +120,7 @@ export function SearchResults({
                   {result.logo_url ? (
                     <img
                       src={result.logo_url}
-                      alt={`${result.mark || result.owner_name} logo`}
+                      alt={`${result.owner_name} logo`}
                       className="max-w-full max-h-full object-contain p-2"
                     />
                   ) : (

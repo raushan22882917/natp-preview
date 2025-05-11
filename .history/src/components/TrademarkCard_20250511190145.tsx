@@ -75,7 +75,7 @@ export function TrademarkCard({ trademark }: TrademarkCardProps) {
         {trademark.logo_url ? (
           <img
             src={trademark.logo_url}
-            alt={`${trademark.mark || trademark.owner_name} logo`}
+            alt={`${trademark.owner_name} logo`}
             className="max-w-full max-h-full object-contain p-4"
             onError={(e) => {
               const target = e.target as HTMLImageElement;

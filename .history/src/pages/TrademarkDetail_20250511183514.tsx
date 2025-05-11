@@ -103,7 +103,7 @@ export default function TrademarkDetail() {
           </div>
         )}
       </div>
-      <Footer />a
+      
     </div>
   );
 }

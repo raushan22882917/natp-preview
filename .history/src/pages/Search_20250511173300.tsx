@@ -27,7 +27,23 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [searchSubmitted, setSearchSubmitted] = useState(false);
 
-  // Define performSearch function first, before any useEffect that uses it
+  // Debug info
+  useEffect(() => {
+    console.log("Search page loaded with query:", searchQuery);
+  }, [searchQuery]);
+
+  // Update inputValue whenever searchQuery (from URL) changes
+  useEffect(() => {
+    console.log("URL query param changed to:", searchQuery);
+    setInputValue(searchQuery);
+    // If there's a search query in the URL, consider it as submitted
+    if (searchQuery) {
+      setSearchSubmitted(true);
+      performSearch(searchQuery);
+    }
+  }, [searchQuery, performSearch]);
+
+  // Function to perform the actual search - wrapped in useCallback to avoid recreation on every render
   const performSearch = useCallback(async (query: string) => {
     if (!query.trim()) {
       setResults([]);
@@ -45,56 +61,30 @@ export default function Search() {
 
       if (error) throw error;
 
-      console.log("Searching for:", query);
-
-      // Filter the results based on our specific criteria with case sensitivity
+      // Filter the results based on our specific criteria
       const filteredResults = allTrademarks.filter(trademark => {
-        // Track if we found a match for debugging
-        let matchFound = false;
-        let matchReason = "";
-
-        // 1. Exact match for application number (must be exact, including case)
-        if (trademark.application_number && trademark.application_number === query) {
-          matchFound = true;
-          matchReason = `Match found by application number: ${trademark.application_number}`;
+        // 1. Exact match for application number
+        if (trademark.application_number === query) {
+          return true;
         }
 
-        // 2. Exact word match for mark words (case sensitive)
-        if (!matchFound && trademark.mark) {
-          // Split by whitespace to get individual words
+        // 2. Exact word match for mark words
+        if (trademark.mark) {
           const markWords = trademark.mark.split(/\s+/);
-
-          // Check if any word exactly matches the query (case sensitive)
           if (markWords.some(word => word === query)) {
-            matchFound = true;
-            matchReason = `Match found by mark word: ${query} in ${trademark.mark}`;
+            return true;
           }
         }
 
-        // 3. Exact word match for owner name words (except "LLC") (case sensitive)
-        if (!matchFound && trademark.owner_name) {
-          // Split by whitespace to get individual words
+        // 3. Exact word match for owner name words (except "LLC")
+        if (trademark.owner_name) {
           const ownerWords = trademark.owner_name.split(/\s+/);
-
-          // Check if any word exactly matches the query (case sensitive) and is not "LLC"
           if (ownerWords.some(word => word === query && word !== "LLC")) {
-            matchFound = true;
-            matchReason = `Match found by owner word: ${query} in ${trademark.owner_name}`;
+            return true;
           }
         }
 
-        // Log the result for this trademark
-        if (matchFound) {
-          console.log(matchReason);
-          console.log("Full trademark data:", {
-            id: trademark.id,
-            application_number: trademark.application_number,
-            mark: trademark.mark,
-            owner_name: trademark.owner_name
-          });
-        }
-
-        return matchFound;
+        return false;
       });
 
       if (filteredResults.length > 0) {
@@ -118,22 +108,6 @@ export default function Search() {
       setLoading(false);
     }
   }, [searchSubmitted]);
-
-  // Debug info
-  useEffect(() => {
-    console.log("Search page loaded with query:", searchQuery);
-  }, [searchQuery]);
-
-  // Update inputValue whenever searchQuery (from URL) changes
-  useEffect(() => {
-    console.log("URL query param changed to:", searchQuery);
-    setInputValue(searchQuery);
-    // If there's a search query in the URL, consider it as submitted
-    if (searchQuery) {
-      setSearchSubmitted(true);
-      performSearch(searchQuery);
-    }
-  }, [searchQuery, performSearch]);
 
   // Effect to trigger search when query changes
   useEffect(() => {
@@ -170,7 +144,7 @@ export default function Search() {
     {
       title: "Instant Access to Publication Status",
       description:
-        "Use the Quick Search tool to locate published trademarks by application number or owner name - find the same trademark with either search method.",
+        "Use the Quick Search tool to locate published trademarks by application number or owner name with immediate results.",
     },
     {
       title: "Reliable, Up-to-Date Search Results",
@@ -187,7 +161,7 @@ export default function Search() {
     {
       question: "How to Search for Trademarks?",
       answer:
-        "You can find the same trademark by searching with either its application number or a word from its owner name or mark. Enter the exact application number (e.g., 97654321), an exact word from the trademark name, or an exact word from the owner name (except 'LLC') in the search field and select 'Submit'. The search is case sensitive, so 'Protectus' will match but 'protectus' will not. For application numbers, all digits must match exactly. Each result links to a detailed article for further information.",
+        "Enter the exact application number, a specific word from the trademark name, or a specific word from the owner name (except 'LLC') in the search field and select 'Submit' to view registered trademarks. Each result links to a detailed article for further information.",
     },
     {
       question: "What Information Is Provided?",
@@ -232,7 +206,7 @@ export default function Search() {
             <div className="relative w-full">
               <Input
                 type="text"
-                placeholder="Search using the application number or owners's name."
+                placeholder="Enter exact application number or specific word from mark or owner name"
                 className="bg-white w-full sm:w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
