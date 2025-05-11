@@ -180,14 +180,12 @@ export default function Contact() {
                     checked={formData.agreedToTerms}
                     onCheckedChange={handleCheckboxChange}
                   />
-                <Label htmlFor="terms" className="text-sm text-[#212529]">
-  I agree to the{" "}
-  <a href="/terms" className="underline text-blue-600">
-    terms
-  </a>
-</Label>
-
-
+                  <Label htmlFor="terms" className="text-sm text-[#212529]">
+                    I agree to the{" "}
+                    <a href="/terms" className="underline text-blue-600">
+                      terms
+                    </a>
+                  </Label>
                 </div>
 
                 <button

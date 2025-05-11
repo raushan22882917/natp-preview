@@ -60,55 +60,52 @@ export default function Apply() {
       <div className=" min-h-[200px] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl md:text-6xl font-semibold  mb-6 text-[#333747]">
-          Application To Publish Your Trademark
+            Application To Publish Your Trademark
           </h1>
           <p className="text-[20px] text-[#333747]">
-          Submit your trademark to our exclusive database and enhance brand visibility today.
+            Submit your trademark to our exclusive database and enhance brand
+            visibility today.
           </p>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto py-12 px-4">
         <div className="mb-12">
-
           <h2 className="text-5xl font-semibold mb-6 text-[#333747]">
-          Strengthen Brand Visibility Through Trademark Publication
+            Strengthen Brand Visibility Through Trademark Publication
           </h2>
           <p className="text-[#333747] text-lg mb-10 font-semibold">
-          The publication of a trademark is a key measure for establishing brand recognition and building credibility. By making your trademark publicly accessible, you position your brand for increased distinction within a competitive market environment.
+            The publication of a trademark is a key measure for establishing
+            brand recognition and building credibility. By making your trademark
+            publicly accessible, you position your brand for increased
+            distinction within a competitive market environment.
           </p>
           <ul className="space-y-2">
             <li className="flex items-center gap-2">
               <div className="w-7 h-7 flex items-center justify-center">
-                <img
-                  src="/images/1.svg"
-                  alt=""
-                />
+                <img src="/images/1.svg" alt="" />
               </div>
               <span className="font-semibold text-[#333747]">
-                Enhance recognition and strengthen your brand’s position in the market.
+                Enhance recognition and strengthen your brand’s position in the
+                market.
               </span>
             </li>
             <li className="flex items-center gap-2">
               <div className="w-7 h-7 flex items-center justify-center">
-                <img
-                  src="/images/1.svg"
-                  alt=""
-                />
+                <img src="/images/1.svg" alt="" />
               </div>
               <span className="font-semibold text-[#333747]">
-              Enhance recognition and strengthen your brand’s position in the market.
+                Enhance recognition and strengthen your brand’s position in the
+                market.
               </span>
             </li>
             <li className="flex items-center gap-2">
               <div className="w-7 h-7 flex items-center justify-center">
-                <img
-                  src="/images/1.svg"
-                  alt=""
-                />
+                <img src="/images/1.svg" alt="" />
               </div>
               <span className="font-semibold text-[#333747]">
-              Appeal to prospective clients by presenting a clearly defined and protected trademark.
+                Appeal to prospective clients by presenting a clearly defined
+                and protected trademark.
               </span>
             </li>
           </ul>
@@ -119,7 +116,8 @@ export default function Apply() {
             Trademark Inquiry
           </h3>
           <p className="text-[#333747] mb-8 text-center text-xl">
-          Please fill out the form to initiate your trademark publication request.
+            Please fill out the form to initiate your trademark publication
+            request.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
@@ -264,7 +262,7 @@ export default function Apply() {
 
             <div className="space-y-2">
               <Label htmlFor="class" className="text-[#333747]">
-                National Class
+                International Class(es)
               </Label>
               <Input
                 id="class"
@@ -279,7 +277,7 @@ export default function Apply() {
 
             <div className="space-y-2">
               <Label htmlFor="us_class" className="text-[#333747]">
-                US Class
+                US Class(es)
               </Label>
               <Input
                 id="us_class"
@@ -345,7 +343,6 @@ export default function Apply() {
                   "Other Roles",
                   "Trademark Agent",
                   "Brand Manager",
-                  "Specify",
                 ].map((role) => (
                   <label
                     key={role}
@@ -357,7 +354,10 @@ export default function Apply() {
                       className="text-[#333747] "
                       checked={formData.role === role}
                       onChange={(e) =>
-                        setFormData((prev) => ({ ...prev, role: e.target.value }))
+                        setFormData((prev) => ({
+                          ...prev,
+                          role: e.target.value,
+                        }))
                       }
                     />
                     <span>{role}</span>
@@ -390,19 +390,19 @@ export default function Apply() {
                   setFormData((prev) => ({ ...prev, agree: e.target.checked }))
                 }
               />
-             <Label htmlFor="terms" className="text-sm text-[#212529]">
-  I agree to the{" "}
-  <a href="/terms" className="underline text-blue-600">
-    terms
-  </a>
-</Label>
-
-
+              <Label htmlFor="terms" className="text-sm text-[#212529]">
+                I agree to the{" "}
+                <a href="/terms" className="underline text-blue-600">
+                  terms
+                </a>
+              </Label>
 
               {/* <Label htmlFor="agree" className="font-normal text-lg text-[#333747]">I agree to the terms.</Label> */}
             </div>
             <div className="flex justify-center items-center">
-              <Button type="submit" className=" bg-[#207ea0] text-white hover:bg-[#207ea0] px-7 py-6 shadow-xl">
+              <Button
+                type="submit"
+                className=" bg-[#207ea0] text-white hover:bg-[#207ea0] px-7 py-6 shadow-xl">
                 Submit
               </Button>
             </div>
@@ -413,7 +413,7 @@ export default function Apply() {
           <div className="max-w-7xl mx-auto px-4 text-center">
             {/* Title */}
             <h2 className="text-3xl md:text-5xl font-semibold text-[#333747] mb-14 leading-snug text-center">
-            Step-by-Step Instructions for Effective Trademark Publication
+              Step-by-Step Instructions for Effective Trademark Publication
             </h2>
 
             {/* Values */}
@@ -426,10 +426,11 @@ export default function Apply() {
                   className="w-[120px] h-[120px] mb-6"
                 />
                 <h4 className="text-3xl font-semibold text-[#333747] mb-6">
-                Step 1: Application Submission
+                  Step 1: Application Submission
                 </h4>
                 <p className="text-[#333747] font-semibold text-[15px]">
-                Initiate the process by completing our online trademark application form.
+                  Initiate the process by completing our online trademark
+                  application form.
                 </p>
               </div>
 
@@ -441,10 +442,11 @@ export default function Apply() {
                   className="w-[120px] h-[120px] mb-6"
                 />
                 <h4 className="text-3xl font-semibold text-[#333747] mb-6">
-                Step 2: Application Review
+                  Step 2: Application Review
                 </h4>
                 <p className="text-[#333747] font-semibold text-[15px]">
-                We examine your submission to ensure completeness and readiness for publication.
+                  We examine your submission to ensure completeness and
+                  readiness for publication.
                 </p>
               </div>
 
@@ -456,10 +458,11 @@ export default function Apply() {
                   className="w-[120px] h-[120px] mb-6"
                 />
                 <h4 className="text-3xl font-semibold text-[#333747] mb-6">
-                Step 3: Trademark Publication
+                  Step 3: Trademark Publication
                 </h4>
                 <p className="text-[#333747] font-semibold text-[15px]">
-                Upon approval, your trademark is officially published in our database.
+                  Upon approval, your trademark is officially published in our
+                  database.
                 </p>
               </div>
             </div>

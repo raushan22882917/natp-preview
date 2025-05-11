@@ -1,11 +1,16 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { format } from "date-fns";
 
 export type SearchResult = {
   id: string;
+  mark?: string;
   owner_name: string;
   application_number: string;
   national_classes?: string;
@@ -18,11 +23,17 @@ interface SearchResultsProps {
   results: SearchResult[];
   loading: boolean;
   searchSubmitted: boolean;
+  searchQuery: string;
 }
 
-export function SearchResults({ results, loading, searchSubmitted  }: SearchResultsProps) {
+export function SearchResults({
+  results,
+  loading,
+  searchSubmitted,
+  searchQuery,
+}: SearchResultsProps) {
   if (!searchSubmitted) {
-    return null; 
+    return null;
   }
 
   if (loading) {
@@ -61,41 +72,51 @@ export function SearchResults({ results, loading, searchSubmitted  }: SearchResu
   return (
     <div className="grid gap-6">
       {results.map((result) => (
-        <Card key={result.id} className="bg-white border border-gray-200 overflow-hidden">
+        <Card
+          key={result.id}
+          className="bg-white border border-gray-200 overflow-hidden">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row">
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">{result.owner_name}</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  {result.mark}
+                </h3>
 
                 <div className="grid grid-cols-1 gap-2 mb-4">
+                  {result.national_classes && (
+                    <div className="flex gap-2">
+                      <div className="w-40 font-medium">
+                        International Class(es)
+                      </div>
+                      <div>{result.national_classes}</div>
+                    </div>
+                  )}
                   <div className="flex">
                     <div className="w-40 font-medium">Application Number</div>
                     <div>{result.application_number}</div>
                   </div>
 
-                  {result.national_classes && (
-                    <div className="flex">
-                      <div className="w-40 font-medium">National Classes</div>
-                      <div>{result.national_classes}</div>
-                    </div>
-                  )}
-
                   {result.application_date && (
-                    <div className="flex">
-                      <div className="w-40 font-medium">Application Date</div>
-                      <div>
-                        {format(new Date(result.application_date), "MMM d, yyyy")}
-                      </div>
+                    <div className="flex gap-2">
+                      <div className=" font-medium">Owner</div>
+                      <div>{result.owner_name}</div>
                     </div>
                   )}
                 </div>
-{/* 
+                {/* 
                 {result.description && (
                   <p className="text-gray-700 mb-4">{result.description}</p>
                 )} */}
 
-                <Button asChild className="bg-[#207ea0] text-white hover:bg-[#207ea0] mt-2">
-                  <Link to={`/trademark/${result.id}`}>More Details</Link>
+                <Button
+                  asChild
+                  className="bg-[#207ea0] text-white hover:bg-[#207ea0] mt-2">
+                  <Link
+                    to={`/trademark/${result.id}?q=${encodeURIComponent(
+                      searchQuery
+                    )}`}>
+                    More Details
+                  </Link>
                 </Button>
               </div>
 

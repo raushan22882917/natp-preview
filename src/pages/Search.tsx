@@ -12,77 +12,52 @@ import { toast } from "sonner";
 import { debounce } from "lodash";
 import { SearchResults } from "@/components/SearchResults";
 import { Footer } from "@/components/Footer";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 export default function Search() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const searchQuery = searchParams.get("q") || "";
+  const [inputValue, setInputValue] = useState(searchQuery);
+  
+  // Log whenever component renders to debug
+  console.log("Search component rendering with query:", searchQuery);
+
   const [results, setResults] = useState<TrademarkResult[]>([]);
   const [loading, setLoading] = useState(false);
-
-  // Debounced search function that will execute after user stops typing
   const [searchSubmitted, setSearchSubmitted] = useState(false);
 
-  // Debounced search function that will execute after user stops typing
-  const debouncedSearch = useCallback((query: string) => {
-    const searchFn = debounce(async (searchText: string) => {
-      if (!searchText.trim()) {
-        setResults([]);
-        return;
-      }
-      try {
-        const { data, error } = await supabase
-          .from("trademarks")
-          .select("*")
-          .or(
-            `owner_name.ilike.%${searchText}%,application_number.ilike.%${searchText}%,description.ilike.%${searchText}%,national_classes.ilike.%${searchText}%`
-          )
-          .order("created_at", { ascending: false })
-          .limit(10);
-
-        if (error) throw error;
-
-        if (data && data.length > 0) {
-          setResults(data);
-        } else {
-          setResults([]);
-        }
-      } catch (error) {
-        console.error("Search error:", error);
-        setResults([]);
-      } finally {
-        setLoading(false);
-      }
-    }, 300);
-
-    searchFn(query);
-    return searchFn;
+  // Debug info
+  useEffect(() => {
+    console.log("Search page loaded with query:", searchQuery);
   }, []);
 
-  // Effect to trigger search when query changes
+  // Update inputValue whenever searchQuery (from URL) changes
   useEffect(() => {
-    const searchFn = debouncedSearch(searchQuery);
+    console.log("URL query param changed to:", searchQuery);
+    setInputValue(searchQuery);
+    // If there's a search query in the URL, consider it as submitted
+    if (searchQuery) {
+      setSearchSubmitted(true);
+      performSearch(searchQuery);
+    }
+  }, [searchQuery]);
 
-    // Cleanup function to cancel debounced search on unmount
-    return () => {
-      searchFn.cancel();
-    };
-  }, [searchQuery, debouncedSearch]);
-
-  // Handle form submission for explicit search
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) {
-      toast.error("Please enter a search term");
+  // Function to perform the actual search
+  const performSearch = async (query: string) => {
+    if (!query.trim()) {
+      setResults([]);
       return;
     }
-
-    setSearchSubmitted(true);
+    
     setLoading(true);
+    
     try {
       const { data, error } = await supabase
         .from("trademarks")
         .select("*")
         .or(
-          `owner_name.ilike.%${searchQuery}%,application_number.ilike.%${searchQuery}%,description.ilike.%${searchQuery}%,national_classes.ilike.%${searchQuery}%`
+          `owner_name.ilike.%${query}%,application_number.ilike.%${query}%,description.ilike.%${query}%,national_classes.ilike.%${query}%`
         )
         .order("created_at", { ascending: false });
 
@@ -90,18 +65,58 @@ export default function Search() {
 
       if (data && data.length > 0) {
         setResults(data);
-        toast.success(`Found ${data.length} results`);
+        if (searchSubmitted) {
+          toast.success(`Found ${data.length} results`);
+        }
       } else {
         setResults([]);
-        toast.info("No results found for your search");
+        if (searchSubmitted) {
+          toast.info("No results found for your search");
+        }
       }
     } catch (error) {
-      toast.error("Failed to perform search. Please try again.");
+      console.error("Search error:", error);
+      if (searchSubmitted) {
+        toast.error("Failed to perform search. Please try again.");
+      }
       setResults([]);
     } finally {
       setLoading(false);
     }
   };
+
+  // Debounced search function that will execute after user stops typing
+  const debouncedSearch = useCallback(
+    debounce((query: string) => {
+      performSearch(query);
+    }, 300),
+    []
+  );
+
+  // Effect to trigger search when query changes
+  useEffect(() => {
+    if (searchQuery) {
+      debouncedSearch(searchQuery);
+    }
+    
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchQuery, debouncedSearch]);
+
+  // Handle form submission for explicit search
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!inputValue.trim()) {
+      toast.error("Please enter a search term");
+      return;
+    }
+
+    setSearchParams({ q: inputValue }); // Update URL
+    setSearchSubmitted(true);
+  };
+  
   const features = [
     {
       title: "Instant Access to Publication Status",
@@ -123,7 +138,7 @@ export default function Search() {
     {
       question: "How to Search for Trademarks?",
       answer:
-        "Enter the application number or company name in the search field and select “Search” to view registered trademarks. Each result links to a detailed article for further information.",
+        "Enter the application number or company name in the search field and select 'Search' to view registered trademarks. Each result links to a detailed article for further information.",
     },
     {
       question: "What Information Is Provided?",
@@ -170,8 +185,8 @@ export default function Search() {
                 type="text"
                 placeholder="Enter owner name, application number, or keywords"
                 className="bg-white w-full sm:w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 autoComplete="off"
               />
             </div>
@@ -191,51 +206,10 @@ export default function Search() {
           results={results}
           loading={loading}
           searchSubmitted={searchSubmitted}
+          searchQuery={searchQuery}
         />
       </div>
-      {/* <div className="max-w-4xl mx-auto px-4 py-8">
-        {loading && (
-          <div className="text-center py-8">
-            <div className="animate-pulse space-y-6">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="bg-gray-100 p-8 rounded-lg shadow-sm border border-gray-200 flex flex-col md:flex-row gap-6">
-                  <div className="flex-1">
-                    <div className="h-8 bg-gray-200 rounded w-3/4 mb-4" />
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="h-4 bg-gray-200 rounded w-2/3" />
-                      <div className="h-4 bg-gray-200 rounded w-1/2" />
-                      <div className="h-4 bg-gray-200 rounded w-3/4" />
-                      <div className="h-4 bg-gray-200 rounded w-2/3" />
-                    </div>
-                    <div className="h-20 bg-gray-200 rounded w-full mb-4" />
-                    <div className="h-10 bg-gray-200 rounded w-32" />
-                  </div>
-                  <div className="flex-shrink-0 w-full md:w-[240px] h-[240px] bg-gray-200 rounded-lg" />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {!loading && results.length === 0 && searchQuery.trim() !== "" && (
-          <div className="text-center py-8">
-            <p className="text-gray-600 text-lg">No results found</p>
-            <p className="text-gray-500 mt-2">
-              Try adjusting your search terms
-            </p>
-          </div>
-        )}
-
-        {!loading && results.length > 0 && (
-          <div className="space-y-6">
-            {results.map((result) => (
-              <TrademarkCard key={result.id} trademark={result} />
-            ))}
-          </div>
-        )}
-      </div> */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-2 text-center">
           <h2 className="text-4xl sm:text-5xl md:text-[50px] font-semibold text-[#333747] mb-4 px-2 sm:px-10 md:px-20">
@@ -263,29 +237,6 @@ export default function Search() {
           </div>
         </div>
       </section>
-
-      {/* Search Features */}
-      {/* <div className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Search Features
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 rounded-lg bg-gray-50">
-              <h3 className="text-xl font-bold mb-4">Search by Owner Name</h3>
-              <p className="text-gray-600">Search for trademarks using the owner's name to find all associated registrations.</p>
-            </div>
-            <div className="text-center p-6 rounded-lg bg-gray-50">
-              <h3 className="text-xl font-bold mb-4">Search by Application Number</h3>
-              <p className="text-gray-600">Quickly locate specific trademarks using their unique application numbers.</p>
-            </div>
-            <div className="text-center p-6 rounded-lg bg-gray-50">
-              <h3 className="text-xl font-bold mb-4">Search by Description</h3>
-              <p className="text-gray-600">Find trademarks by searching through their descriptions and details.</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
 
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">

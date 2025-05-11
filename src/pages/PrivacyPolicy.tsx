@@ -145,7 +145,7 @@ export default function PrivacyPolicy() {
                       onClick={() => handleClick(section.title)}
                       className={`w-full text-left p-2 rounded-md text-[16px] transition-all duration-300 font-medium ${
                         activeSection.title === section.title
-                          ? "bg-[#2C5CA4] text-white"
+                          ? "bg-[#005ea2] text-white"
                           : "text-gray-800 hover:bg-gray-100"
                       }`}>
                       {section.title}

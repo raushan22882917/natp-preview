@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { Footer } from "@/components/Footer";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -135,70 +136,70 @@ export default function About() {
       </section>
 
       <section className="py-16 px-4">
-  <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10">
-    {/* Left Content */}
-    <div className="md:w-1/2 relative">
-      <div className="sticky top-24">
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#333747] mb-6 leading-snug">
-          You focus on your business, we manage your brand visibility.
-        </h2>
-      </div>
-    </div>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10">
+          {/* Left Content */}
+          <div className="md:w-1/2 relative">
+            <div className="sticky top-24">
+              <h2 className="text-3xl md:text-4xl font-semibold text-[#333747] mb-6 leading-snug">
+                You focus on your business, we manage your brand visibility.
+              </h2>
+            </div>
+          </div>
 
-    {/* Right Boxes */}
-    <div className="md:w-1/2 space-y-6">
-      {[
-        {
-          title: "Comprehensive Client Support Services",
-          desc: "Our team is ready to assist with any request promptly and reliably.",
-        },
-        {
-          title: "Strategic Innovation in Service Delivery",
-          desc: "We develop unique strategies to help your brand stand out.",
-        },
-        {
-          title: "Integrated Brand Visibility Management",
-          desc: "From content to visibility we cover all aspects of brand awareness.",
-        },
-        {
-          title: "Specialized Expertise and Strategic Guidance",
-          desc: "Our experts deliver effective strategies for stronger brand presence.",
-        },
-      ].map((item, idx) => (
-        <div
-          key={idx}
-          className="border  p-6 rounded-lg flex items-start gap-4"
-        >
-          <img
-            src="/images/2.svg"
-            alt="Service icon"
-            className="w-[45px] h-[45px] object-contain mt-1"
-          />
-          <div>
-            <h4 className="text-lg md:text-xl font-semibold mb-2 text-[#333747]">
-              {item.title}
-            </h4>
-            <p className="text-[#333747]">{item.desc}</p>
+          {/* Right Boxes */}
+          <div className="md:w-1/2 space-y-6">
+            {[
+              {
+                title: "Comprehensive Client Support Services",
+                desc: "Our team is ready to assist with any request promptly and reliably.",
+              },
+              {
+                title: "Strategic Innovation in Service Delivery",
+                desc: "We develop unique strategies to help your brand stand out.",
+              },
+              {
+                title: "Integrated Brand Visibility Management",
+                desc: "From content to visibility we cover all aspects of brand awareness.",
+              },
+              {
+                title: "Specialized Expertise and Strategic Guidance",
+                desc: "Our experts deliver effective strategies for stronger brand presence.",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="border-2 border-[#207ea0] p-6 rounded-lg flex items-start gap-4">
+                <img
+                  src="/images/2.svg"
+                  alt="Service icon"
+                  className="w-[45px] h-[45px] object-contain mt-1"
+                />
+                <div>
+                  <h4 className="text-lg md:text-xl font-semibold mb-2 text-[#333747]">
+                    {item.title}
+                  </h4>
+                  <p className="text-[#333747]">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-{/* Core Values Section */}
-<div className="max-w-5xl mx-auto py-16 px-4 text-center text-[#333747]">
-  <h3 className="text-3xl md:text-4xl font-semibold mb-3">
-    Contact our team to enhance your brand visibility.
-  </h3>
-  <p className="font-semibold text-lg mb-6">
-    Discover how we can elevate your brand visibility.
-  </p>
-  <button className="bg-[#207ea0] hover:bg-[#1b6b8a] transition text-white py-3 px-6 rounded shadow">
-    Contact Us
-  </button>
-</div>
-
+      {/* Core Values Section */}
+      <div className="max-w-5xl mx-auto py-16 px-4 text-center text-[#333747]">
+        <h3 className="text-3xl md:text-4xl font-semibold mb-3">
+          Contact our team to enhance your brand visibility.
+        </h3>
+        <p className="font-semibold text-lg mb-6">
+          Discover how we can elevate your brand visibility.
+        </p>
+        <Link
+          to="/contact"
+          className="bg-[#207ea0] hover:bg-[#207ea0] transition text-white py-3 px-6 rounded shadow">
+          Contact Us
+        </Link>
+      </div>
 
       <Footer />
     </div>
