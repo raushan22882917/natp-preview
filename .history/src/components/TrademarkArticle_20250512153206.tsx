@@ -281,7 +281,7 @@ export function TrademarkArticle({
             Boost your brand visibility today.
           </h3>
           <p className="font-semibold text-lg mb-6">
-            Reach out now and let's take your brand to the next level.
+            reach out now and let's take your brand to next level.
           </p>
           <Link
             to="/contact"
