@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -36,12 +36,7 @@ export const TrademarkForm = () => {
   const [keywordsUpdated, setKeywordsUpdated] = useState(0);
 
   // Get available keywords from utility - will refresh when keywordsUpdated changes
-  const [availableKeywords, setAvailableKeywords] = useState<string[]>([]);
-
-  // Refresh keywords when component mounts or keywordsUpdated changes
-  useEffect(() => {
-    setAvailableKeywords(getAvailableKeywords());
-  }, [keywordsUpdated]);
+  const availableKeywords = getAvailableKeywords();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

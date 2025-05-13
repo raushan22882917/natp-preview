@@ -191,7 +191,7 @@ export default function Search() {
     {
       question: "How to Search for Trademarks?",
       answer:
-        "You can find the same trademark by searching with either its application number or a word from its owner name or mark. Enter the application number (e.g., 97654321), a word from the trademark name, or a word from the owner name (except 'LLC') in the search field and select 'Submit'. The search is case insensitive for all search types. For example, searching for 'raushan' will match both 'raushan' and 'RAUSHAN' in owner names, mark words, and application numbers. Each result links to a detailed article for further information.",
+        "You can find the same trademark by searching with either its application number or a word from its owner name or mark. Enter the exact application number (e.g., 97654321), an exact word from the trademark name, or an exact word from the owner name (except 'LLC') in the search field and select 'Submit'. The search is case sensitive for application numbers and mark words, but case insensitive for owner names. For example, searching for 'raushan' will match both 'raushan' and 'RAUSHAN' in owner names. For application numbers, all digits must match exactly. Each result links to a detailed article for further information.",
     },
     {
       question: "What Information Is Provided?",

@@ -212,7 +212,7 @@ export default function Services() {
             <Button
               asChild
               className="bg-[#207ea0] text-white hover:bg-[#207ea0] py-6 px-8 shadow-xl ">
-              <Link to="/apply">Apply Now</Link>
+              <Link to="/contact">Apply Now</Link>
             </Button>
           </div>
         </div>

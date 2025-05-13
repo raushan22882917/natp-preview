@@ -61,7 +61,7 @@ export default function Publication() {
     </div>
 
     <Button asChild className="bg-[#207ea0] hover:bg-[#207ea0] mt-5 text-white shadow-md py-6 px-8">
-      <Link to="/apply" className="inline-block">Apply Now</Link>
+      <Link to="/services/publication" className="inline-block">Apply Now</Link>
     </Button>
   </div>
 </div>

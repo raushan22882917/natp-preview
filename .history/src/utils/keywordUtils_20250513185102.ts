@@ -79,37 +79,6 @@ export const getAvailableKeywords = (): string[] => {
 };
 
 /**
- * Adds a custom keyword to localStorage
- * @param keyword The custom keyword to add
- * @returns Boolean indicating success
- */
-export const addCustomKeyword = (keyword: string): boolean => {
-  if (!keyword.trim()) return false;
-
-  try {
-    // Get existing custom keywords
-    const customKeywordsString = localStorage.getItem('customKeywords');
-    const customKeywords = customKeywordsString ? JSON.parse(customKeywordsString) : [];
-
-    // Check if keyword already exists
-    if (customKeywords.includes(keyword.trim())) {
-      return false;
-    }
-
-    // Add the new keyword
-    customKeywords.push(keyword.trim());
-
-    // Save back to localStorage
-    localStorage.setItem('customKeywords', JSON.stringify(customKeywords));
-
-    return true;
-  } catch (error) {
-    console.error('Error saving custom keyword:', error);
-    return false;
-  }
-};
-
-/**
  * Toggles a keyword in an array of keywords
  * @param currentKeywords Current array of keywords
  * @param keyword Keyword to toggle

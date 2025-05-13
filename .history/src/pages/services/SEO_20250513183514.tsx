@@ -96,7 +96,7 @@ export default function SEO() {
             </div>
 
             <button className="bg-[#207ea0] text-white shadow-md py-3 px-8 mt-5 block mx-auto">
-                <Link to="/contact">Contact Us</Link>
+                <Link to="/apply">C</Link>
             </button>
           </div>
         </div>

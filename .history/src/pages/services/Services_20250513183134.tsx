@@ -194,7 +194,7 @@ export default function Services() {
           Discover your brand's potential through our professional trademark publication services. Together, we can enhance your visibility.
           </p>
           <Button asChild className="bg-[#00A3E0] text-white hover:bg-[#0091c7]">
-            <Link to="/apply">Apply Now</Link>
+            <Link to="/">Apply Now</Link>
           </Button>
         </div>
       </div>

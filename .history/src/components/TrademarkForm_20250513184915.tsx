@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,15 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "./ui/textarea";
-import { Bold, Italic, Plus } from "lucide-react";
-import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil, addCustomKeyword } from "@/utils/keywordUtils";
+import { Upload, Bold, Italic, Plus } from "lucide-react";
+import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil } from "@/utils/keywordUtils";
 
 export const TrademarkForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [customKeyword, setCustomKeyword] = useState("");
   const [formData, setFormData] = useState({
     owner_name: "",
     mark: "",
@@ -28,20 +27,9 @@ export const TrademarkForm = () => {
     logo_url: "",
     keywords: [] as string[],
   });
-  const descriptionRef = useRef<HTMLTextAreaElement>(null);
-  const [selectionStart, setSelectionStart] = useState(0);
-  const [selectionEnd, setSelectionEnd] = useState(0);
 
-  // State to track when keywords are updated
-  const [keywordsUpdated, setKeywordsUpdated] = useState(0);
-
-  // Get available keywords from utility - will refresh when keywordsUpdated changes
-  const [availableKeywords, setAvailableKeywords] = useState<string[]>([]);
-
-  // Refresh keywords when component mounts or keywordsUpdated changes
-  useEffect(() => {
-    setAvailableKeywords(getAvailableKeywords());
-  }, [keywordsUpdated]);
+  // Get available keywords from utility
+  const availableKeywords = getAvailableKeywords();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -63,100 +51,6 @@ export const TrademarkForm = () => {
         keywords: result.keywords
       };
     });
-  };
-
-  // Handle adding a custom keyword
-  const handleAddCustomKeyword = () => {
-    if (!customKeyword.trim()) {
-      toast.error("Please enter a keyword");
-      return;
-    }
-
-    // Check if keyword already exists
-    if (formData.keywords.includes(customKeyword.trim())) {
-      toast.error("This keyword is already added");
-      return;
-    }
-
-    // Add to localStorage for future use
-    const added = addCustomKeyword(customKeyword.trim());
-
-    // If successfully added to localStorage, refresh available keywords
-    if (added) {
-      // Force refresh of available keywords by incrementing the state
-      setKeywordsUpdated(prev => prev + 1);
-
-      // Add to current selection
-      setFormData(prev => {
-        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim());
-
-        if (result.message) {
-          toast.error(result.message);
-          return prev;
-        }
-
-        // Clear the input field after adding
-        setCustomKeyword("");
-
-        return {
-          ...prev,
-          keywords: result.keywords
-        };
-      });
-
-      toast.success("Keyword added successfully");
-    } else {
-      toast.error("Failed to add keyword or keyword already exists");
-    }
-  };
-
-  // Handle custom keyword input change
-  const handleCustomKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomKeyword(e.target.value);
-  };
-
-  // Track text selection in the description field
-  const handleDescriptionSelect = () => {
-    if (descriptionRef.current) {
-      setSelectionStart(descriptionRef.current.selectionStart);
-      setSelectionEnd(descriptionRef.current.selectionEnd);
-    }
-  };
-
-  // Apply formatting to selected text
-  const applyFormatting = (format: 'bold' | 'italic') => {
-    if (!descriptionRef.current) return;
-
-    const textarea = descriptionRef.current;
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-
-    if (start === end) {
-      toast.error("Please select some text to format");
-      return;
-    }
-
-    const selectedText = formData.description.substring(start, end);
-    let formattedText = '';
-
-    if (format === 'bold') {
-      formattedText = `<strong>${selectedText}</strong>`;
-    } else if (format === 'italic') {
-      formattedText = `<em>${selectedText}</em>`;
-    }
-
-    const newText =
-      formData.description.substring(0, start) +
-      formattedText +
-      formData.description.substring(end);
-
-    setFormData(prev => ({ ...prev, description: newText }));
-
-    // Set focus back to textarea after formatting
-    setTimeout(() => {
-      textarea.focus();
-      textarea.setSelectionRange(start, start + formattedText.length);
-    }, 0);
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -312,43 +206,15 @@ export const TrademarkForm = () => {
 
           <div className="space-y-2">
             <Label htmlFor="description">Description</Label>
-            <div className="flex gap-2 mb-2">
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() => applyFormatting('bold')}
-                className="px-3 py-1 h-8"
-              >
-                <Bold className="w-4 h-4" />
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() => applyFormatting('italic')}
-                className="px-3 py-1 h-8"
-              >
-                <Italic className="w-4 h-4" />
-              </Button>
-              <p className="text-xs text-gray-500 flex items-center ml-2">
-                Select text and click a button to format
-              </p>
-            </div>
             <Textarea
               id="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
-              onSelect={handleDescriptionSelect}
-              ref={descriptionRef}
               rows={4}
               className="bg-white border border-gray-300"
               placeholder="Enter the description text for the trademark"
             />
-            <p className="text-xs text-gray-500">
-              You can make text <strong>bold</strong> or <em>italic</em> by selecting it and using the buttons above
-            </p>
           </div>
 
           <div className="space-y-2">
@@ -368,23 +234,6 @@ export const TrademarkForm = () => {
                 </Button>
               ))}
             </div>
-
-            <div className="flex gap-2 mt-3">
-              <Input
-                placeholder="Add your own keyword"
-                value={customKeyword}
-                onChange={handleCustomKeywordChange}
-                className="bg-white border border-gray-300"
-              />
-              <Button
-                type="button"
-                onClick={handleAddCustomKeyword}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                <Plus className="w-4 h-4 mr-1" /> Add
-              </Button>
-            </div>
-
             <p className="text-sm text-gray-500 mt-1">
               Selected: {formData.keywords.length}/5
             </p>

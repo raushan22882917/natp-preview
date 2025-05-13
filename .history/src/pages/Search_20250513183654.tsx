@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { debounce } from "lodash";
 import { SearchResults } from "@/components/SearchResults";
 import { Footer } from "@/components/Footer";
-import { useSearchParams, useNavigate, Link } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,20 +53,19 @@ export default function Search() {
         let matchFound = false;
         let matchReason = "";
 
-        // 1. Exact match for application number (case insensitive)
-        if (trademark.application_number && trademark.application_number.toLowerCase() === query.toLowerCase()) {
+        // 1. Exact match for application number (must be exact, including case)
+        if (trademark.application_number && trademark.application_number === query) {
           matchFound = true;
           matchReason = `Match found by application number: ${trademark.application_number}`;
         }
 
-        // 2. Exact word match for mark words (case insensitive)
+        // 2. Exact word match for mark words (case sensitive)
         if (!matchFound && trademark.mark) {
           // Split by whitespace to get individual words
           const markWords = trademark.mark.split(/\s+/);
-          const queryLower = query.toLowerCase();
 
-          // Check if any word matches the query (case insensitive)
-          if (markWords.some(word => word.toLowerCase() === queryLower)) {
+          // Check if any word exactly matches the query (case sensitive)
+          if (markWords.some(word => word === query)) {
             matchFound = true;
             matchReason = `Match found by mark word: ${query} in ${trademark.mark}`;
           }
@@ -191,7 +190,7 @@ export default function Search() {
     {
       question: "How to Search for Trademarks?",
       answer:
-        "You can find the same trademark by searching with either its application number or a word from its owner name or mark. Enter the application number (e.g., 97654321), a word from the trademark name, or a word from the owner name (except 'LLC') in the search field and select 'Submit'. The search is case insensitive for all search types. For example, searching for 'raushan' will match both 'raushan' and 'RAUSHAN' in owner names, mark words, and application numbers. Each result links to a detailed article for further information.",
+        "You can find the same trademark by searching with either its application number or a word from its owner name or mark. Enter the exact application number (e.g., 97654321), an exact word from the trademark name, or an exact word from the owner name (except 'LLC') in the search field and select 'Submit'. The search is case sensitive for application numbers and mark words, but case insensitive for owner names. For example, searching for 'raushan' will match both 'raushan' and 'RAUSHAN' in owner names. For application numbers, all digits must match exactly. Each result links to a detailed article for further information.",
     },
     {
       question: "What Information Is Provided?",
@@ -303,7 +302,8 @@ export default function Search() {
               data access tools.
             </p>
             <button className="bg-[#207ea0] text-white px-6 py-3 shadow-md hover:bg-[#207ea0] transition-colors text-lg font-semibold">
-              <Link to="/contact">Contact Us</Link>
+              Contact Us
+              
             </button>
           </div>
 

@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "./ui/textarea";
 import { Bold, Italic, Plus } from "lucide-react";
-import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil, addCustomKeyword } from "@/utils/keywordUtils";
+import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil } from "@/utils/keywordUtils";
 
 export const TrademarkForm = () => {
   const navigate = useNavigate();
@@ -32,16 +32,8 @@ export const TrademarkForm = () => {
   const [selectionStart, setSelectionStart] = useState(0);
   const [selectionEnd, setSelectionEnd] = useState(0);
 
-  // State to track when keywords are updated
-  const [keywordsUpdated, setKeywordsUpdated] = useState(0);
-
-  // Get available keywords from utility - will refresh when keywordsUpdated changes
-  const [availableKeywords, setAvailableKeywords] = useState<string[]>([]);
-
-  // Refresh keywords when component mounts or keywordsUpdated changes
-  useEffect(() => {
-    setAvailableKeywords(getAvailableKeywords());
-  }, [keywordsUpdated]);
+  // Get available keywords from utility
+  const availableKeywords = getAvailableKeywords();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -78,36 +70,22 @@ export const TrademarkForm = () => {
       return;
     }
 
-    // Add to localStorage for future use
-    const added = addCustomKeyword(customKeyword.trim());
+    setFormData(prev => {
+      const result = toggleKeywordUtil(prev.keywords, customKeyword.trim());
 
-    // If successfully added to localStorage, refresh available keywords
-    if (added) {
-      // Force refresh of available keywords by incrementing the state
-      setKeywordsUpdated(prev => prev + 1);
+      if (result.message) {
+        toast.error(result.message);
+        return prev;
+      }
 
-      // Add to current selection
-      setFormData(prev => {
-        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim());
+      // Clear the input field after adding
+      setCustomKeyword("");
 
-        if (result.message) {
-          toast.error(result.message);
-          return prev;
-        }
-
-        // Clear the input field after adding
-        setCustomKeyword("");
-
-        return {
-          ...prev,
-          keywords: result.keywords
-        };
-      });
-
-      toast.success("Keyword added successfully");
-    } else {
-      toast.error("Failed to add keyword or keyword already exists");
-    }
+      return {
+        ...prev,
+        keywords: result.keywords
+      };
+    });
   };
 
   // Handle custom keyword input change

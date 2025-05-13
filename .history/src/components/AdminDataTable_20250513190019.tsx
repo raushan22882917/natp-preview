@@ -366,41 +366,13 @@ export const AdminDataTable = ({
                       </>
                     )}
                   </div>
-                ) : field.name === 'keywords' ? (
-                  <div className="col-span-3 space-y-2">
-                    <div className="text-sm text-gray-500 mb-2">
-                      Enter keywords separated by commas (e.g., "Brand Success, Innovation")
-                    </div>
-                    <Input
-                      id={field.name}
-                      name={field.name}
-                      type="text"
-                      value={Array.isArray(formData[field.name]) ? formData[field.name].join(', ') : formData[field.name] || ''}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        const keywordsArray = value.split(',').map(k => k.trim()).filter(k => k);
-                        setFormData(prev => ({ ...prev, [field.name]: keywordsArray }));
-                      }}
-                      className="w-full"
-                      required={field.required}
-                    />
-                    {Array.isArray(formData[field.name]) && formData[field.name].length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {formData[field.name].map((keyword: string, idx: number) => (
-                          <span key={idx} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
-                            {keyword}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
                 ) : field.type === 'textarea' ? (
                   <textarea
                     id={field.name}
                     name={field.name}
                     value={formData[field.name] || ''}
                     onChange={handleInputChange}
-                    className="col-span-3 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-blue focus:outline-none min-h-[100px]"
+                    className="col-span-3 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-blue focus:outline-none"
                     required={field.required}
                   />
                 ) : (
