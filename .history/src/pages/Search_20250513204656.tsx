@@ -259,7 +259,7 @@ export default function Search() {
               type="submit"
               className="bg-[#207ea0] hover:bg-[#207ea0] min-w-[120px] h-[60px] text-white text-lg"
               disabled={loading}>
-              {loading ? "Searching..." : <>Search</>}
+              {loading ? "Searching..." : <>Submit</>}
             </Button>
           </form>
         </div>

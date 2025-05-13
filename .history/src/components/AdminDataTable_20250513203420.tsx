@@ -292,10 +292,9 @@ export const AdminDataTable = ({
                   ) : field.type === 'date' && currentItem[field.name] ? (
                     new Date(currentItem[field.name]).toLocaleDateString()
                   ) : field.type === 'textarea' && currentItem[field.name] ? (
-                    <div
-                      className="whitespace-pre-wrap"
-                      dangerouslySetInnerHTML={{ __html: String(currentItem[field.name] || '-') }}
-                    ></div>
+                    <div className="whitespace-pre-wrap">
+                      {String(currentItem[field.name] || '-')}
+                    </div>
                   ) : (
                     String(currentItem[field.name] || '-')
                   )}

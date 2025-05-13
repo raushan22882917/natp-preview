@@ -226,7 +226,7 @@ export default function Contact() {
 
           <p className="text-[10px] text-gray-500 mt-4">
             By selecting "Sign Up", you confirm your agreement to our
-            <a href="/terms" className="underline ml-1">
+            <a href="#" className="underline ml-1">
               Terms and Conditions.
             </a>
           </p>

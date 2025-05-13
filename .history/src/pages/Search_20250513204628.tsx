@@ -259,7 +259,7 @@ export default function Search() {
               type="submit"
               className="bg-[#207ea0] hover:bg-[#207ea0] min-w-[120px] h-[60px] text-white text-lg"
               disabled={loading}>
-              {loading ? "Searching..." : <>Search</>}
+              {loading ? "Searching..." : <>Submit</>}
             </Button>
           </form>
         </div>
@@ -311,10 +311,11 @@ export default function Search() {
               FAQs
             </h2>
             <p className="text-[#333747] text-lg sm:text-xl font-semibold mb-6">
-              Find answers to common questions about our search functionality and trademark information.
+              Get clear answers to key questions about our trademark search and
+              data access tools.
             </p>
             <button className="bg-[#207ea0] text-white px-6 py-3 shadow-md hover:bg-[#207ea0] transition-colors text-lg font-semibold">
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact">Contact Us</Link>
             </button>
           </div>
 

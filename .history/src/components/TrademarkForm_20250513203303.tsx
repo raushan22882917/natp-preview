@@ -135,7 +135,7 @@ export const TrademarkForm = () => {
   };
 
   // Apply formatting to selected text
-  const applyFormatting = (format: 'bold' | 'italic' | 'underline' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
+  const applyFormatting = (format: 'bold' | 'italic') => {
     if (!descriptionRef.current) return;
 
     const textarea = descriptionRef.current;
@@ -150,36 +150,10 @@ export const TrademarkForm = () => {
     const selectedText = formData.description.substring(start, end);
     let formattedText = '';
 
-    switch (format) {
-      case 'bold':
-        formattedText = `<strong>${selectedText}</strong>`;
-        break;
-      case 'italic':
-        formattedText = `<em>${selectedText}</em>`;
-        break;
-      case 'underline':
-        formattedText = `<u>${selectedText}</u>`;
-        break;
-      case 'h1':
-        formattedText = `<h1>${selectedText}</h1>`;
-        break;
-      case 'h2':
-        formattedText = `<h2>${selectedText}</h2>`;
-        break;
-      case 'h3':
-        formattedText = `<h3>${selectedText}</h3>`;
-        break;
-      case 'h4':
-        formattedText = `<h4>${selectedText}</h4>`;
-        break;
-      case 'h5':
-        formattedText = `<h5>${selectedText}</h5>`;
-        break;
-      case 'h6':
-        formattedText = `<h6>${selectedText}</h6>`;
-        break;
-      default:
-        formattedText = selectedText;
+    if (format === 'bold') {
+      formattedText = `<strong>${selectedText}</strong>`;
+    } else if (format === 'italic') {
+      formattedText = `<em>${selectedText}</em>`;
     }
 
     const newText =
@@ -349,106 +323,29 @@ export const TrademarkForm = () => {
 
           <div className="space-y-2">
             <Label htmlFor="description">Description</Label>
-            <div className="flex flex-wrap gap-2 mb-2">
-              <div className="flex gap-1">
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('bold')}
-                  className="px-3 py-1 h-8"
-                  title="Bold"
-                >
-                  <Bold className="w-4 h-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('italic')}
-                  className="px-3 py-1 h-8"
-                  title="Italic"
-                >
-                  <Italic className="w-4 h-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('underline')}
-                  className="px-3 py-1 h-8"
-                  title="Underline"
-                >
-                  <Underline className="w-4 h-4" />
-                </Button>
-              </div>
-              <div className="h-8 w-px bg-gray-200 mx-1"></div>
-              <div className="flex gap-1">
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('h1')}
-                  className="px-3 py-1 h-8"
-                  title="Heading 1"
-                >
-                  <Heading1 className="w-4 h-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('h2')}
-                  className="px-3 py-1 h-8"
-                  title="Heading 2"
-                >
-                  <Heading2 className="w-4 h-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('h3')}
-                  className="px-3 py-1 h-8"
-                  title="Heading 3"
-                >
-                  <Heading3 className="w-4 h-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('h4')}
-                  className="px-3 py-1 h-8"
-                  title="Heading 4"
-                >
-                  <Heading4 className="w-4 h-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('h5')}
-                  className="px-3 py-1 h-8"
-                  title="Heading 5"
-                >
-                  <Heading5 className="w-4 h-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => applyFormatting('h6')}
-                  className="px-3 py-1 h-8"
-                  title="Heading 6"
-                >
-                  <Heading6 className="w-4 h-4" />
-                </Button>
-              </div>
+            <div className="flex gap-2 mb-2">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => applyFormatting('bold')}
+                className="px-3 py-1 h-8"
+              >
+                <Bold className="w-4 h-4" />
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => applyFormatting('italic')}
+                className="px-3 py-1 h-8"
+              >
+                <Italic className="w-4 h-4" />
+              </Button>
+              <p className="text-xs text-gray-500 flex items-center ml-2">
+                Select text and click a button to format
+              </p>
             </div>
-            <p className="text-xs text-gray-500 mb-2">
-              Select text and click a button to format
-            </p>
             <Textarea
               id="description"
               name="description"
@@ -456,12 +353,12 @@ export const TrademarkForm = () => {
               onChange={handleChange}
               onSelect={handleDescriptionSelect}
               ref={descriptionRef}
-              rows={6}
+              rows={4}
               className="bg-white border border-gray-300"
               placeholder="Enter the description text for the trademark"
             />
             <p className="text-xs text-gray-500">
-              You can make text <strong>bold</strong>, <em>italic</em>, <u>underlined</u>, or add headings by selecting it and using the buttons above
+              You can make text <strong>bold</strong> or <em>italic</em> by selecting it and using the buttons above
             </p>
           </div>
 

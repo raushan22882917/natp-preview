@@ -47,9 +47,6 @@ export default function Search() {
 
       console.log("Searching for:", query);
 
-      // Define business entity terms that should not be searchable
-      const EXCLUDED_TERMS = ["llc", "inc", "corporation", "corp", "incorporated"];
-
       // Filter the results based on our specific criteria with case sensitivity
       const filteredResults = allTrademarks.filter(trademark => {
         // Track if we found a match for debugging
@@ -68,13 +65,10 @@ export default function Search() {
           const markWords = trademark.mark.split(/\s+/);
           const queryLower = query.toLowerCase();
 
-          // Check if the query is not one of the excluded terms
-          if (!EXCLUDED_TERMS.includes(queryLower)) {
-            // Check if any word matches the query (case insensitive)
-            if (markWords.some(word => word.toLowerCase() === queryLower)) {
-              matchFound = true;
-              matchReason = `Match found by mark word: ${query} in ${trademark.mark}`;
-            }
+          // Check if any word matches the query (case insensitive)
+          if (markWords.some(word => word.toLowerCase() === queryLower)) {
+            matchFound = true;
+            matchReason = `Match found by mark word: ${query} in ${trademark.mark}`;
           }
         }
 
@@ -86,12 +80,15 @@ export default function Search() {
           // Convert query to lowercase for case-insensitive comparison with owner names
           const queryLower = query.toLowerCase();
 
+          // List of business entity terms that should not be searchable
+          const excludedTerms = ["llc", "inc", "corporation", "corp", "incorporated"];
+
           // Check if the query is not one of the excluded terms
-          if (!EXCLUDED_TERMS.includes(queryLower)) {
+          if (!excludedTerms.includes(queryLower)) {
             // Check if any word matches the query (case insensitive) and is not one of the excluded terms
             if (ownerWords.some(word => {
               const wordLower = word.toLowerCase();
-              return wordLower === queryLower && !EXCLUDED_TERMS.includes(wordLower);
+              return wordLower === queryLower && !excludedTerms.includes(wordLower);
             })) {
               matchFound = true;
               matchReason = `Match found by owner word: ${query} in ${trademark.owner_name}`;
@@ -201,24 +198,24 @@ export default function Search() {
   ];
   const faqs = [
     {
-      question: "How to search trademarks?",
+      question: "How to Search for Trademarks?",
       answer:
-        "To search for trademarks, enter the application number or company name in the search bar. Click the search button to view registered brands. Each brand icon will lead you to a detailed article.",
+        "You can find the same trademark by searching with either its application number or a word from its owner name or mark. Enter the application number (e.g., 97654321), a word from the trademark name, or a word from the owner name (except business entity terms like 'LLC', 'INC', or 'Corporation') in the search field and select 'Submit'. The search is case insensitive for all search types. For example, searching for 'raushan' will match both 'raushan' and 'RAUSHAN' in owner names, mark words, and application numbers. Each result links to a detailed article for further information.",
     },
     {
-      question: "What information is available?",
+      question: "What Information Is Provided?",
       answer:
-        "You can find detailed articles about each trademark, including the trademark image, owner, and application date. We also provide general information about trademarks to enhance your understanding. This information is designed to support new brand owners.",
+        "Each trademark entry includes an article with image, owner details, and application date. General trademark guidance is also available to support new brand owners.",
     },
     {
-      question: "Can I update my search?",
+      question: "Can I Update My Search?",
       answer:
-        "Yes, you can modify your search at any time by entering a new application number or company name. Simply replace the existing input and click search again. This allows you to stay updated on your trademark status.",
+        "Yes. You may revise your search at any time by entering a new application number or company name and initiating a new query. This ensures access to the most current trademark status.",
     },
     {
-      question: "How to contact support?",
+      question: "How to Contact Support?",
       answer:
-        "If you have further questions, click the 'Contact' button for assistance. Our support team is available to help you with any inquiries. We are committed to providing the best support for your trademark needs.",
+        "For further assistance, use the 'Contact Us' button to reach our support team. We are available to address inquiries and ensure reliable guidance on trademark-related matters.",
     },
   ];
 
@@ -248,7 +245,7 @@ export default function Search() {
             <div className="relative w-full">
               <Input
                 type="text"
-                placeholder="Search using application number or owner's name ."
+                placeholder="Search using the application number or owners's name."
                 className="bg-white w-full sm:w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
@@ -259,7 +256,7 @@ export default function Search() {
               type="submit"
               className="bg-[#207ea0] hover:bg-[#207ea0] min-w-[120px] h-[60px] text-white text-lg"
               disabled={loading}>
-              {loading ? "Searching..." : <>Search</>}
+              {loading ? "Searching..." : <>Submit</>}
             </Button>
           </form>
         </div>
@@ -311,10 +308,11 @@ export default function Search() {
               FAQs
             </h2>
             <p className="text-[#333747] text-lg sm:text-xl font-semibold mb-6">
-              Find answers to common questions about our search functionality and trademark information.
+              Get clear answers to key questions about our trademark search and
+              data access tools.
             </p>
             <button className="bg-[#207ea0] text-white px-6 py-3 shadow-md hover:bg-[#207ea0] transition-colors text-lg font-semibold">
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact">Contact Us</Link>
             </button>
           </div>
 
