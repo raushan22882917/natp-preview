@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { Footer } from "@/components/Footer";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { useHashScroll } from "@/hooks/use-hash-scroll";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   // Use the hash scroll hook to handle scrolling to sections
@@ -241,9 +242,9 @@ export default function Index() {
         <p className="mb-6 text-lg font-semibold text-[#333747]">
           We’re hiring qualified professionals now.
         </p>
-        <button className="bg-[#207ea0]  text-white  py-3 px-6  shadow-xl mr-auto">
+        <Link to="/contact" className="bg-[#207ea0]  text-white  py-3 px-6  shadow-xl mr-auto">
           Contact Us
-        </button>
+        </Link>
       </div>
 
       {/* Footer */}

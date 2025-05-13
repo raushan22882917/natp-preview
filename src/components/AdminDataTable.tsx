@@ -313,7 +313,7 @@ export const AdminDataTable = ({
 
       {/* Edit Dialog */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="sm:max-w-[450px] rounded-lg">
+        <DialogContent className="sm:max-w-[450px] max-h-[90vh] overflow-y-auto rounded-lg">
           <DialogHeader>
             <DialogTitle className="text-primary-blue">Edit {title}</DialogTitle>
           </DialogHeader>

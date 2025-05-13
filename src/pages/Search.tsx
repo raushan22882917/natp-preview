@@ -201,9 +201,9 @@ export default function Search() {
   ];
   const faqs = [
     {
-      question: "How to search trademarks?",
+      question: "What Information Is Provided?",
       answer:
-        "To search for trademarks, enter the application number or company name in the search bar. Click the search button to view registered brands. Each brand icon will lead you to a detailed article.",
+        "Each trademark entry includes an article with image, owner details, and application date. General trademark guidance is also available to support new brand owners.",
     },
     {
       question: "What information is available?",
@@ -211,14 +211,14 @@ export default function Search() {
         "You can find detailed articles about each trademark, including the trademark image, owner, and application date. We also provide general information about trademarks to enhance your understanding. This information is designed to support new brand owners.",
     },
     {
-      question: "Can I update my search?",
+      question: "Can I Update My Search?",
       answer:
-        "Yes, you can modify your search at any time by entering a new application number or company name. Simply replace the existing input and click search again. This allows you to stay updated on your trademark status.",
+        "Yes. You may revise your search at any time by entering a new application number or company name and initiating a new query. This ensures access to the most current trademark status.",
     },
     {
-      question: "How to contact support?",
+      question: "How to Contact Support?",
       answer:
-        "If you have further questions, click the 'Contact' button for assistance. Our support team is available to help you with any inquiries. We are committed to providing the best support for your trademark needs.",
+        "For further assistance, use the 'Contact' button to reach our support team. We are available to address inquiries and ensure reliable guidance on trademark-related matters.",
     },
   ];
 
