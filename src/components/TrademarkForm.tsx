@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -18,9 +17,14 @@ import {
   Heading4,
   Heading5,
   Heading6,
-  Plus
+  Plus,
 } from "lucide-react";
-import { getAvailableKeywords, toggleKeyword as toggleKeywordUtil, addCustomKeyword } from "@/utils/keywordUtils";
+import {
+  getAvailableKeywords,
+  toggleKeyword as toggleKeywordUtil,
+  addCustomKeyword,
+} from "@/utils/keywordUtils";
+import { X } from "lucide-react";
 
 export const TrademarkForm = () => {
   const navigate = useNavigate();
@@ -54,14 +58,16 @@ export const TrademarkForm = () => {
     setAvailableKeywords(getAvailableKeywords());
   }, [keywordsUpdated]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   // Handle keyword selection using utility function
   const toggleKeyword = (keyword: string) => {
-    setFormData(prev => {
+    setFormData((prev) => {
       const result = toggleKeywordUtil(prev.keywords, keyword);
 
       // Show message if provided (e.g., max keywords reached)
@@ -71,7 +77,7 @@ export const TrademarkForm = () => {
 
       return {
         ...prev,
-        keywords: result.keywords
+        keywords: result.keywords,
       };
     });
   };
@@ -95,10 +101,10 @@ export const TrademarkForm = () => {
     // If successfully added to localStorage, refresh available keywords
     if (added) {
       // Force refresh of available keywords by incrementing the state
-      setKeywordsUpdated(prev => prev + 1);
+      setKeywordsUpdated((prev) => prev + 1);
 
       // Add to current selection
-      setFormData(prev => {
+      setFormData((prev) => {
         const result = toggleKeywordUtil(prev.keywords, customKeyword.trim());
 
         if (result.message) {
@@ -111,7 +117,7 @@ export const TrademarkForm = () => {
 
         return {
           ...prev,
-          keywords: result.keywords
+          keywords: result.keywords,
         };
       });
 
@@ -122,7 +128,9 @@ export const TrademarkForm = () => {
   };
 
   // Handle custom keyword input change
-  const handleCustomKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCustomKeywordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setCustomKeyword(e.target.value);
   };
 
@@ -135,7 +143,18 @@ export const TrademarkForm = () => {
   };
 
   // Apply formatting to selected text
-  const applyFormatting = (format: 'bold' | 'italic' | 'underline' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
+  const applyFormatting = (
+    format:
+      | "bold"
+      | "italic"
+      | "underline"
+      | "h1"
+      | "h2"
+      | "h3"
+      | "h4"
+      | "h5"
+      | "h6"
+  ) => {
     if (!descriptionRef.current) return;
 
     const textarea = descriptionRef.current;
@@ -148,34 +167,34 @@ export const TrademarkForm = () => {
     }
 
     const selectedText = formData.description.substring(start, end);
-    let formattedText = '';
+    let formattedText = "";
 
     switch (format) {
-      case 'bold':
+      case "bold":
         formattedText = `<strong>${selectedText}</strong>`;
         break;
-      case 'italic':
+      case "italic":
         formattedText = `<em>${selectedText}</em>`;
         break;
-      case 'underline':
+      case "underline":
         formattedText = `<u>${selectedText}</u>`;
         break;
-      case 'h1':
+      case "h1":
         formattedText = `<h1>${selectedText}</h1>`;
         break;
-      case 'h2':
+      case "h2":
         formattedText = `<h2>${selectedText}</h2>`;
         break;
-      case 'h3':
+      case "h3":
         formattedText = `<h3>${selectedText}</h3>`;
         break;
-      case 'h4':
+      case "h4":
         formattedText = `<h4>${selectedText}</h4>`;
         break;
-      case 'h5':
+      case "h5":
         formattedText = `<h5>${selectedText}</h5>`;
         break;
-      case 'h6':
+      case "h6":
         formattedText = `<h6>${selectedText}</h6>`;
         break;
       default:
@@ -187,7 +206,7 @@ export const TrademarkForm = () => {
       formattedText +
       formData.description.substring(end);
 
-    setFormData(prev => ({ ...prev, description: newText }));
+    setFormData((prev) => ({ ...prev, description: newText }));
 
     // Set focus back to textarea after formatting
     setTimeout(() => {
@@ -213,7 +232,7 @@ export const TrademarkForm = () => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result as string);
-      reader.onerror = error => reject(error);
+      reader.onerror = (error) => reject(error);
     });
   };
 
@@ -230,8 +249,8 @@ export const TrademarkForm = () => {
           // Convert the image to base64
           logoUrl = await convertToBase64(imageFile);
         } catch (error) {
-          console.error('Error converting image to base64:', error);
-          throw new Error('Failed to process the image');
+          console.error("Error converting image to base64:", error);
+          throw new Error("Failed to process the image");
         }
       }
 
@@ -245,32 +264,48 @@ export const TrademarkForm = () => {
         description: formData.description || null,
         application_date: formData.application_date || null,
         logo_url: logoUrl || null,
-        keywords: formData.keywords.length > 0 ? formData.keywords : null // Store keywords as an array
+        keywords: formData.keywords.length > 0 ? formData.keywords : null, // Store keywords as an array
       };
 
       console.log("Saving trademark with data:", trademarkData);
 
       // Insert the trademark data into the database
       const { error } = await supabase
-        .from('trademarks')
+        .from("trademarks")
         .insert([trademarkData]);
 
       if (error) throw error;
 
       toast.success("Trademark created successfully!");
-      navigate('/admin?tab=trademarks');
+      navigate("/admin?tab=trademarks");
     } catch (error) {
-      console.error('Error creating trademark:', error);
+      console.error("Error creating trademark:", error);
       toast.error("Failed to create trademark");
     } finally {
       setLoading(false);
     }
   };
 
+  const handleRemoveKeyword = (keywordToRemove) => {
+    // Remove from availableKeywords
+    setAvailableKeywords((prev) =>
+      prev.filter((keyword) => keyword !== keywordToRemove)
+    );
+  
+    // Also remove from selected keywords if it's selected
+    setFormData((prev) => ({
+      ...prev,
+      keywords: prev.keywords.filter((k) => k !== keywordToRemove),
+    }));
+  };
+  
+
   return (
     <Card className="max-w-2xl mx-auto shadow-lg">
       <CardHeader className="bg-gray-50">
-        <CardTitle className="text-primary-blue">Create New Trademark</CardTitle>
+        <CardTitle className="text-primary-blue">
+          Create New Trademark
+        </CardTitle>
       </CardHeader>
       <CardContent className="pt-6 bg-white">
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -296,7 +331,9 @@ export const TrademarkForm = () => {
               placeholder="Enter the wordmark"
               className="bg-white border border-gray-300"
             />
-            <p className="text-sm text-gray-500">This will be displayed as the headline of the article</p>
+            <p className="text-sm text-gray-500">
+              This will be displayed as the headline of the article
+            </p>
           </div>
 
           <div className="space-y-2">
@@ -333,8 +370,6 @@ export const TrademarkForm = () => {
             />
           </div>
 
-
-
           <div className="space-y-2">
             <Label htmlFor="application_date">Application Date</Label>
             <Input
@@ -355,30 +390,27 @@ export const TrademarkForm = () => {
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('bold')}
+                  onClick={() => applyFormatting("bold")}
                   className="px-3 py-1 h-8"
-                  title="Bold"
-                >
+                  title="Bold">
                   <Bold className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('italic')}
+                  onClick={() => applyFormatting("italic")}
                   className="px-3 py-1 h-8"
-                  title="Italic"
-                >
+                  title="Italic">
                   <Italic className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('underline')}
+                  onClick={() => applyFormatting("underline")}
                   className="px-3 py-1 h-8"
-                  title="Underline"
-                >
+                  title="Underline">
                   <Underline className="w-4 h-4" />
                 </Button>
               </div>
@@ -388,60 +420,54 @@ export const TrademarkForm = () => {
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('h1')}
+                  onClick={() => applyFormatting("h1")}
                   className="px-3 py-1 h-8"
-                  title="Heading 1"
-                >
+                  title="Heading 1">
                   <Heading1 className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('h2')}
+                  onClick={() => applyFormatting("h2")}
                   className="px-3 py-1 h-8"
-                  title="Heading 2"
-                >
+                  title="Heading 2">
                   <Heading2 className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('h3')}
+                  onClick={() => applyFormatting("h3")}
                   className="px-3 py-1 h-8"
-                  title="Heading 3"
-                >
+                  title="Heading 3">
                   <Heading3 className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('h4')}
+                  onClick={() => applyFormatting("h4")}
                   className="px-3 py-1 h-8"
-                  title="Heading 4"
-                >
+                  title="Heading 4">
                   <Heading4 className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('h5')}
+                  onClick={() => applyFormatting("h5")}
                   className="px-3 py-1 h-8"
-                  title="Heading 5"
-                >
+                  title="Heading 5">
                   <Heading5 className="w-4 h-4" />
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => applyFormatting('h6')}
+                  onClick={() => applyFormatting("h6")}
                   className="px-3 py-1 h-8"
-                  title="Heading 6"
-                >
+                  title="Heading 6">
                   <Heading6 className="w-4 h-4" />
                 </Button>
               </div>
@@ -461,25 +487,37 @@ export const TrademarkForm = () => {
               placeholder="Enter the description text for the trademark"
             />
             <p className="text-xs text-gray-500">
-              You can make text <strong>bold</strong>, <em>italic</em>, <u>underlined</u>, or add headings by selecting it and using the buttons above
+              You can make text <strong>bold</strong>, <em>italic</em>,{" "}
+              <u>underlined</u>, or add headings by selecting it and using the
+              buttons above
             </p>
           </div>
 
           <div className="space-y-2">
             <Label>Keywords (Select up to 5)</Label>
+
             <div className="flex flex-wrap gap-2 mt-2">
               {availableKeywords.map((keyword) => (
-                <Button
+                <div
                   key={keyword}
-                  type="button"
-                  variant={formData.keywords.includes(keyword) ? "default" : "outline"}
-                  className={`rounded-full text-xs px-4 py-1 h-auto ${
-                    formData.keywords.includes(keyword) ? "bg-blue-600" : ""
-                  }`}
-                  onClick={() => toggleKeyword(keyword)}
-                >
-                  {keyword}
-                </Button>
+                  className={`flex items-center rounded-full text-xs px-4 py-1 h-auto border ${
+                    formData.keywords.includes(keyword)
+                      ? "bg-blue-600 text-white"
+                      : "bg-white text-gray-800 border-gray-300"
+                  }`}>
+                  <button
+                    type="button"
+                    onClick={() => toggleKeyword(keyword)}
+                    className="focus:outline-none">
+                    {keyword}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveKeyword(keyword)}
+                    className="ml-2 text-red-500 hover:text-red-700">
+                    <X className="w-3 h-3" />
+                  </button>
+                </div>
               ))}
             </div>
 
@@ -493,8 +531,7 @@ export const TrademarkForm = () => {
               <Button
                 type="button"
                 onClick={handleAddCustomKeyword}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
+                className="bg-blue-600 hover:bg-blue-700 text-white">
                 <Plus className="w-4 h-4 mr-1" /> Add
               </Button>
             </div>
@@ -530,8 +567,7 @@ export const TrademarkForm = () => {
           <Button
             type="submit"
             className="w-full bg-[#005ea2] hover:bg-[#004d86] text-white"
-            disabled={loading}
-          >
+            disabled={loading}>
             {loading ? "Creating..." : "Create Trademark"}
           </Button>
         </form>
