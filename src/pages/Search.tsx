@@ -206,9 +206,9 @@ export default function Search() {
         "Each trademark entry includes an article with image, owner details, and application date. General trademark guidance is also available to support new brand owners.",
     },
     {
-      question: "What information is available?",
+      question: "How to Search for Trademarks?",
       answer:
-        "You can find detailed articles about each trademark, including the trademark image, owner, and application date. We also provide general information about trademarks to enhance your understanding. This information is designed to support new brand owners.",
+        "Enter the application number or company name in the search field and select “Search” to view registered trademarks. Each result links to a detailed article for further information.",
     },
     {
       question: "Can I Update My Search?",
@@ -248,7 +248,7 @@ export default function Search() {
             <div className="relative w-full">
               <Input
                 type="text"
-                placeholder="Search using application number or owner's name ."
+                placeholder="Enter application number, owner, or company name."
                 className="bg-white w-full sm:w-[600px] h-[60px] text-gray-600 z-10 relative pr-4 py-3 border-[#207ea0] !text-xl font-semibold"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
