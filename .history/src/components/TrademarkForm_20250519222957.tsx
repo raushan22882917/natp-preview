@@ -34,7 +34,6 @@ export const TrademarkForm = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [customKeyword, setCustomKeyword] = useState("");
   const [formData, setFormData] = useState({
-    id: undefined as string | undefined,
     owner_name: "",
     mark: "",
     application_number: "",
@@ -60,47 +59,6 @@ export const TrademarkForm = () => {
     setAvailableKeywords(getAvailableKeywords());
   }, [keywordsUpdated]);
 
-  // Check if we're editing an existing trademark
-  useEffect(() => {
-    const fetchTrademarkData = async () => {
-      const id = new URLSearchParams(window.location.search).get("id");
-      if (id) {
-        setLoading(true);
-        try {
-          const { data, error } = await supabase
-            .from("trademarks")
-            .select("*")
-            .eq("id", id)
-            .single();
-
-          if (error) throw error;
-
-          if (data) {
-            setFormData({
-              id: data.id,
-              owner_name: data.owner_name || "",
-              mark: data.mark || "",
-              application_number: data.application_number || "",
-              national_classes: data.national_classes || "",
-              us_classes: data.us_classes || "",
-              description: data.description || "",
-              application_date: data.application_date || "",
-              logo_url: data.logo_url || "",
-              keywords: data.keywords || [],
-            });
-          }
-        } catch (error: any) {
-          console.error("Error fetching trademark:", error);
-          toast.error("Failed to load trademark data: " + (error.message || 'Unknown error'));
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchTrademarkData();
-  }, []);
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -108,13 +66,10 @@ export const TrademarkForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Maximum number of keywords allowed
-  const MAX_KEYWORDS = 5;
-
   // Handle keyword selection using utility function
   const toggleKeyword = (keyword: string) => {
     setFormData((prev) => {
-      const result = toggleKeywordUtil(prev.keywords, keyword, MAX_KEYWORDS);
+      const result = toggleKeywordUtil(prev.keywords, keyword);
 
       // Show message if provided (e.g., max keywords reached)
       if (result.message) {
@@ -151,7 +106,7 @@ export const TrademarkForm = () => {
 
       // Add to current selection
       setFormData((prev) => {
-        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim(), MAX_KEYWORDS);
+        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim());
 
         if (result.message) {
           toast.error(result.message);
@@ -287,7 +242,7 @@ export const TrademarkForm = () => {
     setLoading(true);
 
     try {
-      let logoUrl = formData.logo_url;
+      let logoUrl = "";
 
       // Convert image to base64 if one is selected
       if (imageFile) {
@@ -315,94 +270,34 @@ export const TrademarkForm = () => {
 
       console.log("Saving trademark with data:", trademarkData);
 
-      let error;
-
-      // Check if we're updating an existing trademark or creating a new one
-      if (formData.id) {
-        // Update existing trademark
-        const { error: updateError } = await supabase
-          .from("trademarks")
-          .update(trademarkData)
-          .eq("id", formData.id);
-
-        error = updateError;
-
-        if (!error) {
-          toast.success("Trademark updated successfully!");
-        }
-      } else {
-        // Insert new trademark
-        const { error: insertError } = await supabase
-          .from("trademarks")
-          .insert([trademarkData]);
-
-        error = insertError;
-
-        if (!error) {
-          toast.success("Trademark created successfully!");
-        }
-      }
+      // Insert the trademark data into the database
+      const { error } = await supabase
+        .from("trademarks")
+        .insert([trademarkData]);
 
       if (error) throw error;
 
+      toast.success("Trademark created successfully!");
       navigate("/admin?tab=trademarks");
-    } catch (error: any) {
-      console.error("Error saving trademark:", error);
-      toast.error(`Failed to save trademark: ${error.message || 'Unknown error'}`);
+    } catch (error) {
+      console.error("Error creating trademark:", error);
+      toast.error("Failed to create trademark");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleRemoveKeyword = async (keywordToRemove: string) => {
-    try {
-      // If we have an existing trademark ID, update the keywords in the database
-      if (formData.id) {
-        // First, get the current keywords from the database
-        const { data, error: fetchError } = await supabase
-          .from("trademarks")
-          .select('keywords')
-          .eq('id', formData.id)
-          .single();
+  const handleRemoveKeyword = (keywordToRemove) => {
+    // Remove from availableKeywords
+    setAvailableKeywords((prev) =>
+      prev.filter((keyword) => keyword !== keywordToRemove)
+    );
 
-        if (fetchError) {
-          throw fetchError;
-        }
-
-        // Filter out the keyword to remove
-        const updatedKeywords = Array.isArray(data.keywords)
-          ? data.keywords.filter(k => k !== keywordToRemove)
-          : [];
-
-        // Update the database with the new keywords array
-        const { error: updateError } = await supabase
-          .from("trademarks")
-          .update({ keywords: updatedKeywords })
-          .eq('id', formData.id);
-
-        if (updateError) {
-          throw updateError;
-        }
-      }
-
-      // Try to remove the keyword from localStorage if it's a custom keyword
-      removeCustomKeyword(keywordToRemove);
-
-      // Remove from selected keywords in the form
-      setFormData((prev) => ({
-        ...prev,
-        keywords: prev.keywords.filter((k) => k !== keywordToRemove),
-      }));
-
-      // Force refresh of available keywords by incrementing the state
-      // This will ensure the keyword is removed from the UI
-      setKeywordsUpdated(prev => prev + 1);
-
-      toast.success(`Keyword "${keywordToRemove}" removed`);
-    } catch (error: any) {
-      console.error("Error removing keyword:", error);
-      toast.error(`Failed to remove keyword: ${error.message || 'Unknown error'}`);
-    }
+    // Also remove from selected keywords if it's selected
+    setFormData((prev) => ({
+      ...prev,
+      keywords: prev.keywords.filter((k) => k !== keywordToRemove),
+    }));
   };
 
 
@@ -410,7 +305,7 @@ export const TrademarkForm = () => {
     <Card className="max-w-2xl mx-auto shadow-lg">
       <CardHeader className="bg-gray-50">
         <CardTitle className="text-primary-blue">
-          {formData.id ? 'Edit Trademark' : 'Create New Trademark'}
+          Create New Trademark
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-6 bg-white">
@@ -603,28 +498,14 @@ export const TrademarkForm = () => {
             <Label>Keywords (Select up to 5)</Label>
 
             <div className="flex flex-wrap gap-2 mt-2">
-              {/* Display selected keywords */}
-              {formData.keywords.map((keyword) => (
+              {availableKeywords.map((keyword) => (
                 <div
                   key={keyword}
-                  className="flex items-center rounded-full text-xs px-4 py-1 h-auto border bg-blue-600 text-white">
-                  <span>{keyword}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveKeyword(keyword)}
-                    className="ml-2 text-white hover:text-red-200">
-                    <X className="w-3 h-3" />
-                  </button>
-                </div>
-              ))}
-
-              {/* Display available custom keywords that aren't already selected */}
-              {availableKeywords
-                .filter(keyword => !formData.keywords.includes(keyword))
-                .map((keyword) => (
-                <div
-                  key={keyword}
-                  className="flex items-center rounded-full text-xs px-4 py-1 h-auto border bg-white text-gray-800 border-gray-300">
+                  className={`flex items-center rounded-full text-xs px-4 py-1 h-auto border ${
+                    formData.keywords.includes(keyword)
+                      ? "bg-blue-600 text-white"
+                      : "bg-white text-gray-800 border-gray-300"
+                  }`}>
                   <button
                     type="button"
                     onClick={() => toggleKeyword(keyword)}
@@ -657,7 +538,7 @@ export const TrademarkForm = () => {
             </div>
 
             <p className="text-sm text-gray-500 mt-1">
-              Selected: {formData.keywords.length}/{MAX_KEYWORDS}
+              Selected: {formData.keywords.length}/5
             </p>
           </div>
 

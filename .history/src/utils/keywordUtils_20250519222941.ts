@@ -22,9 +22,9 @@ export const updateTrademarkKeywords = async (
       return { success: false, error: "Trademark ID is required" };
     }
 
-    // Ensure keywords is an array (no hardcoded limit)
+    // Ensure keywords is an array with max 5 items
     const validKeywords = Array.isArray(keywords)
-      ? keywords
+      ? keywords.slice(0, 5)
       : [];
 
     // Update the trademark with the keywords array
@@ -53,24 +53,29 @@ export const updateTrademarkKeywords = async (
 
 /**
  * Gets available keywords for trademark selection
- * @returns Array of predefined keywords and custom keywords from localStorage
+ * @returns Array of predefined keywords
  */
 export const getAvailableKeywords = (): string[] => {
-  // Default hardcoded keywords
-  const defaultKeywords = [
-    "Brand Success",
-    "Trademark Awareness",
-    "Marketing Excellence",
-    "Industry Leader",
-    "Innovation"
-  ];
-
   // Get any custom keywords from localStorage
   const customKeywordsString = localStorage.getItem('customKeywords');
   const customKeywords = customKeywordsString ? JSON.parse(customKeywordsString) : [];
 
-  // Return both default and custom keywords
-  return [...defaultKeywords, ...customKeywords];
+  // Combine predefined keywords with custom keywords
+  return [
+    "Brand Success",
+    "Trademark Awareness",
+    "Marketing Excellence",
+    "Industry Leader",
+    "Innovation",
+    "Customer Satisfaction",
+    "Global Reach",
+    "Quality Products",
+    "Sustainability",
+    "Market Leadership",
+    "Brand Recognition",
+    "Consumer Trust",
+    ...customKeywords
+  ];
 };
 
 /**
@@ -114,7 +119,7 @@ export const addCustomKeyword = (keyword: string): boolean => {
 /**
  * Removes a custom keyword from localStorage
  * @param keyword The custom keyword to remove
- * @returns Boolean indicating if the keyword was found and removed from localStorage
+ * @returns Boolean indicating success
  */
 export const removeCustomKeyword = (keyword: string): boolean => {
   if (!keyword.trim()) return false;
@@ -124,15 +129,13 @@ export const removeCustomKeyword = (keyword: string): boolean => {
     const customKeywordsString = localStorage.getItem('customKeywords');
     const customKeywords = customKeywordsString ? JSON.parse(customKeywordsString) : [];
 
-    // Check if keyword exists in custom keywords
+    // Check if keyword exists
     const keywordIndex = customKeywords.indexOf(keyword.trim());
     if (keywordIndex === -1) {
-      // Keyword not found in custom keywords - it might be a predefined keyword
-      // or it might not exist at all, but we don't need to do anything with localStorage
-      return false;
+      return false; // Keyword not found
     }
 
-    // Remove the keyword from custom keywords
+    // Remove the keyword
     customKeywords.splice(keywordIndex, 1);
 
     // Save back to localStorage
@@ -148,7 +151,7 @@ export const removeCustomKeyword = (keyword: string): boolean => {
 export const toggleKeyword = (
   currentKeywords: string[],
   keyword: string,
-  maxKeywords: number = 5 // Keep the default as 5, but this can be changed when calling the function
+  maxKeywords: number = 5
 ): { keywords: string[]; message?: string } => {
   // Create a copy of the current keywords
   const keywordsCopy = [...currentKeywords];

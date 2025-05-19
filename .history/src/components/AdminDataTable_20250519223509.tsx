@@ -123,9 +123,9 @@ export const AdminDataTable = ({
 
       // Refresh the data to show the updated keywords
       refreshData();
-    } catch (error: any) {
+    } catch (error) {
       console.error("Error removing keyword:", error);
-      toast.error(`Failed to remove keyword: ${error.message || 'Unknown error'}`);
+      toast.error(`Failed to remove keyword: ${error.message}`);
     }
   };
 

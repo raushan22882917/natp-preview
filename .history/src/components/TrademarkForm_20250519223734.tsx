@@ -108,13 +108,10 @@ export const TrademarkForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Maximum number of keywords allowed
-  const MAX_KEYWORDS = 5;
-
   // Handle keyword selection using utility function
   const toggleKeyword = (keyword: string) => {
     setFormData((prev) => {
-      const result = toggleKeywordUtil(prev.keywords, keyword, MAX_KEYWORDS);
+      const result = toggleKeywordUtil(prev.keywords, keyword);
 
       // Show message if provided (e.g., max keywords reached)
       if (result.message) {
@@ -151,7 +148,7 @@ export const TrademarkForm = () => {
 
       // Add to current selection
       setFormData((prev) => {
-        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim(), MAX_KEYWORDS);
+        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim());
 
         if (result.message) {
           toast.error(result.message);
@@ -603,28 +600,14 @@ export const TrademarkForm = () => {
             <Label>Keywords (Select up to 5)</Label>
 
             <div className="flex flex-wrap gap-2 mt-2">
-              {/* Display selected keywords */}
-              {formData.keywords.map((keyword) => (
+              {availableKeywords.map((keyword) => (
                 <div
                   key={keyword}
-                  className="flex items-center rounded-full text-xs px-4 py-1 h-auto border bg-blue-600 text-white">
-                  <span>{keyword}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveKeyword(keyword)}
-                    className="ml-2 text-white hover:text-red-200">
-                    <X className="w-3 h-3" />
-                  </button>
-                </div>
-              ))}
-
-              {/* Display available custom keywords that aren't already selected */}
-              {availableKeywords
-                .filter(keyword => !formData.keywords.includes(keyword))
-                .map((keyword) => (
-                <div
-                  key={keyword}
-                  className="flex items-center rounded-full text-xs px-4 py-1 h-auto border bg-white text-gray-800 border-gray-300">
+                  className={`flex items-center rounded-full text-xs px-4 py-1 h-auto border ${
+                    formData.keywords.includes(keyword)
+                      ? "bg-blue-600 text-white"
+                      : "bg-white text-gray-800 border-gray-300"
+                  }`}>
                   <button
                     type="button"
                     onClick={() => toggleKeyword(keyword)}
@@ -657,7 +640,7 @@ export const TrademarkForm = () => {
             </div>
 
             <p className="text-sm text-gray-500 mt-1">
-              Selected: {formData.keywords.length}/{MAX_KEYWORDS}
+              Selected: {formData.keywords.length}/5
             </p>
           </div>
 

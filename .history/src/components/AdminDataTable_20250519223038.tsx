@@ -74,61 +74,6 @@ export const AdminDataTable = ({
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle removing a keyword
-  const handleRemoveKeyword = async (keyword: string) => {
-    if (!currentItem) {
-      toast.error("No item selected");
-      return;
-    }
-
-    try {
-      // First, get the current keywords from the database
-      const { data, error: fetchError } = await supabase
-        .from(tableName)
-        .select('keywords')
-        .eq('id', currentItem.id)
-        .single();
-
-      if (fetchError) {
-        throw fetchError;
-      }
-
-      // Filter out the keyword to remove
-      const updatedKeywords = Array.isArray(data.keywords)
-        ? data.keywords.filter(k => k !== keyword)
-        : [];
-
-      // Update the database with the new keywords array
-      const { error: updateError } = await supabase
-        .from(tableName)
-        .update({ keywords: updatedKeywords })
-        .eq('id', currentItem.id);
-
-      if (updateError) {
-        throw updateError;
-      }
-
-      // Update the form data to reflect the change
-      setFormData(prev => ({
-        ...prev,
-        keywords: Array.isArray(prev.keywords)
-          ? prev.keywords.filter(k => k !== keyword)
-          : []
-      }));
-
-      // Try to remove from localStorage (will only work for custom keywords)
-      removeCustomKeyword(keyword);
-
-      toast.success(`Keyword "${keyword}" removed`);
-
-      // Refresh the data to show the updated keywords
-      refreshData();
-    } catch (error: any) {
-      console.error("Error removing keyword:", error);
-      toast.error(`Failed to remove keyword: ${error.message || 'Unknown error'}`);
-    }
-  };
-
   const handleSave = async () => {
     try {
       if (!currentItem) return;
@@ -209,7 +154,7 @@ export const AdminDataTable = ({
                 )}
               </div>
             ) : field.name === 'keywords' && item[field.name] ? (
-              <div className="flex flex-wrap gap-1 max-h-[80px] overflow-y-auto">
+              <div className="flex flex-wrap gap-1">
                 {Array.isArray(item[field.name]) ?
                   item[field.name].map((keyword: string, idx: number) => (
                     <span key={idx} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
@@ -445,17 +390,9 @@ export const AdminDataTable = ({
                     {Array.isArray(formData[field.name]) && formData[field.name].length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-2">
                         {formData[field.name].map((keyword: string, idx: number) => (
-                          <div key={idx} className="flex items-center bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
-                            <span>{keyword}</span>
-                            <button
-                              type="button"
-                              onClick={() => handleRemoveKeyword(keyword)}
-                              className="ml-1 text-red-500 hover:text-red-700 focus:outline-none"
-                              title="Remove keyword"
-                            >
-                              <X className="w-3 h-3" />
-                            </button>
-                          </div>
+                          <span key={idx} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
+                            {keyword}
+                          </span>
                         ))}
                       </div>
                     )}

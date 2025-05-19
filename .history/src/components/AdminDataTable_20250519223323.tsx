@@ -75,58 +75,22 @@ export const AdminDataTable = ({
   };
 
   // Handle removing a keyword
-  const handleRemoveKeyword = async (keyword: string) => {
-    if (!currentItem) {
-      toast.error("No item selected");
-      return;
-    }
-
-    try {
-      // First, get the current keywords from the database
-      const { data, error: fetchError } = await supabase
-        .from(tableName)
-        .select('keywords')
-        .eq('id', currentItem.id)
-        .single();
-
-      if (fetchError) {
-        throw fetchError;
+  const handleRemoveKeyword = (keyword: string) => {
+    // Remove from the form data
+    setFormData(prev => {
+      if (Array.isArray(prev.keywords)) {
+        return {
+          ...prev,
+          keywords: prev.keywords.filter(k => k !== keyword)
+        };
       }
+      return prev;
+    });
 
-      // Filter out the keyword to remove
-      const updatedKeywords = Array.isArray(data.keywords)
-        ? data.keywords.filter(k => k !== keyword)
-        : [];
+    // Try to remove from localStorage (will only work for custom keywords)
+    removeCustomKeyword(keyword);
 
-      // Update the database with the new keywords array
-      const { error: updateError } = await supabase
-        .from(tableName)
-        .update({ keywords: updatedKeywords })
-        .eq('id', currentItem.id);
-
-      if (updateError) {
-        throw updateError;
-      }
-
-      // Update the form data to reflect the change
-      setFormData(prev => ({
-        ...prev,
-        keywords: Array.isArray(prev.keywords)
-          ? prev.keywords.filter(k => k !== keyword)
-          : []
-      }));
-
-      // Try to remove from localStorage (will only work for custom keywords)
-      removeCustomKeyword(keyword);
-
-      toast.success(`Keyword "${keyword}" removed`);
-
-      // Refresh the data to show the updated keywords
-      refreshData();
-    } catch (error: any) {
-      console.error("Error removing keyword:", error);
-      toast.error(`Failed to remove keyword: ${error.message || 'Unknown error'}`);
-    }
+    toast.success(`Keyword "${keyword}" removed`);
   };
 
   const handleSave = async () => {

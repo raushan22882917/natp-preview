@@ -151,7 +151,7 @@ export const TrademarkForm = () => {
 
       // Add to current selection
       setFormData((prev) => {
-        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim(), MAX_KEYWORDS);
+        const result = toggleKeywordUtil(prev.keywords, customKeyword.trim());
 
         if (result.message) {
           toast.error(result.message);

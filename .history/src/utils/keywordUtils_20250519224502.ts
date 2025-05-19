@@ -22,9 +22,9 @@ export const updateTrademarkKeywords = async (
       return { success: false, error: "Trademark ID is required" };
     }
 
-    // Ensure keywords is an array (no hardcoded limit)
+    // Ensure keywords is an array with max 5 items
     const validKeywords = Array.isArray(keywords)
-      ? keywords
+      ? keywords.slice(0, 5)
       : [];
 
     // Update the trademark with the keywords array
@@ -53,24 +53,14 @@ export const updateTrademarkKeywords = async (
 
 /**
  * Gets available keywords for trademark selection
- * @returns Array of predefined keywords and custom keywords from localStorage
+ * @returns Array of custom keywords from localStorage
  */
 export const getAvailableKeywords = (): string[] => {
-  // Default hardcoded keywords
-  const defaultKeywords = [
-    "Brand Success",
-    "Trademark Awareness",
-    "Marketing Excellence",
-    "Industry Leader",
-    "Innovation"
-  ];
-
   // Get any custom keywords from localStorage
   const customKeywordsString = localStorage.getItem('customKeywords');
   const customKeywords = customKeywordsString ? JSON.parse(customKeywordsString) : [];
 
-  // Return both default and custom keywords
-  return [...defaultKeywords, ...customKeywords];
+  return customKeywords;
 };
 
 /**
