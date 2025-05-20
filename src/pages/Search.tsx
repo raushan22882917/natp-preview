@@ -208,7 +208,7 @@ export default function Search() {
     {
       question: "How to Search for Trademarks?",
       answer:
-        "Enter the application number or company name in the search field and select “Search” to view registered trademarks. Each result links to a detailed article for further information.",
+        "Enter the application number, owner, or company name into the search field and select “Search” to view registered trademarks. Each result links to a detailed article with further information.",
     },
     {
       question: "Can I Update My Search?",
@@ -311,7 +311,7 @@ export default function Search() {
               FAQs
             </h2>
             <p className="text-[#333747] text-lg sm:text-xl font-semibold mb-6">
-              Find answers to common questions about our search functionality and trademark information.
+            Get clear answers to key questions about our trademark search and data access tools.
             </p>
             <button className="bg-[#207ea0] text-white px-6 py-3 shadow-md hover:bg-[#207ea0] transition-colors text-lg font-semibold">
               <Link to="/contact">Contact</Link>
