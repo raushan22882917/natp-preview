@@ -18,6 +18,8 @@ export default function Contact() {
     agreedToTerms: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -211,16 +213,46 @@ export default function Contact() {
             relevant marketing insights.
           </p>
 
-          <form className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+
+              if (!newsletterEmail) {
+                toast.error("Please enter an email address.");
+                return;
+              }
+
+              try {
+                setIsNewsletterSubmitting(true);
+
+                const { error } = await supabase
+                  .from("newsletter_subscriptions")
+                  .insert([{ email: newsletterEmail }]);
+
+                if (error) throw error;
+
+                toast.success("Successfully subscribed to the newsletter!");
+                setNewsletterEmail("");
+              } catch (error) {
+                console.error("Newsletter subscription failed:", error);
+                toast.error("Subscription failed. Please try again.");
+              } finally {
+                setIsNewsletterSubmitting(false);
+              }
+            }}
+            className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <input
               type="email"
               placeholder="Enter your email"
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
               className="border border-[#207ea0] px-4 py-3 w-full sm:w-[300px] rounded h-[48px] focus:outline-none text-[#212529]"
             />
             <button
               type="submit"
+              disabled={isNewsletterSubmitting}
               className="bg-[#207ea0] text-white px-6 py-3 rounded shadow-sm hover:bg-[#1a6b89] transition-colors duration-200">
-              Sign Up
+              {isNewsletterSubmitting ? "Signing Up..." : "Sign Up"}
             </button>
           </form>
 

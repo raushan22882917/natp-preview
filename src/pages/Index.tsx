@@ -67,9 +67,9 @@ export default function Index() {
             Through professional trademark publication and marketing, we
             position your brand effectively in a competitive environment.
           </p>
-          <button className="bg-[#207ea0] shadow-xl text-white px-6 py-3 my-4">
+          <Link to="/about" className="bg-[#207ea0] shadow-xl text-white px-6 py-3 my-4">
             More Info
-          </button>
+          </Link>
         </div>
         <img
           src="/images/Icon_You_focus_on_your_business,_we_manage_your_brand_visibility.svg"
@@ -104,9 +104,9 @@ export default function Index() {
                     development, and SEO-focused visibility enhancement.
                   </p>
                 </div>
-                <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+                <Link to="/services" className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
                   More Info
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -127,9 +127,9 @@ export default function Index() {
                     presence in search rankings.
                   </p>
                 </div>
-                <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+                <Link to="/services/seo" className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
                   More Info
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -150,9 +150,9 @@ export default function Index() {
                     legal security.
                   </p>
                 </div>
-                <button className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
+                <Link to="/services/publication" className="bg-[#207ea0] text-white py-3 px-6 shadow-xl mt-auto mr-auto">
                   More Info
-                </button>
+                </Link>
               </div>
             </div>
           </div>

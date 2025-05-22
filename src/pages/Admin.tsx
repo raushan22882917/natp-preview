@@ -8,6 +8,7 @@ import { AdminDataTable } from "@/components/AdminDataTable";
 import { Button } from "@/components/ui/button";
 import { Plus, Upload } from "lucide-react";
 import BulkTrademarkUpload from "@/components/BulkTrademarkUpload";
+import { Label } from "recharts";
 
 type TableName = "admin_users" | "applications" | "contacts" | "trademarks" | "articles";
 
@@ -106,9 +107,20 @@ export default function Admin() {
     { name: 'first_name', label: 'First Name', type: 'text' as const, required: true },
     { name: 'last_name', label: 'Last Name', type: 'text' as const, required: true },
     { name: 'email', label: 'Email', type: 'email' as const, required: true },
+    {name: 'phone', label: 'Phone', type: 'text' as const, required: true },
     { name: 'company', label: 'Company', type: 'text' as const, required: true },
     { name: 'trademark', label: 'Trademark', type: 'text' as const, required: true },
     { name: 'application_date', label: 'Application Date', type: 'date' as const },
+    { name: 'application_number', label: 'Application Date', type: 'text' as const, required: true },
+    { name: 'role', label: 'Role', type: 'text' as const, required: true },
+    { name: 'message', label: 'Message', type: 'text' as const, required: true },
+    { name: 'created_at', label: 'created At', type: 'date' as const, required: true },
+    { name: 'agree', label: 'Agree', type: 'text' as const, required: true },
+    { name: 'city', label: 'City', type: 'text' as const, required: true },
+    { name: 'class', label: 'Class', type: 'text' as const, required: true },
+    { name: 'country', label: 'Country', type: 'text' as const, required: true },
+    { name: 'us_class', label: 'US Class', type: 'text' as const, required: true },
+    { name: 'zip', label: 'Zip', type: 'text' as const, required: true },
   ];
 
   const contactFields = [
