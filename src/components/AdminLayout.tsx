@@ -48,6 +48,7 @@ export const AdminLayout = ({ children, title }: AdminLayoutProps) => {
     { title: "Applications", icon: FileText, path: "/admin?tab=applications" },
     { title: "Contacts", icon: MessageSquare, path: "/admin?tab=contacts" },
     { title: "Articles", icon: FileText, path: "/admin?tab=articles" },
+    { title: "Newsletter", icon: MessageSquare, path: "/admin?tab=newsletter_subscriptions" },
     { title: "Admins", icon: Users, path: "/admin?tab=admins" },
   ];
 
@@ -76,7 +77,13 @@ export const AdminLayout = ({ children, title }: AdminLayoutProps) => {
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
                         <button
-                          onClick={() => navigate(item.path)}
+                          onClick={() => {
+                            const tabParam = new URLSearchParams(item.path.split('?')[1]);
+                            const tab = tabParam.get('tab') || 'trademarks';
+                            navigate(item.path);
+                            // Dispatch a custom event to notify Admin component
+                            window.dispatchEvent(new CustomEvent('adminTabChange', { detail: tab }));
+                          }}
                           className="flex items-center gap-3 text-white hover:bg-[rgba(255,255,255,0.1)] px-4 py-3 w-full rounded-md transition-colors"
                         >
                           <item.icon className="w-5 h-5" />

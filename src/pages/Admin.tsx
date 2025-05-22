@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -10,7 +16,7 @@ import { Plus, Upload } from "lucide-react";
 import BulkTrademarkUpload from "@/components/BulkTrademarkUpload";
 import { Label } from "recharts";
 
-type TableName = "admin_users" | "applications" | "contacts" | "trademarks" | "articles";
+type TableName = "admin_users" | "applications" | "contacts" | "trademarks" | "articles" | "newsletter_subscriptions";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -23,7 +29,10 @@ export default function Admin() {
   const [contacts, setContacts] = useState<any[]>([]);
   const [admins, setAdmins] = useState<any[]>([]);
   const [articles, setArticles] = useState<any[]>([]);
+  const [subscriptions, setSubscriptions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedSubscription, setSelectedSubscription] = useState<any>(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const checkAdmin = () => {
@@ -36,8 +45,27 @@ export default function Admin() {
     };
 
     checkAdmin();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate, activeTab]);
+  }, [navigate]);
+
+  useEffect(() => {
+    // Listen for tab change events from AdminLayout
+    const handleTabChange = (event: CustomEvent<string>) => {
+      setSearchParams({ tab: event.detail });
+    };
+
+    window.addEventListener('adminTabChange', handleTabChange as EventListener);
+
+    // Update tab when URL changes
+    const tab = searchParams.get("tab");
+    if (tab) {
+      setSearchParams({ tab });
+    }
+    fetchData();
+
+    return () => {
+      window.removeEventListener('adminTabChange', handleTabChange as EventListener);
+    };
+  }, [setSearchParams]);
 
   const fetchData = async () => {
     try {
@@ -49,6 +77,7 @@ export default function Admin() {
         { name: 'contacts', setter: setContacts },
         { name: 'admin_users', setter: setAdmins },
         { name: 'articles', setter: setArticles },
+        { name: 'newsletter_subscriptions', setter: setSubscriptions },
       ];
 
       // Only fetch data for the active tab to improve performance
@@ -137,6 +166,12 @@ export default function Admin() {
     { name: 'email', label: 'Email', type: 'email' as const, required: true },
   ];
 
+  const subscriptionFields = [
+    { name: 'email', label: 'Email', type: 'email' as const, required: true },
+    { name: 'created_at', label: 'Subscribed Date', type: 'date' as const },
+    { name: 'id', label: 'ID', type: 'text' as const },
+  ];
+
   const articleFields = [
     { name: 'title', label: 'Title', type: 'text' as const, required: true },
     { name: 'content', label: 'Content', type: 'textarea' as const, required: true },
@@ -146,7 +181,7 @@ export default function Admin() {
   return (
     <AdminLayout title="Admin Dashboard">
       <div className="p-6">
-        <Tabs defaultValue={activeTab} onValueChange={handleTabChange} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <div className="flex justify-between items-center mb-6">
             <TabsList className="bg-white border border-gray-200 p-1 rounded-md overflow-x-auto flex-wrap">
               <TabsTrigger value="trademarks" className="data-[state=active]:bg-primary-blue data-[state=active]:text-white">
@@ -160,6 +195,9 @@ export default function Admin() {
               </TabsTrigger>
               <TabsTrigger value="articles" className="data-[state=active]:bg-primary-blue data-[state=active]:text-white">
                 Articles
+              </TabsTrigger>
+              <TabsTrigger value="newsletter_subscriptions" className="data-[state=active]:bg-primary-blue data-[state=active]:text-white">
+                Newsletter Subscriptions
               </TabsTrigger>
               <TabsTrigger value="admins" className="data-[state=active]:bg-primary-blue data-[state=active]:text-white">
                 Admin Users
@@ -238,6 +276,17 @@ export default function Admin() {
                   title="Articles"
                   data={articles}
                   fields={articleFields}
+                  refreshData={fetchData}
+                  loading={loading}
+                />
+              </TabsContent>
+
+              <TabsContent value="newsletter_subscriptions">
+                <AdminDataTable
+                  tableName="newsletter_subscriptions"
+                  title="Newsletter Subscriptions"
+                  data={subscriptions}
+                  fields={subscriptionFields}
                   refreshData={fetchData}
                   loading={loading}
                 />
